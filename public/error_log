@@ -1,0 +1,335 @@
+[31-Jan-2022 02:20:14 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/awalceri/public_html/pmb/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:04:43 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:05:23 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:05:24 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:15:08 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:15:09 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:15:52 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:15:52 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:15:53 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:26 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:46 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:47 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:48 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:49 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:49 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:49 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:50 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:17:50 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:18:02 UTC] PHP Parse error:  syntax error, unexpected '?', expecting variable (T_VARIABLE) in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/phpunit/phpunit/src/Framework/Assert/Functions.php on line 177
+[02-Feb-2022 06:18:03 UTC] PHP Parse error:  syntax error, unexpected '?', expecting variable (T_VARIABLE) in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/phpunit/phpunit/src/Framework/Assert/Functions.php on line 177
+[02-Feb-2022 06:18:03 UTC] PHP Parse error:  syntax error, unexpected '?', expecting variable (T_VARIABLE) in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/phpunit/phpunit/src/Framework/Assert/Functions.php on line 177
+[02-Feb-2022 06:18:09 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:19:56 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:20:15 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:20:15 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:20:16 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:20:16 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:20:18 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:20:23 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:23:36 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:30:25 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:31:18 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:31:40 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:32:06 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:42:11 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:42:14 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:44:45 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:45:35 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:56:11 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:59:18 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 06:59:19 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:00:26 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:00:51 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:14:38 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:25:43 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:25:44 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:26:36 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:30:23 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:32:39 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:41:12 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:49:44 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:49:46 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:57:32 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:57:34 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:57:35 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:57:35 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:57:36 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 07:59:42 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 08:00:01 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 08:00:03 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 08:00:05 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 08:00:06 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 08:01:55 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 08:18:13 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[02-Feb-2022 08:20:14 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.0.33. in /home/pacitan/public_html/entripmb.stkippacitan.ac.id/vendor/composer/platform_check.php on line 24
+[05-Oct-2023 12:17:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 13:46:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 13:57:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 13:58:43 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 14:09:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 14:11:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 14:11:31 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 14:12:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 14:12:49 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:08:56 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:09:07 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:10:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:12:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:12:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:35 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:13:42 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:14:02 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:14:15 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:14:16 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:14:17 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:17:56 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:17:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
+[05-Oct-2023 15:19:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Interface 'JsonSerializable' not found in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php:11
+Stack trace:
+#0 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include()
+#1 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#3 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(12): spl_autoload_call('Illuminate\\Supp...')
+#4 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(571): include('/home/pmbstkip/...')
+#5 /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/composer/ClassLoader.php(428): Composer\Autoload\includeFile('/home/pmbstkip/...')
+#6 [internal function]: Composer\Autoload\ClassLoader in /home/pmbstkip/public_html/regpmb.stkippacitan.ac.id/vendor/laravel/framework/src/Illuminate/Collections/Enumerable.php on line 11
