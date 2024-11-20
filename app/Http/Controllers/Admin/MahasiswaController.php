@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use App\Models\Transaction;
-use App\Models\Gelombang;
-use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\DataTables;
 
 class MahasiswaController extends Controller
 {
@@ -23,22 +22,21 @@ class MahasiswaController extends Controller
             return DataTables::of($mahasiswa)
                 ->addIndexColumn()
                 ->addColumn('action', function ($siswa) {
-                    $actionBtn = '<a href="' . route('admin.mahasiswa.edit', $siswa->id) . '" class="edit btn btn-warning btn-sm"> Edit</a>';
-                    $actionBtn .= ' <a href="' . route('admin.mahasiswa.show', $siswa->id) . '" class="btn btn-info btn-sm"> Detail</a>';
-                    $actionBtn .= '<a href="javascript:void(0)" onClick="Delete(this.id)" id="' . $siswa->id  . '" class="bayar btn btn-danger btn-sm"> Hapus</a> ' ;
+                    $actionBtn = '<a href="'.route('admin.mahasiswa.edit', $siswa->id).'" class="edit btn btn-warning btn-sm"> Edit</a>';
+                    $actionBtn .= ' <a href="'.route('admin.mahasiswa.show', $siswa->id).'" class="btn btn-info btn-sm"> Detail</a>';
+                    $actionBtn .= '<a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$siswa->id.'" class="bayar btn btn-danger btn-sm"> Hapus</a> ';
 
                     if ($siswa->transaksi != null) {
-                        $transaction = '<a href="javascript:void(0)" onClick="Bayar(this.id)" id="' . $siswa->transaksi->id  . '" class="bayar btn btn-info btn-sm"> Bayar</a> ';
+                        $transaction = '<a href="javascript:void(0)" onClick="Bayar(this.id)" id="'.$siswa->transaksi->id.'" class="bayar btn btn-info btn-sm"> Bayar</a> ';
                     } else {
                         $transaction = '';
                     }
 
-                    $whatsapp = '<a href="https://wa.me/' . $siswa->mahasiswa->phone . '?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20' . $siswa->nisn . '%0A-%20Password%20:%20' . $siswa->password_sementara . '%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
-
+                    $whatsapp = '<a href="https://wa.me/'.$siswa->mahasiswa->phone.'?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20'.$siswa->nisn.'%0A-%20Password%20:%20'.$siswa->password_sementara.'%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
 
                     // $whatsapp = ' <a href="https://wa.me/' . $siswa->mahasiswa->phone . '?text=*SELAMAT%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA*%20selanjutnya%20silahkan%20anda%20melakukan%20pengisian%20data%20dan%20upload%20berkas%20dengan%20login%20pada%20alamat%20https://entripmb.stkippacitan.ac.id/login%20dengan%20Username%20:%20' . $siswa->nisn . '%20dan%20password%20:%20' . $siswa->password_sementara . '" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
 
-                    return $siswa->mahasiswa->status == "DALAM PROSES" ?  $actionBtn .  $transaction . $whatsapp : $actionBtn . $whatsapp;
+                    return $siswa->mahasiswa->status == 'DALAM PROSES' ? $actionBtn.$transaction.$whatsapp : $actionBtn.$whatsapp;
                     // return $actionBtn  . $transaction . $whatsapp;
                 })
                 ->addColumn('briva', function ($transaksi) {
@@ -84,12 +82,14 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         $mahasiswa = User::with('mahasiswa')->findOrFail($id);
+
         return view('admin.mahasiswa.edit', compact('mahasiswa'));
     }
 
     public function show($id)
     {
         $mahasiswa = User::with('mahasiswa')->findOrFail($id);
+
         return view('admin.mahasiswa.detail', compact('mahasiswa'));
     }
 
@@ -116,12 +116,12 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'      => 'required',
-            'nisn'      => 'required|unique:users',
-            'phone'     => 'required|unique:mahasiswa',
-            'gelombang_id' => 'required'
+            'name' => 'required',
+            'nisn' => 'required|unique:users',
+            'phone' => 'required|unique:mahasiswa',
+            'gelombang_id' => 'required',
         ]);
-        
+
         $length = 8;
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -135,12 +135,12 @@ class MahasiswaController extends Controller
             $user = User::create([
                 'name' => strtoupper($request->name),
                 'nisn' => $request->nisn,
-                'roles' => "MAHASISWA",
+                'roles' => 'MAHASISWA',
                 'password' => Hash::make($password),
                 'password_sementara' => $password,
                 'gelombang_id' => $request->gelombang_id,
                 'photo' => 'default.jpg',
-                
+
             ]);
 
             Mahasiswa::create([
@@ -148,8 +148,7 @@ class MahasiswaController extends Controller
                 'phone' => $request->phone,
                 'tempat_lahir' => strtoupper($request->tempat_lahir),
                 'tanggal_lahir' => $request->tanggal_lahir,
-                'status' => "DALAM PROSES"
-                
+                'status' => 'DALAM PROSES',
 
             ]);
             $no_transaction = Transaction::latest()->first();
@@ -159,11 +158,12 @@ class MahasiswaController extends Controller
                 'no_transaksi' => $no_transaction != null ? $no_transaction->no_transaksi + 1 : 2022001,
                 'briva' => $no_transaction != null ? $no_transaction->briva + 1 : 999999001,
                 'nominal' => 300000,
-                'status' => "pending"
+                'status' => 'pending',
             ]);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
+
             return back();
         }
 
@@ -177,21 +177,21 @@ class MahasiswaController extends Controller
         Mahasiswa::where('user_id', $id)->delete();
 
         if ($mahasiswa) {
-            
-                return response()->json([
-                    "status" => "success"
+
+            return response()->json([
+                'status' => 'success',
             ]);
         } else {
             return response()->json([
-                "status" => "error"
+                'status' => 'error',
             ]);
         }
     }
 
-
     public function dashboard()
     {
         $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
+
         return view('mahasiswa.dashboard', compact('mahasiswa'));
     }
 
@@ -201,15 +201,15 @@ class MahasiswaController extends Controller
         $messages = [
             'required' => 'Kolom :attribute wajib diisi!',
             'unique' => ':attribute yang anda gunakan telah terdaftar!',
-            'email' => 'Kolom :attribute harus berformat email (contoh@email.com)'
+            'email' => 'Kolom :attribute harus berformat email (contoh@email.com)',
 
         ];
 
         $this->validate($request, [
-            'name'      => 'required',
-            'nisn'      => 'required|unique:users',
-            'email'      => 'required|email|unique:users',
-            'phone'     => 'required|unique:mahasiswa',
+            'name' => 'required',
+            'nisn' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|unique:mahasiswa',
             'gelombang_id' => 'required',
         ], $messages);
         $no_transaction = Transaction::latest()->first();
@@ -228,10 +228,10 @@ class MahasiswaController extends Controller
                 'name' => strtoupper($request->name),
                 'nisn' => $request->nisn,
                 'email' => $request->email,
-                'roles' => "MAHASISWA",
+                'roles' => 'MAHASISWA',
                 'password' => Hash::make($password),
                 'password_sementara' => $password,
-                'gelombang_id' => $request->gelombang_id
+                'gelombang_id' => $request->gelombang_id,
             ]);
 
             Mahasiswa::create([
@@ -239,8 +239,8 @@ class MahasiswaController extends Controller
                 'phone' => $request->phone,
                 'tempat_lahir' => strtoupper($request->tempat_lahir),
                 'tanggal_lahir' => $request->tanggal_lahir,
-                'status' => "DALAM PROSES",
-                
+                'status' => 'DALAM PROSES',
+
             ]);
 
             $transaction = Transaction::create([
@@ -248,13 +248,14 @@ class MahasiswaController extends Controller
                 'no_transaksi' => $no_transaction != null ? $no_transaction->no_transaksi + 1 : 2022001,
                 'briva' => $no_transaction != null ? $no_transaction->briva + 1 : 999999001,
                 'nominal' => 300000,
-                'status' => "pending"
+                'status' => 'pending',
             ]);
             DB::commit();
 
             return view('pageSuccess', compact('transaction'));
         } catch (\Exception $e) {
             DB::rollBack();
+
             return back()->with('error', $e->getMessage());
         }
     }
@@ -265,8 +266,9 @@ class MahasiswaController extends Controller
         $photo = $request->file('photo')->store('assets/photo', 'public');
         $user = User::findOrFail(Auth::user()->id);
         $user->update([
-            'photo' => $photo
+            'photo' => $photo,
         ]);
+
         return redirect()->route('dashboard.mahasiswa')->with('success', 'data berhasil disimpan');
     }
 }

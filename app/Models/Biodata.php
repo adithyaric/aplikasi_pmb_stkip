@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Biodata extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
-    protected $table = "biodata";
-    protected $guarded = ["id"];
+    protected $table = 'biodata';
+
+    protected $guarded = ['id'];
 }

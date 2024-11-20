@@ -16,7 +16,7 @@ class CreateTahunsTable extends Migration
         Schema::create('tahuns', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('status')->nullable(false)->default("1");
+            $table->string('status')->nullable(false)->default('1');
             $table->timestamps();
         });
     }

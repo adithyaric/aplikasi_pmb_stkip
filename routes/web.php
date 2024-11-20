@@ -7,11 +7,10 @@ use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Admin\PenerimnaanController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\TransactionController;
-use App\Http\Controllers\ExportController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\GelombangController;
 use App\Models\Gelombang;
-use App\Models\Mahasiswa;
 use App\Models\Transaction;
 use App\Models\Video;
 use Illuminate\Support\Facades\Route;
@@ -32,10 +31,10 @@ Route::get('/', function () {
     // return view('pageSuccess',compact('transaction'));
     $video = Video::latest()->first();
     $gelombangs = Gelombang::all()->where('status', '1');
+
     // ddd();
     return view('homePage', compact('video', 'gelombangs'));
 });
-
 
 Auth::routes();
 

@@ -17,18 +17,20 @@ class TahunController extends Controller
     {
         if (request()->ajax()) {
             $tahun = Tahun::latest()->get();
+
             return DataTables::of($tahun)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="' . $data->id . '" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="' . $data->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
+
                     return $actionBtn;
                 })
                 ->addColumn('status', function ($status) {
                     if ($status->status != null) {
-                        if ($status->status == "1"){
-                            return "Aktif";
-                        }else{
-                            return "Tidak Aktif";
+                        if ($status->status == '1') {
+                            return 'Aktif';
+                        } else {
+                            return 'Tidak Aktif';
                         }
                     } else {
                         return '';
@@ -54,18 +56,17 @@ class TahunController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         Tahun::updateOrCreate(
             [
-                'id' => $request->id
+                'id' => $request->id,
             ],
             [
                 'nama' => $request->nama,
-                'status' => $request->status
+                'status' => $request->status,
             ],
         );
 
@@ -75,7 +76,6 @@ class TahunController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tahun  $tahun
      * @return \Illuminate\Http\Response
      */
     public function show(Tahun $tahun)
@@ -92,17 +92,16 @@ class TahunController extends Controller
     public function edit($id)
     {
         $tahun = Tahun::findOrFail($id);
+
         return response()->json([
-            'status' => "success",
-            'data' => $tahun
+            'status' => 'success',
+            'data' => $tahun,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tahun  $tahun
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Tahun $tahun)
@@ -120,8 +119,9 @@ class TahunController extends Controller
     {
         $tahun = Tahun::findOrFail($id);
         $tahun->delete();
+
         return response()->json([
-            'status' => "success"
+            'status' => 'success',
         ]);
     }
 }

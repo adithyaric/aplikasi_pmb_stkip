@@ -7,8 +7,8 @@ use App\Models\Jurusan;
 use App\Models\Mahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class GelombangController extends Controller
 {
@@ -21,18 +21,20 @@ class GelombangController extends Controller
     {
         if (request()->ajax()) {
             $gelombang = Gelombang::latest()->get();
+
             return DataTables::of($gelombang)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="' . $data->id . '" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="' . $data->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
+
                     return $actionBtn;
                 })
                 ->addColumn('status', function ($status) {
                     if ($status->status != null) {
-                        if ($status->status == "1"){
-                            return "Aktif";
-                        }else{
-                            return "Tidak Aktif";
+                        if ($status->status == '1') {
+                            return 'Aktif';
+                        } else {
+                            return 'Tidak Aktif';
                         }
                     } else {
                         return '';
@@ -58,19 +60,18 @@ class GelombangController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         Gelombang::updateOrCreate(
             [
-                'id' => $request->id
+                'id' => $request->id,
             ],
             [
                 'nama' => $request->nama,
                 'nominal' => $request->nominal,
-                'status' => $request->status
+                'status' => $request->status,
             ],
         );
 
@@ -80,7 +81,6 @@ class GelombangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Gelombang  $gelombang
      * @return \Illuminate\Http\Response
      */
     public function show(Gelombang $gelombang)
@@ -125,28 +125,28 @@ class GelombangController extends Controller
             'jurusan' => Jurusan::all(),
             'pendaftar' => User::where('gelombang_id', $gelombang->id)->count(),
             'bayar' => User::whereHas('transaksi', function ($q) {
-                    $q->where('status', 'success');
-                    })->where('gelombang_id', $gelombang->id)->count(),
+                $q->where('status', 'success');
+            })->where('gelombang_id', $gelombang->id)->count(),
             'berkas' => User::whereHas('mahasiswa', function ($q) {
-                    $q->where('status', 'BERKAS LENGKAP');
-                    })->where('gelombang_id', $gelombang->id)->count(),
+                $q->where('status', 'BERKAS LENGKAP');
+            })->where('gelombang_id', $gelombang->id)->count(),
             'cbt' => User::whereHas('mahasiswa', function ($q) {
-                    $q->where('status', 'TES / CBT');
-                    })->where('gelombang_id', $gelombang->id)->count(),
+                $q->where('status', 'TES / CBT');
+            })->where('gelombang_id', $gelombang->id)->count(),
             'interview' => User::whereHas('mahasiswa', function ($q) {
-                    $q->where('status', 'INTERVIEW');
-                    })->where('gelombang_id', $gelombang->id)->count(),
+                $q->where('status', 'INTERVIEW');
+            })->where('gelombang_id', $gelombang->id)->count(),
             'diterima' => User::whereHas('mahasiswa', function ($q) {
-                    $q->where('status', 'BERKAS DITERIIMA');
-                    })->where('gelombang_id', $gelombang->id)->count(),
+                $q->where('status', 'BERKAS DITERIIMA');
+            })->where('gelombang_id', $gelombang->id)->count(),
             'keluar' => User::whereHas('mahasiswa', function ($q) {
-                    $q->where('status', 'KELUAR');
-                    })->where('gelombang_id', $gelombang->id)->count(),
+                $q->where('status', 'KELUAR');
+            })->where('gelombang_id', $gelombang->id)->count(),
             'perjur' => DB::table('users')
-                        ->join('mahasiswa', 'users.id', '=', 'mahasiswa.user_id')
-                        ->join('jurusan', 'jurusan.id', '=', 'mahasiswa.jurusan_id')
-                        ->join('gelombang', 'gelombang.id', '=', 'users.gelombang_id')
-                        ->where('users')
+                ->join('mahasiswa', 'users.id', '=', 'mahasiswa.user_id')
+                ->join('jurusan', 'jurusan.id', '=', 'mahasiswa.jurusan_id')
+                ->join('gelombang', 'gelombang.id', '=', 'users.gelombang_id')
+                ->where('users'),
         ]);
     }
 
@@ -159,17 +159,16 @@ class GelombangController extends Controller
     public function edit($id)
     {
         $gelombang = Gelombang::findOrFail($id);
+
         return response()->json([
-            'status' => "success",
-            'data' => $gelombang
+            'status' => 'success',
+            'data' => $gelombang,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Gelombang  $gelombang
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Gelombang $gelombang)
@@ -187,8 +186,9 @@ class GelombangController extends Controller
     {
         $gelombang = Gelombang::findOrFail($id);
         $gelombang->delete();
+
         return response()->json([
-            'status' => "success"
+            'status' => 'success',
         ]);
     }
 }

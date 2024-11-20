@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('nisn')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('roles', ["MAHASISWA", "ADMIN"]);
+            $table->enum('roles', ['MAHASISWA', 'ADMIN']);
             $table->string('password');
             $table->string('password_sementara')->nullable();
             $table->softDeletes();

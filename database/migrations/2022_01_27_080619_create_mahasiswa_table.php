@@ -19,7 +19,7 @@ class CreateMahasiswaTable extends Migration
             $table->string('tempat_lahir');
             $table->string('phone');
             $table->date('tanggal_lahir');
-            $table->enum('status', ['DALAM PROSES', 'BAYAR OK', 'BERKAS LENGKAP', 'TES', 'DITERIMA','DITOLAK']);
+            $table->enum('status', ['DALAM PROSES', 'BAYAR OK', 'BERKAS LENGKAP', 'TES', 'DITERIMA', 'DITOLAK']);
             $table->softDeletes();
             $table->timestamps();
         });

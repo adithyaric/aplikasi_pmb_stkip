@@ -42,6 +42,7 @@ class DashboardController extends Controller
     public function profile()
     {
         $profile = Auth::user();
+
         return view('admin.profile', compact('profile'));
     }
 
@@ -49,24 +50,25 @@ class DashboardController extends Controller
     {
         $user = User::findOrFail($id);
         $this->validate($request, [
-            'name'      => 'required',
-            'email'     => 'required|email|unique:users,email,' . $user->id,
-            'password'  => 'confirmed'
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            'password' => 'confirmed',
         ]);
-        if ($request->input('password') == "") {
+        if ($request->input('password') == '') {
             $user->update([
-                'name'      => $request->input('name'),
-                'email'     => $request->input('email'),
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
             ]);
         } else {
 
             $user->update([
-                'name'      => $request->input('name'),
-                'email'     => $request->input('email'),
-                'password'  => bcrypt($request->input('password')),
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
 
             ]);
         }
+
         return redirect()->route('dashboard')->with('success', 'data berhasil disimpan');
     }
 }

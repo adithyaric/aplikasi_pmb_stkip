@@ -13,27 +13,29 @@ class JurusanController extends Controller
     {
         if (request()->ajax()) {
             $jurusan = Jurusan::latest()->get();
+
             return DataTables::of($jurusan)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="' . $data->id . '" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="' . $data->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
+
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
+
         return view('admin.jurusan.index');
     }
-
 
     public function store(Request $request)
     {
         Jurusan::updateOrCreate(
             [
-                'id' => $request->id
+                'id' => $request->id,
             ],
             [
-                'name' => $request->name
+                'name' => $request->name,
             ]
         );
 
@@ -43,9 +45,10 @@ class JurusanController extends Controller
     public function edit($id)
     {
         $jurusan = Jurusan::findOrFail($id);
+
         return response()->json([
-            'status' => "success",
-            'data' => $jurusan
+            'status' => 'success',
+            'data' => $jurusan,
         ]);
     }
 
@@ -53,8 +56,9 @@ class JurusanController extends Controller
     {
         $jurusan = Jurusan::findOrFail($id);
         $jurusan->delete();
+
         return response()->json([
-            'status' => "success"
+            'status' => 'success',
         ]);
     }
 }

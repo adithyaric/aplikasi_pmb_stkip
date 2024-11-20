@@ -13,27 +13,29 @@ class PenerimnaanController extends Controller
     {
         if (request()->ajax()) {
             $penerimaan = Penerimaan::latest()->get();
+
             return DataTables::of($penerimaan)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="' . $data->id . '" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="' . $data->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
+
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
+
         return view('admin.penerimaan.index');
     }
-
 
     public function store(Request $request)
     {
         Penerimaan::updateOrCreate(
             [
-                'id' => $request->id
+                'id' => $request->id,
             ],
             [
-                'name' => $request->name
+                'name' => $request->name,
             ]
         );
 
@@ -43,9 +45,10 @@ class PenerimnaanController extends Controller
     public function edit($id)
     {
         $penerimaan = Penerimaan::findOrFail($id);
+
         return response()->json([
-            'status' => "success",
-            'data' => $penerimaan
+            'status' => 'success',
+            'data' => $penerimaan,
         ]);
     }
 
@@ -53,8 +56,9 @@ class PenerimnaanController extends Controller
     {
         $penerimaan = Penerimaan::findOrFail($id);
         $penerimaan->delete();
+
         return response()->json([
-            'status' => "success"
+            'status' => 'success',
         ]);
     }
 }

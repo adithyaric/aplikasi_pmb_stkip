@@ -10,15 +10,15 @@ class Jurusan extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = ["id"];
+    protected $guarded = ['id'];
 
-    protected $table = "jurusan";
+    protected $table = 'jurusan';
 
     public function mahasiswa()
     {
         return $this->hasMany(Mahasiswa::class);
     }
-    
+
     public function user()
     {
         return $this->hasMany(Mahasiswa::class);

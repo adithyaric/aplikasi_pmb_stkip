@@ -9,6 +9,7 @@ class PemilikKartu extends Model
 {
     use HasFactory;
 
-    protected $table = "pemilikkartu";
-    protected $guarded = ["id"];
+    protected $table = 'pemilikkartu';
+
+    protected $guarded = ['id'];
 }

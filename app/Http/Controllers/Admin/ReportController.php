@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Jurusan;
-use App\Models\Mahasiswa;
 use App\Models\Penerimaan;
 use App\Models\User;
 use Illuminate\Http\Request;
-
 use PDF;
 
 class ReportController extends Controller
@@ -26,6 +24,7 @@ class ReportController extends Controller
 
         return view('admin.report.jalur', compact('mahasiswa'));
     }
+
     //
     public function jalur_pdf(Request $request)
     {
@@ -34,8 +33,10 @@ class ReportController extends Controller
         })->orderBy('name')->get();
 
         $pdf = PDF::loadview('admin.report.jalur_pdf', compact('mahasiswa'));
+
         return $pdf->stream();
     }
+
     //
     public function prodi(Request $request)
     {
@@ -48,8 +49,10 @@ class ReportController extends Controller
                 $q->where('jurusan_id', $request->jurusan_id);
             })->orderBy('name')->get();
         }
+
         return view('admin.report.prodi', compact('jurusan', 'mahasiswa'));
     }
+
     //
     public function prodi_pdf(Request $request)
     {
@@ -60,8 +63,10 @@ class ReportController extends Controller
         })->orderBy('name')->get();
 
         $pdf = PDF::loadview('admin.report.prodi_pdf', compact('nama_jurusan', 'mahasiswa'));
+
         return $pdf->stream();
     }
+
     //
     public function penerimaan(Request $request)
     {
@@ -74,8 +79,10 @@ class ReportController extends Controller
                 $q->where('penerimaan_id', $request->penerimaan_id);
             })->orderBy('name')->get();
         }
+
         return view('admin.report.penerimaan', compact('penerimaan', 'mahasiswa'));
     }
+
     //
     public function penerimaan_pdf(Request $request)
     {
@@ -90,6 +97,7 @@ class ReportController extends Controller
         }
 
         $pdf = PDF::loadview('admin.report.penerimaan_pdf', compact('nama_penerimaan', 'mahasiswa'));
+
         return $pdf->stream();
     }
 }
