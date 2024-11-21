@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FormulirController;
 use App\Http\Controllers\Admin\JurusanController;
@@ -43,6 +44,7 @@ Route::prefix('admin')
     ->middleware('auth', 'admin')
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('pengumuman', AnnouncementController::class, ['as' => 'admin']);
         Route::resource('mahasiswa', MahasiswaController::class, ['as' => 'admin']);
         Route::resource('jurusan', JurusanController::class, ['as' => 'admin']);
         Route::resource('penerimaan', PenerimnaanController::class, ['as' => 'admin']);
