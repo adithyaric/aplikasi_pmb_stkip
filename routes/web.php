@@ -52,6 +52,7 @@ Route::prefix('admin')
         Route::resource('penerimaan', PenerimnaanController::class, ['as' => 'admin']);
         Route::resource('video', VideoController::class, ['as' => 'admin']);
         Route::resource('transaction', TransactionController::class, ['as' => 'admin']);
+        Route::put('transaction-bulk', [TransactionController::class, 'bulkUpdate'])->name('transaction.bulkUpdate');
         Route::resource('gelombang', GelombangController::class, ['as' => 'admin']);
         Route::get('profile', [DashboardController::class, 'profile'])->name('profile');
         Route::put('profile/{id}', [DashboardController::class, 'profileUpdate'])->name('profile.update');

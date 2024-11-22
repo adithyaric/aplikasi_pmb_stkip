@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class TransactionController extends Controller
@@ -47,5 +48,18 @@ class TransactionController extends Controller
         return response()->json([
             'status' => 'success',
         ]);
+    }
+
+    public function bulkUpdate(Request $request)
+    {
+        $ids = $request->ids;
+
+        if (! $ids || ! is_array($ids)) {
+            return response()->json(['success' => false, 'message' => 'No data selected.'], 400);
+        }
+
+        Transaction::whereIn('id', $ids)->update(['status' => 'success']);
+
+        return response()->json(['success' => true, 'message' => 'Selected transactions updated successfully!']);
     }
 }
