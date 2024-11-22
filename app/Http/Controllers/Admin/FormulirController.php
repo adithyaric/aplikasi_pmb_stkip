@@ -71,6 +71,7 @@ class FormulirController extends Controller
 
         ]);
 
+        dd($data, $request->all());
         if ($request->kartu_keluarga) {
             $data['kartu_keluarga'] = $request->file('kartu_keluarga')->store('assets/attachment', 'public');
         }

@@ -61,35 +61,35 @@
                                         alt="User Image">
 
                                     {{-- <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p> --}}
+                                        Alexander Pierce - Web Developer
+                                        <small>Member since Nov. 2012</small>
+                                    </p> --}}
                                 </li>
                                 <!-- Menu Body -->
                                 {{-- <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li> --}}
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Followers</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Sales</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Friends</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </li> --}}
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a class="btn btn-default btn-flat" href="{{route('logout')}}"
+                                        <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout</a>
-                                        <form id="logout-form" action="{{route('logout')}}" method="POST"
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             style="display: none">
                                             @csrf
                                         </form>
@@ -99,8 +99,8 @@
                         </li>
                         <!-- Control Sidebar Toggle Button -->
                         {{-- <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li> --}}
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li> --}}
                     </ul>
                 </div>
             </nav>
@@ -210,7 +210,11 @@
                             <li class="{{ setActive('admin/video') }}">
                                 <a href="{{ route('admin.video.index') }}">
                                     <i class="fa fa-users"></i> <span>Youtube</span>
-
+                                </a>
+                            </li>
+                            <li class="{{ setActive('admin/setting') }}">
+                                <a href="{{ route('admin.setting.index') }}">
+                                    <i class="fa fa-gear"></i> <span>Web</span>
                                 </a>
                             </li>
                         </ul>
