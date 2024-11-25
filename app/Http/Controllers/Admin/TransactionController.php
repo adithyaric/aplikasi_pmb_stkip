@@ -62,4 +62,14 @@ class TransactionController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Selected transactions updated successfully!']);
     }
+
+    public function destroy($id)
+    {
+        $transaction = Transaction::findOrFail($id);
+        $transaction->delete();
+
+        return response()->json([
+            'status' => 'success',
+        ]);
+    }
 }
