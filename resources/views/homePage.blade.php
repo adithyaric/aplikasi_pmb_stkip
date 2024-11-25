@@ -77,20 +77,70 @@
                 <div class="row no-gutters">
                     <div class="col-md-7">
                         <img style="width: 620px; height: 620px;" class="mx-auto img-fluid img-stat"
-                            src="{{ $photoFront ? asset('storage/' . $photoFront) : asset('assets/img/daftardepan.jpg') }}"
+                            src="{{ isset($photoFront) ? asset('storage/' . $photoFront) : asset('assets/img/daftardepan.jpg') }}"
                             alt="login" class="login-card-img">
                     </div>
                     <div class="col-md-5">
                         <div class="card-body">
                             <div class="brand-wrapper">
-                                <div align="center"><img src="{{ asset('assets/img/stkip.png') }}" width="70px" alt=""
-                                        border="0" class="logo"></div>
+                                <div align="center"><img src="{{ asset('assets/img/stkip.png') }}" width="70px"
+                                        alt="" border="0" class="logo"></div>
                             </div>
                             <p class="login-card-description"><a href="#">STKIP PGRI PACITAN</a></p>
                             <p class="text-center blink" style="color: red !important; font-size: 14px !important;">
-                                Silahkan Masukkan Biodata Anda Dengan Menggunakan Huruf Besar !</p>
+                                Silahkan Masukkan Biodata Anda Dengan Menggunakan Huruf Besar !
+                            </p>
                             <form class="login-form" action="{{ route('register.mahasiswa') }}" method="POST">
                                 @csrf
+                                <div class="mb-2">
+                                    <label for="exampleFormControlInput1" class="form-label">NISN </label>
+                                    <input type="number" class="form-control  @error('nisn') is-invalid @enderror "
+                                        value="{{ old('nisn') }}" name="nisn" placeholder="Masukan Nisn">
+                                    @error('nisn')
+                                        <span class="help-block text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-2">
+                                    <label for="exampleFormControlInput1" class="form-label">NAMA LENGKAP </label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        value="{{ old('name') }}" name="name" placeholder="Masukan Nama">
+                                    @error('name')
+                                        <span class="help-block text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-2">
+                                    <label for="exampleFormControlInput1" class="form-label">NO WhatsApp (Contoh
+                                        6281234567890) </label>
+                                    <input type="number" class="form-control @error('phone') is-invalid @enderror"
+                                        value="62{{ old('phone') }}" name="phone" placeholder="Masukan No WhatsApp">
+                                    @error('phone')
+                                        <span class="help-block text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-2">
+                                    <label for="exampleFormControlInput1" class="form-label">EMAIL </label>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" placeholder="Masukan Email">
+                                    @error('email')
+                                        <span class="help-block text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-2 @error('gelombang_id') has-error @enderror ">
+                                    <label for="exampleInputPassword1">Gelombang Pendaftaran</label>
+                                    <select name="gelombang_id" class="form-control" id="">
+                                        <option value="">Pilih Gelombang Pendaftaran</option>
+                                        @foreach ($gelombangs as $gelombang)
+                                            <option value="{{ $gelombang->id }}">{{ $gelombang->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('gelombang_id')
+                                        <span class="help-block">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <button class="btn btn-block login-btn mb-2" type="submit" name="submit"
+                                    value="submit">
+                                    DAFTAR
+                                </button>
                             </form>
                             <p>Sudah Mendaftar ? <a href="{{ route('login') }}">Login</a></p>
                         </div>
@@ -113,7 +163,8 @@
   text-align:center;
   font-size:30px;
   box-shadow: 2px 2px 3px #999;
-  z-index:100;" href="https://wa.me/6287755115100" target="_blank">
+  z-index:100;"
+        href="https://wa.me/6287755115100" target="_blank">
         <i style="margin-top:16px;" class="fa fa-whatsapp"></i>
     </a>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

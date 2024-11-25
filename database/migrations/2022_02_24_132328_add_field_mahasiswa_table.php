@@ -15,7 +15,7 @@ class AddFieldMahasiswaTable extends Migration
     {
         Schema::table('mahasiswa', function (Blueprint $table) {
             //
-            $table->string('jalur')->default('REGULER')->after('status');
+            $table->string('jalur')->default('REGULER')->nullable()->after('status');
         });
     }
 

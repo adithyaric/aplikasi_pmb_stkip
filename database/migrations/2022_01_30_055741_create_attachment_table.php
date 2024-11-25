@@ -29,7 +29,7 @@ class CreateAttachmentTable extends Migration
             $table->text('ijazah')->nullable();
             $table->text('skot')->nullable();
             $table->text('hafidz')->nullable();
-
+            $table->text('pdu')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

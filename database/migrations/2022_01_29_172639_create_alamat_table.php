@@ -16,12 +16,13 @@ class CreateAlamatTable extends Migration
         Schema::create('alamat', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned();
-            $table->string('RT');
-            $table->string('RW');
-            $table->string('dusun');
-            $table->string('desa');
-            $table->string('kecamatan');
-            $table->string('provinsi');
+            $table->string('RT')->nullable();
+            $table->string('RW')->nullable();
+            $table->string('dusun')->nullable();
+            $table->string('desa')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kabupaten')->nullable();
+            $table->string('provinsi')->nullable();
             $table->string('jalan')->nullable();
             $table->softDeletes();
             $table->timestamps();

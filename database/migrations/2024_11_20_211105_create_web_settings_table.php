@@ -18,6 +18,7 @@ class CreateWebSettingsTable extends Migration
             $table->string('photo_front')->nullable();
             $table->string('photo_login')->nullable();
             $table->string('tahun_aktif')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

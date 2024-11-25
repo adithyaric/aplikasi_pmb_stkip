@@ -44,17 +44,6 @@ class FormulirController extends Controller
 
     public function updateData(Request $request)
     {
-
-        $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
-
-        $mahasiswa->update([
-            'jalur' => request()->jalur,
-            'jurusan_id' => request()->jurusan_id,
-            'penerimaan_id' => request()->penerimaan_id,
-        ]);
-
-        //  $data = request()->all();
-
         $data = $request->validate([
             'kartu_keluarga' => 'mimes:pdf,png,jpg,jpeg|max:3072',
             'nisn' => 'mimes:pdf,png,jpg,jpeg|max:3072',
@@ -72,6 +61,17 @@ class FormulirController extends Controller
         ]);
 
         dd($data, $request->all());
+
+        $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
+
+        $mahasiswa->update([
+            'jalur' => request()->jalur,
+            'jurusan_id' => request()->jurusan_id,
+            'penerimaan_id' => request()->penerimaan_id,
+        ]);
+
+        //  $data = request()->all();
+
         if ($request->kartu_keluarga) {
             $data['kartu_keluarga'] = $request->file('kartu_keluarga')->store('assets/attachment', 'public');
         }

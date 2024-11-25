@@ -247,7 +247,7 @@
             <div class="card login-card">
                 <div class="row no-gutters">
                     <div class="col-md-8">
-                        <img src="{{ $photoLogin ? asset('storage/' . $photoLogin) : asset('assets/img/logins.jpg') }}" alt="login" class="login-card-img">
+                        <img src="{{ isset($photoLogin) ? asset('storage/' . $photoLogin) : asset('assets/img/logins.jpg') }}" alt="login" class="login-card-img">
                     </div>
                     <div class="col-md-4">
                         <div class="card-body">

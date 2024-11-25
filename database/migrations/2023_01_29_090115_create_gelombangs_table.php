@@ -15,8 +15,10 @@ class CreateGelombangsTable extends Migration
     {
         Schema::create('gelombangs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama')->nullable();
+            $table->bigInteger('nominal')->nullable()->default(0);
             $table->string('status')->nullable(false)->default('1');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

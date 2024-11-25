@@ -15,11 +15,11 @@ class CreateRencanaTable extends Migration
     {
         Schema::create('rencana', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->string('rencana_tinggal');
-            $table->string('transport');
-            $table->string('jarak_tempuh');
-            $table->string('asal_pembiayaan');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->string('rencana_tinggal')->nullable();
+            $table->string('transport')->nullable();
+            $table->string('jarak_tempuh')->nullable();
+            $table->string('asal_pembiayaan')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

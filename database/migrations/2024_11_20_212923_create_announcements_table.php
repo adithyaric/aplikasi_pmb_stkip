@@ -20,8 +20,8 @@ class CreateAnnouncementsTable extends Migration
             $table->longText('content')->nullable();
             $table->date('date_start')->nullable()->default(now());
             $table->date('date_end')->nullable()->default(now());
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

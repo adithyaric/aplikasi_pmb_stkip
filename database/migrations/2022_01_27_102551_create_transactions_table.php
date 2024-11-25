@@ -15,11 +15,11 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->string('no_transaksi');
-            $table->string('briva');
-            $table->integer('nominal');
-            $table->enum('status', ['pending', 'success', 'cancel']);
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->string('no_transaksi')->nullable();
+            $table->string('briva')->nullable();
+            $table->integer('nominal')->nullable();
+            $table->enum('status', ['pending', 'success', 'cancel'])->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

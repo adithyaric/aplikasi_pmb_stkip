@@ -15,11 +15,16 @@ class CreateMahasiswaTable extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->string('tempat_lahir');
-            $table->string('phone');
-            $table->date('tanggal_lahir');
-            $table->enum('status', ['DALAM PROSES', 'BAYAR OK', 'BERKAS LENGKAP', 'TES', 'DITERIMA', 'DITOLAK']);
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('phone')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->enum('status', ['DALAM PROSES', 'BAYAR OK', 'BERKAS LENGKAP', 'TES', 'DITERIMA', 'DITOLAK'])->nullable();
+            // $table->string('jalur')->nullable();
+            // $table->integer('jurusan_id')->unsigned()->nullable();
+            // $table->integer('penerimaan_id')->unsigned()->nullable();
+            $table->integer('gelombang_id')->unsigned()->nullable();
+            $table->string('jurusan_dua')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

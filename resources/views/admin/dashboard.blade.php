@@ -20,7 +20,6 @@
             <div class="small-box bg-aqua-gradient">
                 <div class="inner">
                     <h3>{{ $diterima }}</h3>
-
                     <p>Mahasiswa Diterima</p>
                 </div>
                 <div class="icon">
@@ -35,7 +34,6 @@
             <div class="small-box bg-green-gradient">
                 <div class="inner">
                     <h3>{{ $berkas }}</h3>
-
                     <p>Berkas Lengkap</p>
                 </div>
                 <div class="icon">
@@ -50,7 +48,6 @@
             <div class="small-box bg-yellow-gradient">
                 <div class="inner">
                     <h3>{{ $bayar }}</h3>
-
                     <p>Mahasiswa Bayar</p>
                 </div>
                 <div class="icon">
@@ -65,7 +62,6 @@
             <div class="small-box bg-black-gradient">
                 <div class="inner">
                     <h3>{{ $mahasiswa }}</h3>
-
                     <p>Pendaftaran Mahasiswa</p>
                 </div>
                 <div class="icon">
@@ -77,8 +73,7 @@
         <!-- ./col -->
     </div>
     <!-- /.row -->
-    
-    
+
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-3 col-xs-6">
@@ -86,7 +81,6 @@
             <div class="small-box bg-green-gradient">
                 <div class="inner">
                     <h3>{{ $cbt }}</h3>
-
                     <p>Mahasiswa TES / CBT</p>
                 </div>
                 <div class="icon">
@@ -101,7 +95,6 @@
             <div class="small-box bg-red-gradient">
                 <div class="inner">
                     <h3>{{ $interview }}</h3>
-
                     <p>Mahasiswa Interview</p>
                 </div>
                 <div class="icon">
@@ -116,7 +109,6 @@
             <div class="small-box bg-black-gradient">
                 <div class="inner">
                     <h3>{{ $keluar }}</h3>
-
                     <p>Mahasiswa Keluar</p>
                 </div>
                 <div class="icon">
@@ -129,8 +121,6 @@
     </div>
     <!-- /.row -->
 
-
-
     <div class="row">
         <div class="col-lg-12">
             <hr style="border: 1px solid black;">
@@ -141,7 +131,11 @@
             <!-- small box -->
             <div class="small-box bg-blue-gradient">
                 <div class="text-center">
-                    <h3 style="margin-top: 3px !important;">{{ $key->user->count() }}</h3>
+                    <h3 style="margin-top: 3px !important;">
+                        @isset($key->user)
+                        {{ $key->user->count() }}
+                        @endisset
+                    </h3>
                     <hr style="margin-bottom: 3px !important;">
                     <p style="font-size: 10px;">{{ $key->nama }}</p>
                 </div>
@@ -152,7 +146,6 @@
         <!-- ./col -->
         @endforeach
     </div>
-
 
     <div class="row">
         <div class="col-lg-12">
@@ -168,17 +161,15 @@
                     <hr style="margin-bottom: 3px !important;">
                     <p style="font-size: 10px;">{{ str_replace('PENDIDIKAN ', '', $key->name) }}</p>
                 </div>
-                <a href="{{ route('admin.report.prodi', ['jurusan_id' => $key->id ]) }}" class="small-box-footer">Lihat
-                    Selengkapnya &nbsp; <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.report.prodi', ['jurusan_id' => $key->id ]) }}" class="small-box-footer">
+                    Lihat Selengkapnya &nbsp;
+                    <i class="fa fa-arrow-circle-right"></i>
+                </a>
             </div>
         </div>
         <!-- ./col -->
         @endforeach
     </div>
-
-
-
     <!-- /.row (main row) -->
-
 </section>
 @endsection

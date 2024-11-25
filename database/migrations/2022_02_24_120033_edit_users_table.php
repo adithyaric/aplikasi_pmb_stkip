@@ -15,7 +15,7 @@ class EditUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('photo')->default('default.jpg')->change();
+            $table->string('photo')->default('default.jpg')->nullable()->change();
         });
     }
 

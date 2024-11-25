@@ -85,38 +85,6 @@ class GelombangController extends Controller
      */
     public function show(Gelombang $gelombang)
     {
-        $pendaftar = User::where('gelombang_id', $gelombang)->count();
-        $bayar = User::whereHas('transaksi', function ($q) {
-            $q->where('status', 'success');
-        })->where('gelombang_id', $gelombang)->count();
-        $berkas = User::whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'BERKAS LENGKAP');
-        })->where('gelombang_id', $gelombang)->count();
-        $cbt = User::whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'TES / CBT');
-        })->where('gelombang_id', $gelombang)->count();
-        $interview = User::whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'INTERVIEW');
-        })->where('gelombang_id', $gelombang)->count();
-        $diterima = User::whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'BERKAS DITERIIMA');
-        })->where('gelombang_id', $gelombang)->count();
-        // ddd();
-
-        // $jurusan = Jurusan::all();
-
-        // $mahasiswa = collect();
-
-        // if ($request->jurusan_id) {
-        //     $mahasiswa = User::whereHas('mahasiswa', function ($q) use ($request) {
-        //         $q->where('jurusan_id', $request->jurusan_id);
-        //     })->orderBy('name')->get();
-        // }
-
-        // $mahasiswa = User::with('transaksi')->where('roles', 'MAHASISWA')->with('mahasiswa', 'biodata')->latest()->get();
-        // $jurusan = Jurusan::whereHas('user')->where('user.gelombang_id', $gelombang->id)->get();
-        // dd($jurusan);
-
         return view('admin.gelombang.show', [
             'gelombang' => $gelombang->nama,
             'gelombang_id' => $gelombang->id,
@@ -142,11 +110,11 @@ class GelombangController extends Controller
             'keluar' => User::whereHas('mahasiswa', function ($q) {
                 $q->where('status', 'KELUAR');
             })->where('gelombang_id', $gelombang->id)->count(),
-            'perjur' => DB::table('users')
-                ->join('mahasiswa', 'users.id', '=', 'mahasiswa.user_id')
-                ->join('jurusan', 'jurusan.id', '=', 'mahasiswa.jurusan_id')
-                ->join('gelombang', 'gelombang.id', '=', 'users.gelombang_id')
-                ->where('users'),
+            // 'perjur' => DB::table('users')
+            //     ->join('mahasiswa', 'users.id', '=', 'mahasiswa.user_id')
+            //     ->join('jurusan', 'jurusan.id', '=', 'mahasiswa.jurusan_id')
+            //     ->join('gelombang', 'gelombang.id', '=', 'users.gelombang_id')
+            //     ->where('users'),
         ]);
     }
 
