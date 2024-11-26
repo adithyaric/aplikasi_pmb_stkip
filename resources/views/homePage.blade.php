@@ -97,34 +97,26 @@
                                     <label for="exampleFormControlInput1" class="form-label">NISN </label>
                                     <input type="number" class="form-control  @error('nisn') is-invalid @enderror "
                                         value="{{ old('nisn') }}" name="nisn" placeholder="Masukan Nisn">
-                                    @error('nisn')
-                                        <span class="help-block text-danger">{{ $message }}</span>
-                                    @enderror
+                                    @error('nisn')<span class="help-block text-danger">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="mb-2">
                                     <label for="exampleFormControlInput1" class="form-label">NAMA LENGKAP </label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                         value="{{ old('name') }}" name="name" placeholder="Masukan Nama">
-                                    @error('name')
-                                        <span class="help-block text-danger">{{ $message }}</span>
-                                    @enderror
+                                    @error('name')<span class="help-block text-danger">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="mb-2">
                                     <label for="exampleFormControlInput1" class="form-label">NO WhatsApp (Contoh
                                         6281234567890) </label>
                                     <input type="number" class="form-control @error('phone') is-invalid @enderror"
                                         value="62{{ old('phone') }}" name="phone" placeholder="Masukan No WhatsApp">
-                                    @error('phone')
-                                        <span class="help-block text-danger">{{ $message }}</span>
-                                    @enderror
+                                    @error('phone')<span class="help-block text-danger">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="mb-2">
                                     <label for="exampleFormControlInput1" class="form-label">EMAIL </label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
                                         name="email" value="{{ old('email') }}" placeholder="Masukan Email">
-                                    @error('email')
-                                        <span class="help-block text-danger">{{ $message }}</span>
-                                    @enderror
+                                    @error('email')<span class="help-block text-danger">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group mb-2 @error('gelombang_id') has-error @enderror ">
                                     <label for="exampleInputPassword1">Gelombang Pendaftaran</label>
@@ -134,9 +126,8 @@
                                             <option value="{{ $gelombang->id }}">{{ $gelombang->nama }}</option>
                                         @endforeach
                                     </select>
-                                    @error('gelombang_id')
-                                        <span class="help-block">{{ $message }}</span>
-                                    @enderror
+                                    @error('gelombang_id')<span class="help-block text-danger">{{ $message }}</span>@enderror
+                                    @error('nisn_gelombang')<span class="help-block text-danger">{{ $message }}</span>@enderror
                                 </div>
                                 <button class="btn btn-block login-btn mb-2" type="submit" name="submit"
                                     value="submit">

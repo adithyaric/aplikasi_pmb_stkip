@@ -197,21 +197,28 @@ class MahasiswaController extends Controller
 
     public function RegisterMahasiwa(Request $request)
     {
-
         $messages = [
             'required' => 'Kolom :attribute wajib diisi!',
             'unique' => ':attribute yang anda gunakan telah terdaftar!',
             'email' => 'Kolom :attribute harus berformat email (contoh@email.com)',
-
+            'unique_combination' => 'Kombinasi :attribute dan Gelombang sudah terdaftar!',
         ];
 
         $this->validate($request, [
             'name' => 'required',
-            'nisn' => 'required|unique:users',
+            'nisn' => 'required|numeric',
             'email' => 'required|email|unique:users',
             'phone' => 'required|unique:mahasiswa',
             'gelombang_id' => 'required',
         ], $messages);
+
+        if (\DB::table('users')
+            ->where('nisn', $request->nisn)
+            ->where('gelombang_id', $request->gelombang_id)
+            ->exists()) {
+            return back()->withErrors(['nisn_gelombang' => 'Kombinasi NISN dan Gelombang sudah terdaftar!']);
+        }
+
         $no_transaction = Transaction::latest()->first();
 
         $length = 8;
