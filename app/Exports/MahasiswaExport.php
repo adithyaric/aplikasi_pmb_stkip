@@ -8,10 +8,21 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class MahasiswaExport implements FromView
 {
+    protected $gelombangId;
+
+    public function __construct($gelombangId = null)
+    {
+        $this->gelombangId = $gelombangId;
+    }
+
     public function view(): View
     {
-        return view('admin.excel.cetak', [
-            'data' => User::with('mahasiswa')->where('roles', 'MAHASISWA')->get(),
-        ]);
+        $data = User::where('roles', 'MAHASISWA')
+            ->when($this->gelombangId, function ($query) {
+                $query->where('gelombang_id', $this->gelombangId);
+            })
+            ->get();
+
+        return view('admin.excel.cetak', compact('data'));
     }
 }

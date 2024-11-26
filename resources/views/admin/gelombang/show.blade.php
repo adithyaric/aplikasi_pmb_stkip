@@ -3,7 +3,7 @@
     <section class="content-header">
         <h1>
             Dashboard
-            <small>Mahasiswa {{ $gelombang }}</small>
+            <small>Mahasiswa {{ $gelombang->nama }}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -12,7 +12,6 @@
     </section>
     <!-- Main content -->
     <section class="content">
-
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-lg-3 col-xs-6">
@@ -126,7 +125,7 @@
                         <!--<a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">-->
                         <!--    <i class="fa fa-plus"></i> Mahasiswa-->
                         <!--</a>-->
-                        <a href="/admin/gel-{{ $gel->id }}excel" class="btn btn-success">
+                        <a href="{{ route('admin.excel.cetak', ['gelombang_id' => $gelombang->id]) }}" class="btn btn-success">
                             Export Data
                         </a>
                     </div>
@@ -146,29 +145,30 @@
                                 </tr>
                             </thead>
                             @foreach ($mahasiswa as $siswa)
-                            @isset($siswa->transaksi)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $siswa->lulusan->asal_sekolah ?? '-' }}</td>
-                                    <td>{{ $siswa->name }}</td>
-                                    <td>{{ $siswa->transaksi?->briva }}</td>
-                                    <td>{{ $siswa->created_at }}</td>
-                                    <td>{{ $siswa->mahasiswa->phone }}</td>
-                                    <td>{{ $siswa->mahasiswa->status }}</td>
-                                    <td>
-                                        <a href="{{ route('admin.mahasiswa.edit', $siswa->id) }}"
-                                            class="edit btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('admin.mahasiswa.show', $siswa->id) }}"
-                                            class="btn btn-info btn-sm">Detail</a>
-                                        <a href="javascript:void(0)" onClick="Delete(this.id)" id="{{ $siswa->transaksi?->id }}"
-                                            class="delete btn btn-danger btn-sm"> Hapus</a>
-                                        <a href="javascript:void(0)" onClick="Bayar(this.id)"
-                                            id="{{ $siswa->transaksi?->id }}" class="bayar btn btn-info btn-sm">Bayar</a>
-                                        <a href="https://wa.me/{{ $siswa->mahasiswa->phone }}?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20{{ $siswa->nisn }}%0A-%20Password%20:%20{{ $siswa->password_sementara }}%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih"
-                                            target="_blank" class="btn btn-success btn-sm">Whatsapp</a>
-                                    </td>
-                                </tr>
-                            @endisset
+                                @isset($siswa->transaksi)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $siswa->lulusan->asal_sekolah ?? '-' }}</td>
+                                        <td>{{ $siswa->name }}</td>
+                                        <td>{{ $siswa->transaksi?->briva }}</td>
+                                        <td>{{ $siswa->created_at }}</td>
+                                        <td>{{ $siswa->mahasiswa->phone }}</td>
+                                        <td>{{ $siswa->mahasiswa->status }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.mahasiswa.edit', $siswa->id) }}"
+                                                class="edit btn btn-warning btn-sm">Edit</a>
+                                            <a href="{{ route('admin.mahasiswa.show', $siswa->id) }}"
+                                                class="btn btn-info btn-sm">Detail</a>
+                                            <a href="javascript:void(0)" onClick="Delete(this.id)"
+                                                id="{{ $siswa->transaksi?->id }}" class="delete btn btn-danger btn-sm">
+                                                Hapus</a>
+                                            <a href="javascript:void(0)" onClick="Bayar(this.id)"
+                                                id="{{ $siswa->transaksi?->id }}" class="bayar btn btn-info btn-sm">Bayar</a>
+                                            <a href="https://wa.me/{{ $siswa->mahasiswa->phone }}?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20{{ $siswa->nisn }}%0A-%20Password%20:%20{{ $siswa->password_sementara }}%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih"
+                                                target="_blank" class="btn btn-success btn-sm">Whatsapp</a>
+                                        </td>
+                                    </tr>
+                                @endisset
                             @endforeach
                             <tbody>
 

@@ -65,10 +65,8 @@ class GelombangController extends Controller
     public function show(Gelombang $gelombang)
     {
         return view('admin.gelombang.show', [
-            'gelombang' => $gelombang->nama,
-            'gelombang_id' => $gelombang->id,
             'mahasiswa' => $gelombang->user,
-            'gel' => $gelombang,
+            'gelombang' => $gelombang,
             'jurusan' => Jurusan::all(),
             'pendaftar' => User::where('gelombang_id', $gelombang->id)->count(),
             'bayar' => User::whereHas('transaksi', function ($q) {

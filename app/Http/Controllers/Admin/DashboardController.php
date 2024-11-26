@@ -65,7 +65,7 @@ class DashboardController extends Controller
         $user = User::findOrFail($id);
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
             'password' => 'confirmed',
         ]);
         if ($request->input('password') == '') {

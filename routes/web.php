@@ -14,28 +14,13 @@ use App\Http\Controllers\GelombangController;
 use App\Http\Controllers\TahunController;
 use App\Http\Controllers\WebSettingController;
 use App\Models\Gelombang;
-use App\Models\Transaction;
 use App\Models\Video;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    // $transaction= Transaction::first();
-    // return view('pageSuccess',compact('transaction'));
     $video = Video::latest()->first();
-    $gelombangs = Gelombang::all()->where('status', '1');
+    $gelombangs = Gelombang::all()->where('status', true);
 
-    // ddd();
     return view('homePage', compact('video', 'gelombangs'));
 });
 
@@ -67,20 +52,7 @@ Route::prefix('admin')
         Route::get('/report/prodi-pdf', [ReportController::class, 'prodi_pdf'])->name('admin.report.prodi_pdf');
         Route::get('/report/penerimaan-pdf', [ReportController::class, 'penerimaan_pdf'])->name('admin.report.penerimaan_pdf');
         //
-        Route::get('/all-excel', [ExportController::class, 'index'])->name('admin.excel.cetak');
-        Route::get('/gel-4excel', [ExportController::class, 'export4Gelombang']);
-        Route::get('/gel-5excel', [ExportController::class, 'export5Gelombang']);
-        Route::get('/gel-6excel', [ExportController::class, 'export6Gelombang']);
-        Route::get('/gel-7excel', [ExportController::class, 'export7Gelombang']);
-        Route::get('/gel-8excel', [ExportController::class, 'export8Gelombang']);
-        Route::get('/gel-9excel', [ExportController::class, 'export9Gelombang']);
-        Route::get('/gel-10excel', [ExportController::class, 'export10Gelombang']);
-        Route::get('/gel-11excel', [ExportController::class, 'export11Gelombang']);
-        Route::get('/gel-12excel', [ExportController::class, 'export12Gelombang']);
-        Route::get('/gel-13excel', [ExportController::class, 'export13Gelombang']);
-        Route::get('/gel-14excel', [ExportController::class, 'export14Gelombang']);
-        Route::get('/gel-15excel', [ExportController::class, 'export15Gelombang']);
-        //
+        Route::get('/all-excel', [ExportController::class, 'index'])->name('admin.excel.cetak');        //
         Route::get('/mahasiswa/gelombang', [MahasiswaController::class, 'index'])->name('admin.mahasiswa.gelombang');
     });
 Route::prefix('mahasiswa')
