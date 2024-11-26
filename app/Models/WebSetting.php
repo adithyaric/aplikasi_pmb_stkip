@@ -12,7 +12,8 @@ class WebSetting extends Model
     protected $fillable = [
         'photo_front',
         'photo_login',
-        // 'tahun_aktif',
+        'start_at',
+        'end_at',
         'tahun_id',
     ];
 

@@ -15,13 +15,19 @@ use App\Http\Controllers\TahunController;
 use App\Http\Controllers\WebSettingController;
 use App\Models\Gelombang;
 use App\Models\Video;
+use App\Models\WebSetting;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $video = Video::latest()->first();
     $gelombangs = Gelombang::all()->where('status', true);
+    $webSetting = WebSetting::first();
+    $currentTime = Carbon::now();
 
-    return view('homePage', compact('video', 'gelombangs'));
+    $isOpen = $webSetting && $webSetting->start_at <= $currentTime && $webSetting->end_at >= $currentTime;
+
+    return view('homePage', compact('video', 'gelombangs', 'isOpen'));
 });
 
 Auth::routes();

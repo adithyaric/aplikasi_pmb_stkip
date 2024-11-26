@@ -29,6 +29,24 @@
                                 @error('tahun_id')<span class="help-block">{{ $message }}</span>@enderror
                             </div>
 
+                            <label for="at"><b>Pendaftaran</b></label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group @error('start_at') has-error @enderror">
+                                        <label for="start_at">Pembukaan</label>
+                                        <input type="datetime-local" class="form-control" id="start_at" name="start_at" value="{{ $setting?->start_at }}">
+                                        @error('start_at')<span class="help-block">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group @error('end_at') has-error @enderror">
+                                        <label for="end_at">Penutupan</label>
+                                        <input type="datetime-local" class="form-control" id="end_at" name="end_at" value="{{ $setting?->end_at }}">
+                                        @error('end_at')<span class="help-block">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group @error('photo_front') has-error @enderror">
                                 <label for="photo_front">Photo Front</label>
                                 <input type="file" class="form-control" id="photo_front" name="photo_front"

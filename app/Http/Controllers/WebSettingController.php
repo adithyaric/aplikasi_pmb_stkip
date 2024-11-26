@@ -20,6 +20,8 @@ class WebSettingController extends Controller
     {
         $request->validate([
             'tahun_id' => 'required',
+            'start_at' => 'required',
+            'end_at' => 'required',
             'photo_front' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
             'photo_login' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
         ]);
@@ -44,6 +46,8 @@ class WebSettingController extends Controller
             ['id' => $request->id],
             [
                 'tahun_id' => $tahun->id,
+                'start_at' => $request->start_at,
+                'end_at' => $request->end_at,
                 'photo_front' => $photoFrontPath,
                 'photo_login' => $photoLoginPath,
             ]

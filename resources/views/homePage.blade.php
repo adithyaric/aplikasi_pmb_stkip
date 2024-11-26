@@ -90,6 +90,7 @@
                             <p class="text-center blink" style="color: red !important; font-size: 14px !important;">
                                 Silahkan Masukkan Biodata Anda Dengan Menggunakan Huruf Besar !
                             </p>
+                            @if ($isOpen)
                             <form class="login-form" action="{{ route('register.mahasiswa') }}" method="POST">
                                 @csrf
                                 <div class="mb-2">
@@ -142,6 +143,7 @@
                                     DAFTAR
                                 </button>
                             </form>
+                            @endif
                             <p>Sudah Mendaftar ? <a href="{{ route('login') }}">Login</a></p>
                         </div>
                     </div>
