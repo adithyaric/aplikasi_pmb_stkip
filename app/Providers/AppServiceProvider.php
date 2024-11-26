@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Tahun;
 use App\Models\WebSetting;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::share('tahunAktif', Tahun::where('status', true)->first());
         View::share('photoFront', WebSetting::first()?->photo_front);
         View::share('photoLogin', WebSetting::first()?->photo_login);
     }

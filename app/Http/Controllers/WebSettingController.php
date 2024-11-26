@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tahun;
 use App\Models\WebSetting;
 use Illuminate\Http\Request;
 
@@ -11,16 +12,21 @@ class WebSettingController extends Controller
     {
         return view('admin.setting.index', [
             'setting' => WebSetting::first(),
+            'tahuns' => Tahun::get(),
         ]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'tahun_aktif' => 'required|string',
+            'tahun_id' => 'required',
             'photo_front' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
             'photo_login' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
         ]);
+
+        Tahun::where('status', true)->update(['status' => false]);
+        $tahun = Tahun::find($request->tahun_id);
+        $tahun->update(['status' => true]);
 
         $existingSetting = WebSetting::find($request->id);
         $photoFrontPath = $existingSetting?->photo_front ?? null;
@@ -37,7 +43,7 @@ class WebSettingController extends Controller
         WebSetting::updateOrCreate(
             ['id' => $request->id],
             [
-                'tahun_aktif' => $request->tahun_aktif,
+                'tahun_id' => $tahun->id,
                 'photo_front' => $photoFrontPath,
                 'photo_login' => $photoLoginPath,
             ]

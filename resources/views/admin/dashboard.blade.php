@@ -13,6 +13,21 @@
 
 <!-- Main content -->
 <section class="content">
+    <form action="">
+        <div class="row">
+            <div class="col-lg-6 col-xs-6">
+                <select name="tahun_id" id="" class="mb-3 form-control" required>
+                    <option value="" readonly>-- Pilih Tahun --</option>
+                    @foreach ($tahuns as $tahun)
+                    <option value="{{ $tahun->id }}" {{ ($tahunId == $tahun->id || request('tahun_id') == $tahun->id) ? 'selected' : '' }} >{{ $tahun->status ? 'aktif' : 'non-aktif' }}: {{ $tahun->nama }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <button type="submit" class="btn btn-primary">Cari</button>
+            </div>
+        </div>
+    </form><br>
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-3 col-xs-6">

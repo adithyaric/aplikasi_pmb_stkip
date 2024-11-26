@@ -15,4 +15,9 @@ class Gelombang extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function tahun()
+    {
+        return $this->belongsTo(Tahun::class);
+    }
 }

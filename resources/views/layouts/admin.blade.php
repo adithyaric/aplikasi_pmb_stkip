@@ -201,14 +201,14 @@
                                 </a>
 
                             </li>
-                            {{-- <li class="{{ setActive('admin/transaction') }}"> --}}
-                                {{-- <a href="{{ route('admin.transaction.index') }}"> --}}
-                                    {{-- <i class="fa fa-dollar"></i> <span>Transaksi</span> --}}
-                                {{-- </a> --}}
-                            {{-- </li> --}}
+                            <li class="{{ setActive('admin/tahun') }}">
+                                <a href="{{ route('admin.tahun.index') }}">
+                                    <i class="fa fa-calendar"></i> <span>Tahun</span>
+                                </a>
+                            </li>
                             <li class="{{ setActive('admin/video') }}">
                                 <a href="{{ route('admin.video.index') }}">
-                                    <i class="fa fa-users"></i> <span>Youtube</span>
+                                    <i class="fa fa-youtube"></i> <span>Youtube</span>
                                 </a>
                             </li>
                             <li class="{{ setActive('admin/setting') }}">

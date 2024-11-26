@@ -17,12 +17,16 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $setting?->id }}">
 
-                            <div class="form-group @error('tahun_aktif') has-error @enderror">
-                                <label for="tahun_aktif">Tahun Aktif</label>
-                                <input type="text" class="form-control" id="tahun_aktif" name="tahun_aktif"
-                                    value="{{ old('tahun_aktif', $setting?->tahun_aktif) }}"
-                                    placeholder="Masukan Tahun Aktif">
-                                @error('tahun_aktif')<span class="help-block">{{ $message }}</span>@enderror
+                            <div class="form-group @error('tahun_id') has-error @enderror">
+                                <label for="tahun_id">Tahun Aktif</label>
+                                {{-- <input type="text" class="form-control" id="tahun_aktif" name="tahun_aktif" value="{{ old('tahun_aktif', $setting?->tahun_aktif) }}" placeholder="Masukan Tahun Aktif"> --}}
+                                <select name="tahun_id" id="tahun_id" class="form-control" required>
+                                    <option value="" readonly>-- Pilih Tahun --</option>
+                                    @foreach ($tahuns as $tahun)
+                                    <option value="{{ $tahun->id }}" {{ request('tahun_id', $tahunAktif?->id) == $tahun->id ? 'selected' : '' }}>{{ $tahun->status ? 'aktif' : 'non-aktif' }}: {{ $tahun->nama }}</option>
+                                    @endforeach
+                                </select>
+                                @error('tahun_id')<span class="help-block">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="form-group @error('photo_front') has-error @enderror">

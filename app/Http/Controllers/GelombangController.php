@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gelombang;
 use App\Models\Jurusan;
 use App\Models\Mahasiswa;
+use App\Models\Tahun;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,56 +13,38 @@ use Yajra\DataTables\Facades\DataTables;
 
 class GelombangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         if (request()->ajax()) {
-            $gelombang = Gelombang::latest()->get();
+            $gelombang = Gelombang::with('tahun')->latest()->get();
 
             return DataTables::of($gelombang)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
-
-                    return $actionBtn;
+                    return '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a>
+                        <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
                 })
-                ->addColumn('status', function ($status) {
-                    if ($status->status != null) {
-                        if ($status->status == '1') {
-                            return 'Aktif';
-                        } else {
-                            return 'Tidak Aktif';
-                        }
-                    } else {
-                        return '';
-                    }
+                ->addColumn('nominal', function ($data) {
+                    return moneyFormat($data->nominal);
                 })
-                ->rawColumns(['action', 'status'])
+                ->addColumn('status', function ($data) {
+                    return $data->status == 1 ? 'Aktif' : 'Tidak Aktif';
+                })
+                ->addColumn('tahun_status', function ($data) {
+                    return $data->tahun ? ($data->tahun->status == 1 ? 'Aktif' : 'Tidak Aktif') : '-';
+                })
+                ->addColumn('tahun_name', function ($data) {
+                    return $data->tahun ? $data->tahun->nama : '-';
+                })
+                ->rawColumns(['action'])
                 ->make(true);
         }
 
-        return view('admin.gelombang.index');
+        return view('admin.gelombang.index', [
+            'tahuns' => Tahun::get(),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         Gelombang::updateOrCreate(
@@ -72,17 +55,13 @@ class GelombangController extends Controller
                 'nama' => $request->nama,
                 'nominal' => $request->nominal,
                 'status' => $request->status,
+                'tahun_id' => $request->tahun_id,
             ],
         );
 
         return redirect()->route('admin.gelombang.index')->with('success', 'data berhasil disimpan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show(Gelombang $gelombang)
     {
         return view('admin.gelombang.show', [
@@ -118,12 +97,6 @@ class GelombangController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Gelombang  $gelombang
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $gelombang = Gelombang::findOrFail($id);
@@ -134,22 +107,6 @@ class GelombangController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Gelombang $gelombang)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Gelombang  $gelombang
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $gelombang = Gelombang::findOrFail($id);

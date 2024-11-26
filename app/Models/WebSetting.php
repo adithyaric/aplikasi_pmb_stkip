@@ -12,6 +12,12 @@ class WebSetting extends Model
     protected $fillable = [
         'photo_front',
         'photo_login',
-        'tahun_aktif',
+        // 'tahun_aktif',
+        'tahun_id',
     ];
+
+    public function tahun()
+    {
+        return $this->belongsTo(Tahun::class);
+    }
 }

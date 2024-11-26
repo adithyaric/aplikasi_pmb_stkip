@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\GelombangController;
+use App\Http\Controllers\TahunController;
 use App\Http\Controllers\WebSettingController;
 use App\Models\Gelombang;
 use App\Models\Transaction;
@@ -45,6 +46,7 @@ Route::prefix('admin')
     ->middleware('auth', 'admin')
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('tahun', TahunController::class, ['as' => 'admin']);
         Route::resource('pengumuman', AnnouncementController::class, ['as' => 'admin']);
         Route::resource('setting', WebSettingController::class, ['as' => 'admin']);
         Route::resource('mahasiswa', MahasiswaController::class, ['as' => 'admin']);

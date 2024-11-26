@@ -18,6 +18,7 @@ class CreateGelombangsTable extends Migration
             $table->string('nama')->nullable();
             $table->bigInteger('nominal')->nullable()->default(0);
             $table->string('status')->nullable(false)->default('1');
+            $table->integer('tahun_id')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

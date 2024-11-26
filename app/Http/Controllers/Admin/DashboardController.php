@@ -5,38 +5,52 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Gelombang;
 use App\Models\Jurusan;
+use App\Models\Tahun;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswa = User::where('roles', 'MAHASISWA')->count();
-        $bayar = User::whereHas('transaksi', function ($q) {
+        $tahunId = $request->input('tahun_id') ?? Tahun::where('status', true)->value('id');
+
+        $gelombangQuery = Gelombang::query();
+        $userQuery = User::query();
+
+        if ($tahunId) {
+            $gelombangQuery->where('tahun_id', $tahunId);
+            $userQuery->whereHas('gelombang', function ($query) use ($tahunId) {
+                $query->where('tahun_id', $tahunId);
+            });
+        }
+
+        $mahasiswa = $userQuery->where('roles', 'MAHASISWA')->count();
+        $bayar = $userQuery->whereHas('transaksi', function ($q) {
             $q->where('status', 'success');
         })->count();
-        $berkas = User::whereHas('mahasiswa', function ($q) {
+        $berkas = $userQuery->whereHas('mahasiswa', function ($q) {
             $q->where('status', 'BERKAS LENGKAP');
         })->count();
-        $cbt = User::whereHas('mahasiswa', function ($q) {
+        $cbt = $userQuery->whereHas('mahasiswa', function ($q) {
             $q->where('status', 'TES / CBT');
         })->count();
-        $interview = User::whereHas('mahasiswa', function ($q) {
+        $interview = $userQuery->whereHas('mahasiswa', function ($q) {
             $q->where('status', 'INTERVIEW');
         })->count();
-        $diterima = User::whereHas('mahasiswa', function ($q) {
+        $diterima = $userQuery->whereHas('mahasiswa', function ($q) {
             $q->where('status', 'BERKAS DITERIIMA');
         })->count();
-        $keluar = User::whereHas('mahasiswa', function ($q) {
+        $keluar = $userQuery->whereHas('mahasiswa', function ($q) {
             $q->where('status', 'KELUAR');
         })->count();
 
-        $jurusan = Jurusan::all();
-        $gelombang = Gelombang::all();
+        $jurusan = Jurusan::get();
+        $tahuns = Tahun::get();
+        $gelombang = $gelombangQuery->get();
 
-        return view('admin.dashboard', compact('mahasiswa', 'keluar', 'bayar', 'berkas', 'diterima', 'jurusan', 'cbt', 'interview', 'gelombang'));
+        return view('admin.dashboard', compact('mahasiswa', 'keluar', 'bayar', 'berkas', 'diterima', 'jurusan', 'cbt', 'interview', 'gelombang', 'tahunId', 'tahuns'));
     }
 
     public function profile()
@@ -51,7 +65,7 @@ class DashboardController extends Controller
         $user = User::findOrFail($id);
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'confirmed',
         ]);
         if ($request->input('password') == '') {
