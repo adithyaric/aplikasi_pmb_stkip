@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Announcement;
 use App\Models\Mahasiswa;
 use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -191,8 +193,14 @@ class MahasiswaController extends Controller
     public function dashboard()
     {
         $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
+        $currentTime = Carbon::now();
 
-        return view('mahasiswa.dashboard', compact('mahasiswa'));
+        $announcements = Announcement::where('date_start', '<=', $currentTime)
+            ->where('date_end', '>=', $currentTime)
+            ->latest()
+            ->get();
+
+        return view('mahasiswa.dashboard', compact('mahasiswa', 'announcements'));
     }
 
     public function RegisterMahasiwa(Request $request)
@@ -215,7 +223,8 @@ class MahasiswaController extends Controller
         if (\DB::table('users')
             ->where('nisn', $request->nisn)
             ->where('gelombang_id', $request->gelombang_id)
-            ->exists()) {
+            ->exists()
+        ) {
             return back()->withErrors(['nisn_gelombang' => 'Kombinasi NISN dan Gelombang sudah terdaftar!']);
         }
 

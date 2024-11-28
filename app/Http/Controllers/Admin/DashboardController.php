@@ -46,9 +46,9 @@ class DashboardController extends Controller
             $q->where('status', 'KELUAR');
         })->count();
 
-        $jurusan = Jurusan::get();
         $tahuns = Tahun::get();
         $gelombang = $gelombangQuery->get();
+        $jurusan = Jurusan::get();
 
         return view('admin.dashboard', compact('mahasiswa', 'keluar', 'bayar', 'berkas', 'diterima', 'jurusan', 'cbt', 'interview', 'gelombang', 'tahunId', 'tahuns'));
     }

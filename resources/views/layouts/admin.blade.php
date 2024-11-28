@@ -211,6 +211,11 @@
                                     <i class="fa fa-youtube"></i> <span>Youtube</span>
                                 </a>
                             </li>
+                            <li class="{{ setActive('admin/pengumuman') }}">
+                                <a href="{{ route('admin.pengumuman.index') }}">
+                                    <i class="fa fa-newspaper-o"></i> <span>Pengumuman</span>
+                                </a>
+                            </li>
                             <li class="{{ setActive('admin/setting') }}">
                                 <a href="{{ route('admin.setting.index') }}">
                                     <i class="fa fa-gear"></i> <span>Web</span>
