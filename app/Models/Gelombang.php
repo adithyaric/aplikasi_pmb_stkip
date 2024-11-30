@@ -20,4 +20,9 @@ class Gelombang extends Model
     {
         return $this->belongsTo(Tahun::class);
     }
+
+    public function jurusan()
+    {
+        return $this->belongsToMany(Jurusan::class, 'gelombang_jurusan');
+    }
 }

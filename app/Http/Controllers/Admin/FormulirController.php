@@ -21,20 +21,25 @@ class FormulirController extends Controller
 {
     public function data()
     {
-        $penerimaan = Penerimaan::all();
-        $jurusan = Jurusan::all();
+        $penerimaan = Penerimaan::get();
+        $jurusan = Auth::user()->gelombang?->jurusan ?? Jurusan::get();
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
         $mhs = Mahasiswa::where('user_id', Auth::user()->id)->first();
         $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->first();
 
+        // dd(
+        //     $attachment?->toArray(),
+        //     auth()->user()->gelombang?->toArray(),
+        //     auth()->user()->gelombang?->jurusan?->toArray()
+        // );
         return view('mahasiswa.data', compact('penerimaan', 'biodata', 'jurusan', 'mahasiswa', 'attachment', 'mhs'));
     }
 
     public function edit($id)
     {
-        $penerimaan = Penerimaan::all();
-        $jurusan = Jurusan::all();
+        $penerimaan = Penerimaan::get();
+        $jurusan = Auth::user()->gelombang?->jurusan ?? Jurusan::get();
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
         $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->where('id', $id)->first();
@@ -44,109 +49,44 @@ class FormulirController extends Controller
 
     public function updateData(Request $request)
     {
-        $data = $request->validate([
-            'kartu_keluarga' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'nisn' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'bukti pembayaran' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'ijazah' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'pas_poto' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'rapor' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'kip' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'prestasi' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'sktm' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'ktp_ortu' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'skot' => 'mimes:pdf,png,jpg,jpeg|max:3072',
-            'pdu' => 'mimes:pdf,png,jpg,jpeg|max:3072',
+        $penerimaan = Penerimaan::with('persyaratan')->findOrFail($request->penerimaan_id);
+        $mahasiswa = Mahasiswa::findOrFail(Auth::user()->id);
 
-        ]);
+        $rules = [];
+        $data = [];
 
-        dd($data, $request->all());
+        // dd($penerimaan->persyaratan->toArray(), $request->all());
+        foreach ($penerimaan->persyaratan as $persyaratan) {
+            $fieldName = $persyaratan->name;
+            $rules[$fieldName] = 'mimes:pdf,png,jpg,jpeg|max:3072|required';
 
-        $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
+            // dd($fieldName, $rules[$fieldName]);
+            if ($request->hasFile($fieldName)) {
+                // dd($request->hasFile($fieldName), $request->file($fieldName));
+                $data[$fieldName] = $request->file($fieldName)->store('assets/store', 'public');
+            }
+        }
+
+        $validatedData = $request->validate($rules);
+
+        dd($data, $validatedData, $request->all());
 
         $mahasiswa->update([
-            'jalur' => request()->jalur,
-            'jurusan_id' => request()->jurusan_id,
-            'penerimaan_id' => request()->penerimaan_id,
+            'jalur' => $request->jalur,
+            'jurusan_id' => $request->jurusan_id,
+            'penerimaan_id' => $request->penerimaan_id,
         ]);
-
-        //  $data = request()->all();
-
-        if ($request->kartu_keluarga) {
-            $data['kartu_keluarga'] = $request->file('kartu_keluarga')->store('assets/attachment', 'public');
-        }
-        if ($request->nisn) {
-            $data['nisn'] = $request->file('nisn')->store('assets/store', 'public');
-        }
-        if ($request->bukti_pembayaran) {
-            $data['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('assets/store', 'public');
-        }
-        if ($request->ijazah) {
-            $data['ijazah'] = $request->file('ijazah')->store('assets/store', 'public');
-        }
-        if ($request->pas_poto) {
-            $data['pas_poto'] = $request->file('pas_poto')->store('assets/store', 'public');
-        }
-        if ($request->rapor) {
-
-            $data['rapor'] = $request->file('rapor')->store('assets/store', 'public');
-        }
-        if ($request->kip) {
-
-            $data['kip'] = $request->file('kip')->store('assets/store', 'public');
-        } //else {
-        //$data['kip'] = null;
-        //}
-        if ($request->prestasi) {
-            $data['prestasi'] = $request->file('prestasi')->store('assets/store', 'public');
-        } //else {
-        //$data['prestasi'] = null;
-        //}
-        if ($request->sktm) {
-            $data['sktm'] = $request->file('sktm')->store('assets/store', 'public');
-        } //else {
-        //$data['sktm'] = null;
-        //}
-        if ($request->ktp_ortu) {
-
-            $data['ktp_ortu'] = $request->file('ktp_ortu')->store('assets/store', 'public');
-        } //else {
-        //$data['ktp_ortu'] = null;
-        //}
-        if ($request->skot) {
-            $data['skot'] = $request->file('skot')->store('assets/store', 'public');
-        } //else {
-        //$data['skot'] = null;
-        //}
-        if ($request->hafidz) {
-            $data['hafidz'] = $request->file('hafidz')->store('assets/store', 'public');
-        } //else {
-        //$data['hafidz'] = null;
-        //}
-        if ($request->pdu) {
-            $data['pdu'] = $request->file('pdu')->store('assets/store', 'public');
-        }
 
         $data['penerimaan_id'] = $request->penerimaan_id;
         $data['jurusan_dua'] = $request->jurusan_dua;
 
-        Attachments::updateOrCreate(
-            [
-                'user_id' => Auth::user()->id,
-            ],
-            $data
+        Attachments::updateOrCreate([
+            'user_id' => Auth::user()->id,
+        ], $data);
 
-        );
-
-        $biodata = Biodata::where('user_id', Auth::user()->id)->first();
-
-        Biodata::updateOrCreate(
-            [
-                'user_id' => Auth::user()->id,
-            ],
-            $data
-
-        );
+        Biodata::updateOrCreate([
+            'user_id' => Auth::user()->id,
+        ], $data);
 
         return back()->with('success', 'berhasil disimpan');
     }

@@ -12,4 +12,9 @@ class Penerimaan extends Model
     protected $guarded = ['id'];
 
     protected $table = 'jalur_penerimaan';
+
+    public function persyaratan()
+    {
+        return $this->belongsToMany(Persyaratan::class, 'penerimaan_persyaratan');
+    }
 }

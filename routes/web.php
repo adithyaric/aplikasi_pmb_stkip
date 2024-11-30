@@ -14,9 +14,11 @@ use App\Http\Controllers\GelombangController;
 use App\Http\Controllers\TahunController;
 use App\Http\Controllers\WebSettingController;
 use App\Models\Gelombang;
+use App\Models\Penerimaan;
 use App\Models\Video;
 use App\Models\WebSetting;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -78,5 +80,11 @@ Route::prefix('mahasiswa')
         Route::POST('/changePhoto', [MahasiswaController::class, 'changePhoto'])->name('changePhoto');
     });
 Route::post('/register-mahasiswa', [MahasiswaController::class, 'RegisterMahasiwa'])->name('register.mahasiswa');
+
+Route::get('/get-persyaratan', function (Request $request) {
+    $persyaratan = Penerimaan::find($request->id)->persyaratan;
+
+    return response()->json(['persyaratan' => $persyaratan]);
+});
 
 Auth::routes(['register' => false]);

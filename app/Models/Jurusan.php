@@ -22,4 +22,9 @@ class Jurusan extends Model
     {
         return $this->hasMany(Mahasiswa::class);
     }
+
+    public function gelombang()
+    {
+        return $this->belongsToMany(Gelombang::class, 'gelombang_jurusan');
+    }
 }
