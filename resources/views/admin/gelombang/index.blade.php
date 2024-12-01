@@ -57,19 +57,18 @@
                 <form action="{{ route('admin.gelombang.store') }}" method="post">
                     @csrf
                     <div class="form-group @error('nisn') has-error @enderror">
-                        <label for="exampleInputEmail1">Gelombang</label>
-                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control"
-                            required name="nama" placeholder="Masukkan Gelombang">
-                        <label for="exampleInputEmail1">Biaya Pendaftaran</label>
-                        <input type="number" class="form-control" required name="nominal"
-                            placeholder="Masukkan Nominal">
-                        <label for="exampleInputPassword1">Status</label>
-                        <select name="status" class="form-control" id="">
+                        <label for="nama">Gelombang</label>
+                        <input  id="nama"onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" required name="nama" placeholder="Masukkan Gelombang">
+                        <label for="nominal">Biaya Pendaftaran</label>
+                        <input  id="nominal"type="number" class="form-control" required name="nominal" placeholder="Masukkan Nominal">
+                        <label for="status">Status</label>
+                        <select id="status" name="status" class="form-control">
                             <option value="">Pilih Status</option>
                             <option value="1">Aktif</option>
                             <option value="0">Non Aktif</option>
                         </select>
-                        <select name="tahun_id" id="" class="mt-1 form-control" required>
+                        <label for="tahun_id">Tahun</label>
+                        <select id="tahun_id" name="tahun_id" class="mt-1 form-control" required>
                             <option value="" readonly>-- Pilih Tahun --</option>
                             @foreach ($tahuns as $tahun)
                             <option value="{{ $tahun->id }}">{{ $tahun->status ? 'aktif' : 'non-aktif' }}: {{ $tahun->nama }}</option>
@@ -77,52 +76,6 @@
                         </select>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary pull-left"> Kirim</button>
-                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<div class="modal fade" id="modal-edit">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Edit Gelombang</h4>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('admin.gelombang.store') }}" method="post">
-                    @csrf
-                    <div class="form-group @error('nisn') has-error @enderror">
-                        <label for="exampleInputEmail1">Gelombang</label>
-                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control"
-                            required name="nama" id="nama" placeholder="Masukan Gelombang">
-                        <input type="hidden" class="form-control" required name="id" id="id"
-                            placeholder="Masukan Gelombang">
-                        <label for="exampleInputEmail1">Biaya Pendaftaran</label>
-                        <input type="text" class="form-control" required name="nominal" id="nominal"
-                            placeholder="Masukan Nominal">
-                        <label for="exampleInputPassword1">Status</label>
-                        <select name="status" class="form-control" id="status">
-                            <option value="">Pilih Status</option>
-                            <option value="1">Aktif</option>
-                            <option value="0">Non Aktif</option>
-                        </select>
-                        <label for="exampleInputPassword1">Tahun</label>
-                        <select name="tahun_id" id="tahun_id" class="mt-1 form-control" required>
-                            <option value="" readonly>-- Pilih Tahun --</option>
-                            @foreach ($tahuns as $tahun)
-                            <option value="{{ $tahun->id }}">{{ $tahun->status ? 'aktif' : 'non-aktif' }}: {{ $tahun->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary pull-left"> Kirim</button>
                         <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
@@ -159,21 +112,22 @@
     });
 
     //aksi show modal edit
-    function Edit(id) {
-        $.ajax({
-            url: 'gelombang/' + id + '/edit',
-            dataType: 'json',
-            type: 'get',
-            success: function(hasil) {
-                $('#nama').val(hasil.data.nama)
-                $('#id').val(hasil.data.id)
-                $('#nominal').val(hasil.data.nominal)
-                $('#status').val(hasil.data.status)
-                $('#tahun_id').val(hasil.data.tahun_id).change()
-                $('#modal-edit').modal('show')
-            }
-        })
-    }
+    // function Edit(id) {
+    //     $.ajax({
+    //         url: 'gelombang/' + id + '/edit',
+    //         dataType: 'json',
+    //         type: 'get',
+    //         success: function(hasil) {
+    //             $('#nama').val(hasil.data.nama)
+    //             $('#id').val(hasil.data.id)
+    //             $('#nominal').val(hasil.data.nominal)
+    //             $('#status').val(hasil.data.status)
+    //             $('#tahun_id').val(hasil.data.tahun_id).change()
+    //             $('#modal-edit').modal('show')
+    //         }
+    //     })
+    // }
+
     //aksi delete
     function Delete(id) {
         var id = id;

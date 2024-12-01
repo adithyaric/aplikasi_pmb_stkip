@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Gelombang;
 use App\Models\Jurusan;
+use App\Models\Kelas;
 use App\Models\Mahasiswa;
+use App\Models\Penerimaan;
 use App\Models\Tahun;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,7 +23,9 @@ class GelombangController extends Controller
             return DataTables::of($gelombang)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    return '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a>
+                    $editRoute = route('admin.gelombang.edit', $data->id);
+
+                    return '<a href="'.$editRoute.'" class="edit btn btn-success btn-sm">Edit</a>
                         <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
                 })
                 ->addColumn('nominal', function ($data) {
@@ -97,12 +101,41 @@ class GelombangController extends Controller
 
     public function edit($id)
     {
-        $gelombang = Gelombang::findOrFail($id);
+        $gelombang = Gelombang::with([
+            'user',
+            'tahun',
+            'jurusan',
+            'kelas',
+            'penerimaan',
+        ])->findOrFail($id);
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $gelombang,
+        return view('admin.gelombang.edit', [
+            'gelombang' => $gelombang,
+            'tahuns' => Tahun::get(),
+            'jurusans' => Jurusan::get(),
+            'kelas' => Kelas::get(),
+            'penerimaans' => Penerimaan::get(),
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $gelombang = Gelombang::updateOrCreate(
+            ['id' => $request->id],
+            [
+                'nama' => $request->nama,
+                'nominal' => $request->nominal,
+                'status' => $request->status,
+                'tahun_id' => $request->tahun_id,
+            ]
+        );
+
+        // Sync relationships
+        $gelombang->jurusan()->sync($request->jurusan);
+        $gelombang->kelas()->sync($request->kelas);
+        $gelombang->penerimaan()->sync($request->penerimaan);
+
+        return redirect()->route('admin.gelombang.index')->with('success', 'Data berhasil diupdate');
     }
 
     public function destroy($id)
