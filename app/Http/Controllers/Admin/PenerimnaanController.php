@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gelombang;
 use App\Models\Penerimaan;
+use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -17,7 +19,8 @@ class PenerimnaanController extends Controller
             return DataTables::of($penerimaan)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="'.route('admin.penerimaan.edit', $data->id).'" class="edit btn btn-success btn-sm">Edit</a>
+                              <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
 
                     return $actionBtn;
                 })
@@ -46,10 +49,25 @@ class PenerimnaanController extends Controller
     {
         $penerimaan = Penerimaan::findOrFail($id);
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $penerimaan,
+        return view('admin.penerimaan.edit', [
+            'penerimaan' => $penerimaan,
+            'persyaratans' => Persyaratan::get(),
+            'gelombangs' => Gelombang::get(),
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $penerimaan = Penerimaan::findOrFail($request->id);
+
+        $penerimaan->update([
+            'name' => $request->name,
+        ]);
+
+        $penerimaan->persyaratan()->sync($request->persyaratans);
+        $penerimaan->gelombang()->sync($request->gelombangs);
+
+        return redirect()->route('admin.penerimaan.index')->with('success', 'Data berhasil disimpan');
     }
 
     public function destroy($id)
