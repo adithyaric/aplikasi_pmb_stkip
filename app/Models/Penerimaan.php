@@ -17,4 +17,9 @@ class Penerimaan extends Model
     {
         return $this->belongsToMany(Persyaratan::class, 'penerimaan_persyaratan');
     }
+
+    public function gelombang()
+    {
+        return $this->belongsToMany(Gelombang::class, 'gelombang_penerimaan');
+    }
 }

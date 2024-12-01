@@ -7,11 +7,11 @@ use App\Models\Alamat;
 use App\Models\Attachments;
 use App\Models\Biodata;
 use App\Models\Gelombang;
-use App\Models\Jurusan;
 use App\Models\Lulusan;
 use App\Models\Mahasiswa;
 use App\Models\PemilikKartu;
 use App\Models\Penerimaan;
+use App\Models\Persyaratan;
 use App\Models\Rencana;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,33 +22,38 @@ class FormulirController extends Controller
 {
     public function data()
     {
-        $penerimaan = Penerimaan::get();
-        $jurusan = Auth::user()->gelombang?->jurusan ?? Jurusan::get();
+        $kelas = Gelombang::with('kelas')->find(Auth::user()->gelombang_id)->kelas;
+        $jurusan = Gelombang::with('jurusan')->find(Auth::user()->gelombang_id)->jurusan;
+        $penerimaan = Gelombang::with('penerimaan')->find(Auth::user()->gelombang_id)->penerimaan;
+
+        $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($penerimaan) {
+            $query->whereIn('penerimaan_id', $penerimaan->pluck('id'));
+        })->get();
+
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
-        $mhs = Mahasiswa::where('user_id', Auth::user()->id)->first();
         $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->first();
-        $kelas = Gelombang::with('kelas')->find(Auth::user()->gelombang_id)->kelas;
 
-        // dd(
-        //     $kelas,
-        //     $attachment?->toArray(),
-        //     auth()->user()->gelombang?->toArray(),
-        //     auth()->user()->gelombang?->jurusan?->toArray()
-        // );
-        return view('mahasiswa.data', compact('kelas', 'penerimaan', 'biodata', 'jurusan', 'mahasiswa', 'attachment', 'mhs'));
+        $mhs = Mahasiswa::where('user_id', Auth::user()->id)->first();
+
+        return view('mahasiswa.data', compact('kelas', 'penerimaan', 'persyaratan', 'biodata', 'jurusan', 'mahasiswa', 'attachment', 'mhs'));
     }
 
     public function edit($id)
     {
-        $penerimaan = Penerimaan::get();
-        $jurusan = Auth::user()->gelombang?->jurusan ?? Jurusan::get();
+        $kelas = Gelombang::with('kelas')->find(Auth::user()->gelombang_id)->kelas;
+        $jurusan = Gelombang::with('jurusan')->find(Auth::user()->gelombang_id)->jurusan;
+        $penerimaan = Gelombang::with('penerimaan')->find(Auth::user()->gelombang_id)->penerimaan;
+
+        $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($penerimaan) {
+            $query->whereIn('penerimaan_id', $penerimaan->pluck('id'));
+        })->get();
+
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
         $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->where('id', $id)->first();
-        $kelas = Gelombang::with('kelas')->find(Auth::user()->gelombang_id)->kelas;
 
-        return view('mahasiswa.data-edit', compact('kelas', 'penerimaan', 'biodata', 'jurusan', 'mahasiswa', 'attachment'));
+        return view('mahasiswa.data-edit', compact('kelas', 'penerimaan', 'persyaratan', 'biodata', 'jurusan', 'mahasiswa', 'attachment'));
     }
 
     public function updateData(Request $request)

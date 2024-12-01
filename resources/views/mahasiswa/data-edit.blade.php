@@ -55,39 +55,45 @@
                             </div>
 
                             <div class="form-group @error('penerimaan_id') has-error @enderror">
-                                {{-- #TODO hardcoded --}}
                                 <label for="penerimaan_id">Jalur Penerimaan</label>
                                 <select required name="penerimaan_id" class="form-control" id="penerimaan">
                                     <option value="">Pilih Jalur Penerimaan</option>
                                     @foreach ($penerimaan as $item)
-                                        @if (Auth::user()->gelombang_id == 8 || Auth::user()->gelombang_id == 14 || Auth::user()->gelombang_id == 15)
-                                            @if ($item->id !== 1)
-                                                <option value="{{ $item->id }}"
-                                                    {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}>
-                                                    {{ $item->name }}
-                                                </option>
-                                            @endif
-                                        @elseif (Auth::user()->gelombang_id == 9)
-                                            @if ($item->id == 3)
-                                                <option value="{{ $item->id }}"
-                                                    {{ $mahasiswa->penerimaan_id === $item->id ? 'selected' : '' }}>
-                                                    {{ $item->name }}
-                                                </option>
-                                            @endif
-                                        @else
-                                            <option value="{{ $item->id }}"
-                                                {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}>
-                                                {{ $item->name }}
-                                            </option>
-                                        @endif
-                                        {{-- <option value="{{ $item->id }}">{{ $item->name }}</option> --}}
+                                        <option value="{{ $item->id }}" {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('penerimaan_id')
                                     <span class="help-block">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="data" id="Biodata"></div>
+                            <div id="Biodata">
+                                @foreach ($persyaratan as $syarat)
+                                    @php
+                                        $attachmentField = $syarat->name; // Dynamic field name from persyaratan
+                                        $attachmentValue = $attachment->$attachmentField; // Get the corresponding value from the attachment
+                                    @endphp
+
+                                    <div class="col-lg-12 persyaratan-item" data-penerimaan="{{ $syarat->penerimaan->pluck('id')->join(',') }}">
+                                        <div class="form-group">
+                                            <label>{{ ucfirst(str_replace('_', ' ', $syarat->name)) }}</label>
+
+                                            @if ($syarat->input_type === 'file' && $attachmentValue)
+                                                <div>
+                                                    <a href="{{ asset('storage/' . $attachmentValue) }}" target="_blank">
+                                                        <img src="{{ asset('storage/' . $attachmentValue) }}" alt="{{ $syarat->name }}" class="img-thumbnail" style="max-width: 150px;">
+                                                    </a>
+                                                </div>
+                                            @endif
+
+                                            <input type="{{ $syarat->input_type }}"
+                                                name="{{ $syarat->name }}"
+                                                class="form-control"
+                                                {{ $syarat->input_type === 'file' ? '' : 'value=' . old($syarat->name, $attachmentValue) }}
+                                                {{ $syarat->input_type === 'file' ? 'required' : '' }}>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                             <p><strong>Note : <strong><i>File upload harus berformat <strong>"PDF/PNG/JPG/JPEG"</strong> dengan ukuran <strong>maksimal 3 MB (Total Semua Berkas)</strong></i></p>
                             <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
                     </div>
@@ -109,21 +115,22 @@
     <script type="text/javascript">
         $(document).ready(function() {
             //#jalur = select kelas #TODO hardcoded
-            $('#jalur').trigger('change');
-            $('#jalur').change(function() {
-                let data = $(this).val();
-                let select = document.getElementById("penerimaan");
-                for (var i = 0; i < select.length; i++) {
-                    if (data == 'EKSEKUTIF') {
-                        if (select.options[i].value == 7) {
-                            $(select.options[i]).attr('disabled', 'disabled').hide();
-                        }
+            $('#jalur').on('change', function() {
+                $('#Biodata').empty();
+                let selectedKelas = $(this).val();
+                let penerimaanSelect = $('#penerimaan');
+
+                // Reset the dropdown
+                penerimaanSelect.val('').trigger('change');
+
+                // Disable or enable the specific option based on Kelas selection
+                penerimaanSelect.find('option[value="7"]').each(function() {
+                    if (selectedKelas === 'EKSEKUTIF') {
+                        $(this).attr('disabled', true).hide();
                     } else {
-                        if (select.options[i].value == 7) {
-                            $(select.options[i]).removeAttr('disabled').show();
-                        }
+                        $(this).removeAttr('disabled').show();
                     }
-                }
+                });
             });
 
             //#penerimaan = select jalur penerimaan
