@@ -25,4 +25,9 @@ class Gelombang extends Model
     {
         return $this->belongsToMany(Jurusan::class, 'gelombang_jurusan');
     }
+
+    public function kelas()
+    {
+        return $this->belongsToMany(Kelas::class, 'gelombang_kelas');
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alamat;
 use App\Models\Attachments;
 use App\Models\Biodata;
+use App\Models\Gelombang;
 use App\Models\Jurusan;
 use App\Models\Lulusan;
 use App\Models\Mahasiswa;
@@ -27,13 +28,15 @@ class FormulirController extends Controller
         $mhs = Mahasiswa::where('user_id', Auth::user()->id)->first();
         $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->first();
+        $kelas = Gelombang::with('kelas')->find(Auth::user()->gelombang_id)->kelas;
 
         // dd(
+        //     $kelas,
         //     $attachment?->toArray(),
         //     auth()->user()->gelombang?->toArray(),
         //     auth()->user()->gelombang?->jurusan?->toArray()
         // );
-        return view('mahasiswa.data', compact('penerimaan', 'biodata', 'jurusan', 'mahasiswa', 'attachment', 'mhs'));
+        return view('mahasiswa.data', compact('kelas', 'penerimaan', 'biodata', 'jurusan', 'mahasiswa', 'attachment', 'mhs'));
     }
 
     public function edit($id)
@@ -43,8 +46,9 @@ class FormulirController extends Controller
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
         $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->where('id', $id)->first();
+        $kelas = Gelombang::with('kelas')->find(Auth::user()->gelombang_id)->kelas;
 
-        return view('mahasiswa.data-edit', compact('penerimaan', 'biodata', 'jurusan', 'mahasiswa', 'attachment'));
+        return view('mahasiswa.data-edit', compact('kelas', 'penerimaan', 'biodata', 'jurusan', 'mahasiswa', 'attachment'));
     }
 
     public function updateData(Request $request)
@@ -69,7 +73,7 @@ class FormulirController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        dd($data, $validatedData, $request->all());
+        // dd($data, $validatedData, $request->all());
 
         $mahasiswa->update([
             'jalur' => $request->jalur,

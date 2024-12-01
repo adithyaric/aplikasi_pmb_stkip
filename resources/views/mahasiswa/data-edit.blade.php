@@ -10,25 +10,15 @@
                         <form action="{{ route('mahasiswa.update.data') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group @error('jalur') has-error @enderror">
-                                <label for="exampleInputEmail1">Jalur Kelas</label>
-                                @if (Auth::user()->gelombang_id == 9)
-                                    <select required name="jalur" class="form-control" id="jalur">
-                                        <option value="" readonly>Pilih Kelas</option>
-                                        <option value="REGULAR" {{ $mahasiswa->jalur == 'REGULAR' ? 'selected' : '' }}>
-                                            KELAS REGULER
-                                        </option>
-                                    </select>
-                                @else
-                                    <select required name="jalur" class="form-control" id="jalur">
-                                        <option value="" readonly>Pilih Kelas</option>
-                                        <option value="REGULAR" {{ $mahasiswa->jalur == 'REGULAR' ? 'selected' : '' }}>
-                                            KELAS REGULER
-                                        </option>
-                                        <option value="EKSEKUTIF" {{ $mahasiswa->jalur == 'EKSEKUTIF' ? 'selected' : '' }}>
-                                            KELAS EKSEKUTIF
-                                        </option>
-                                    </select>
-                                @endif
+                                <label for="jalur">Kelas</label>
+                                <select required name="jalur" class="form-control" id="jalur">
+                                    <option value="" readonly>Pilih Kelas</option>
+                                    @foreach($kelas as $k)
+                                    <option value="{{ $k->name }}" {{ $mahasiswa->jalur == $k->name ? 'selected' : '' }}>
+                                        {{ strtoupper($k->name) }}
+                                    </option>
+                                    @endforeach
+                                </select>
                                 @error('jalur')
                                     <span class="help-block">{{ $message }}</span>
                                 @enderror
@@ -70,27 +60,27 @@
                                 <select required name="penerimaan_id" class="form-control" id="penerimaan">
                                     <option value="">Pilih Jalur Penerimaan</option>
                                     @foreach ($penerimaan as $item)
-                                        {{-- @if (Auth::user()->gelombang_id == 8 || Auth::user()->gelombang_id == 14 || Auth::user()->gelombang_id == 15) --}}
-                                            {{-- @if ($item->id !== 1) --}}
-                                                {{-- <option value="{{ $item->id }}" --}}
-                                                    {{-- {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}> --}}
-                                                    {{-- {{ $item->name }} --}}
-                                                {{-- </option> --}}
-                                            {{-- @endif --}}
-                                        {{-- @elseif (Auth::user()->gelombang_id == 9) --}}
-                                            {{-- @if ($item->id == 3) --}}
-                                                {{-- <option value="{{ $item->id }}" --}}
-                                                    {{-- {{ $mahasiswa->penerimaan_id === $item->id ? 'selected' : '' }}> --}}
-                                                    {{-- {{ $item->name }} --}}
-                                                {{-- </option> --}}
-                                            {{-- @endif --}}
-                                        {{-- @else --}}
-                                            {{-- <option value="{{ $item->id }}" --}}
-                                                {{-- {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}> --}}
-                                                {{-- {{ $item->name }} --}}
-                                            {{-- </option> --}}
-                                        {{-- @endif --}}
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @if (Auth::user()->gelombang_id == 8 || Auth::user()->gelombang_id == 14 || Auth::user()->gelombang_id == 15)
+                                            @if ($item->id !== 1)
+                                                <option value="{{ $item->id }}"
+                                                    {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->name }}
+                                                </option>
+                                            @endif
+                                        @elseif (Auth::user()->gelombang_id == 9)
+                                            @if ($item->id == 3)
+                                                <option value="{{ $item->id }}"
+                                                    {{ $mahasiswa->penerimaan_id === $item->id ? 'selected' : '' }}>
+                                                    {{ $item->name }}
+                                                </option>
+                                            @endif
+                                        @else
+                                            <option value="{{ $item->id }}"
+                                                {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}>
+                                                {{ $item->name }}
+                                            </option>
+                                        @endif
+                                        {{-- <option value="{{ $item->id }}">{{ $item->name }}</option> --}}
                                     @endforeach
                                 </select>
                                 @error('penerimaan_id')

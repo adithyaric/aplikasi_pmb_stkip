@@ -79,21 +79,14 @@
                                     @csrf
                                     <div class="form-group @error('jalur') has-error @enderror">
                                         <label for="jalur">Kelas</label>
-                                        @if (Auth::user()->gelombang_id == 9)
-                                            <select required name="jalur" class="form-control" id="jalur">
-                                                <option value="" readonly>Pilih Kelas</option>
-                                                <option value="REGULAR">KELAS REGULER</option>
-                                                <!--<option value="TRANSFER">KELAS TRANSFER</option>-->
-                                                <!--<option value="EKSEKUTIF">KELAS EKSEKUTIF</option>-->
-                                            </select>
-                                        @else
-                                            <select required name="jalur" class="form-control" id="jalur">
-                                                <option value="" readonly>Pilih Kelas</option>
-                                                <option value="REGULAR">KELAS REGULER</option>
-                                                <!--<option value="TRANSFER">KELAS TRANSFER</option>-->
-                                                <option value="EKSEKUTIF">KELAS EKSEKUTIF</option>
-                                            </select>
-                                        @endif
+                                        <select required name="jalur" class="form-control" id="jalur">
+                                            <option value="" readonly>Pilih Kelas</option>
+                                            @foreach($kelas as $k)
+                                            <option value="{{ $k->name }}" {{ $mahasiswa->jalur == $k->name ? 'selected' : '' }}>
+                                                {{ strtoupper($k->name) }}
+                                            </option>
+                                            @endforeach
+                                        </select>
                                         @error('jalur')
                                             <span class="help-block">{{ $message }}</span>
                                         @enderror
