@@ -23,19 +23,19 @@
             <select name="persyaratans[]" id="persyaratans" class="form-control select2" multiple required>
                 @foreach ($persyaratans as $persyaratan)
                     <option value="{{ $persyaratan->id }}" {{ in_array($persyaratan->id, $penerimaan->persyaratan->pluck('id')->toArray()) ? 'selected' : '' }}>
-                        {{ $persyaratan->name }}
+                        {{ strtoupper(str_replace('_', ' ', $persyaratan->name)) }}
                     </option>
                 @endforeach
             </select>
 
-            <label for="gelombangs">Gelombang</label>
-            <select name="gelombangs[]" id="gelombangs" class="form-control select2" multiple required>
-                @foreach ($gelombangs as $gelombang)
-                    <option value="{{ $gelombang->id }}" {{ in_array($gelombang->id, $penerimaan->gelombang->pluck('id')->toArray()) ? 'selected' : '' }}>
-                        {{ $gelombang->nama }}
-                    </option>
-                @endforeach
-            </select>
+            {{-- <label for="gelombangs">Gelombang</label> --}}
+            {{-- <select name="gelombangs[]" id="gelombangs" class="form-control select2" multiple required> --}}
+                {{-- @foreach ($gelombangs as $gelombang) --}}
+                    {{-- <option value="{{ $gelombang->id }}" {{ in_array($gelombang->id, $penerimaan->gelombang->pluck('id')->toArray()) ? 'selected' : '' }}> --}}
+                        {{-- {{ $gelombang->nama }} --}}
+                    {{-- </option> --}}
+                {{-- @endforeach --}}
+            {{-- </select> --}}
 
             <div class="box-footer">
                 <a href="{{ route('admin.penerimaan.index') }}" class="btn btn-secondary">Kembali</a>

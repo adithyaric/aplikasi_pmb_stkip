@@ -52,7 +52,7 @@ class PenerimnaanController extends Controller
         return view('admin.penerimaan.edit', [
             'penerimaan' => $penerimaan,
             'persyaratans' => Persyaratan::get(),
-            'gelombangs' => Gelombang::get(),
+            // 'gelombangs' => Gelombang::get(),
         ]);
     }
 
@@ -65,7 +65,7 @@ class PenerimnaanController extends Controller
         ]);
 
         $penerimaan->persyaratan()->sync($request->persyaratans);
-        $penerimaan->gelombang()->sync($request->gelombangs);
+        // $penerimaan->gelombang()->sync($request->gelombangs);
 
         return redirect()->route('admin.penerimaan.index')->with('success', 'Data berhasil disimpan');
     }

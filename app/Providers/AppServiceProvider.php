@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('tahunAktif', Tahun::where('status', true)->first());
-        View::share('photoFront', WebSetting::first()?->photo_front);
-        View::share('photoLogin', WebSetting::first()?->photo_login);
+        View::share('tahunAktif', Tahun::where('status', true)->first() ?? null);
+        View::share('photoFront', WebSetting::first()?->photo_front ?? null);
+        View::share('photoLogin', WebSetting::first()?->photo_login ?? null);
     }
 }

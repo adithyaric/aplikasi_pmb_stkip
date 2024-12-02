@@ -137,26 +137,26 @@
                                     <div id="Biodata">
                                         @foreach ($persyaratan as $syarat)
                                             @php
-                                                $attachmentField = $syarat->name; // Dynamic field name from persyaratan
+                                                $attachmentField = $syarat->slug; // Dynamic field name from persyaratan
                                                 $attachmentValue = $attachment->$attachmentField; // Get the corresponding value from the attachment
                                             @endphp
 
                                             <div class="col-lg-12 persyaratan-item" data-penerimaan="{{ $syarat->penerimaan->pluck('id')->join(',') }}">
                                                 <div class="form-group">
-                                                    <label>{{ ucfirst(str_replace('_', ' ', $syarat->name)) }}</label>
+                                                    <label>{{ strtoupper(str_replace('_', ' ', $syarat->name)) }}</label>
 
                                                     @if ($syarat->input_type === 'file' && $attachmentValue)
                                                         <div>
                                                             <a href="{{ asset('storage/' . $attachmentValue) }}" target="_blank">
-                                                                <img src="{{ asset('storage/' . $attachmentValue) }}" alt="{{ $syarat->name }}" class="img-thumbnail" style="max-width: 150px;">
+                                                                <img src="{{ asset('storage/' . $attachmentValue) }}" alt="{{ $syarat->slug }}" class="img-thumbnail" style="max-width: 150px;">
                                                             </a>
                                                         </div>
                                                     @endif
 
                                                     <input type="{{ $syarat->input_type }}"
-                                                        name="{{ $syarat->name }}"
+                                                        name="{{ $syarat->slug }}"
                                                         class="form-control"
-                                                        {{ $syarat->input_type === 'file' ? '' : 'value=' . old($syarat->name, $attachmentValue) }}
+                                                        {{ $syarat->input_type === 'file' ? '' : 'value=' . old($syarat->slug, $attachmentValue) }}
                                                         {{ $syarat->input_type === 'file' ? 'required' : '' }}>
                                                 </div>
                                             </div>

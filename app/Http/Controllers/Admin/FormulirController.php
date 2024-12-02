@@ -26,12 +26,12 @@ class FormulirController extends Controller
         $jurusan = Gelombang::with('jurusan')->find(Auth::user()->gelombang_id)->jurusan;
         $penerimaan = Gelombang::with('penerimaan')->find(Auth::user()->gelombang_id)->penerimaan;
 
-        $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($penerimaan) {
-            $query->whereIn('penerimaan_id', $penerimaan->pluck('id'));
+        $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
+        $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($mahasiswa) {
+            $query->where('penerimaan_id', $mahasiswa->penerimaan_id);
         })->get();
 
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
-        $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->first();
 
         $mhs = Mahasiswa::where('user_id', Auth::user()->id)->first();
@@ -45,12 +45,12 @@ class FormulirController extends Controller
         $jurusan = Gelombang::with('jurusan')->find(Auth::user()->gelombang_id)->jurusan;
         $penerimaan = Gelombang::with('penerimaan')->find(Auth::user()->gelombang_id)->penerimaan;
 
-        $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($penerimaan) {
-            $query->whereIn('penerimaan_id', $penerimaan->pluck('id'));
+        $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
+        $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($mahasiswa) {
+            $query->where('penerimaan_id', $mahasiswa->penerimaan_id);
         })->get();
 
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
-        $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
         $attachment = Attachments::with(['penerimaan'])->where('user_id', Auth::user()->id)->where('id', $id)->first();
 
         return view('mahasiswa.data-edit', compact('kelas', 'penerimaan', 'persyaratan', 'biodata', 'jurusan', 'mahasiswa', 'attachment'));
@@ -59,14 +59,14 @@ class FormulirController extends Controller
     public function updateData(Request $request)
     {
         $penerimaan = Penerimaan::with('persyaratan')->findOrFail($request->penerimaan_id);
-        $mahasiswa = Mahasiswa::findOrFail(Auth::user()->id);
+        $mahasiswa = Mahasiswa::with(['jurusan'])->where('user_id', Auth::user()->id)->first();
 
         $rules = [];
         $data = [];
 
         // dd($penerimaan->persyaratan->toArray(), $request->all());
         foreach ($penerimaan->persyaratan as $persyaratan) {
-            $fieldName = $persyaratan->name;
+            $fieldName = $persyaratan->slug;
             $rules[$fieldName] = 'mimes:pdf,png,jpg,jpeg|max:3072|required';
 
             // dd($fieldName, $rules[$fieldName]);
@@ -78,13 +78,13 @@ class FormulirController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        // dd($data, $validatedData, $request->all());
-
         $mahasiswa->update([
             'jalur' => $request->jalur,
             'jurusan_id' => $request->jurusan_id,
             'penerimaan_id' => $request->penerimaan_id,
         ]);
+
+        // dd($data, $validatedData, $request->all(), $mahasiswa->toArray());
 
         $data['penerimaan_id'] = $request->penerimaan_id;
         $data['jurusan_dua'] = $request->jurusan_dua;

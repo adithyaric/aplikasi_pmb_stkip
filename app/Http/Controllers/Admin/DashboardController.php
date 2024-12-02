@@ -18,10 +18,16 @@ class DashboardController extends Controller
 
         $gelombangQuery = Gelombang::query();
         $userQuery = User::query();
+        $jurusanQuery = Jurusan::query();
 
         if ($tahunId) {
             $gelombangQuery->where('tahun_id', $tahunId);
+
             $userQuery->whereHas('gelombang', function ($query) use ($tahunId) {
+                $query->where('tahun_id', $tahunId);
+            });
+
+            $jurusanQuery->whereHas('gelombang', function ($query) use ($tahunId) {
                 $query->where('tahun_id', $tahunId);
             });
         }
@@ -40,7 +46,7 @@ class DashboardController extends Controller
             $q->where('status', 'INTERVIEW');
         })->count();
         $diterima = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'BERKAS DITERIIMA');
+            $q->where('status', 'BERKAS DITERIMA');
         })->count();
         $keluar = $userQuery->whereHas('mahasiswa', function ($q) {
             $q->where('status', 'KELUAR');
@@ -48,7 +54,7 @@ class DashboardController extends Controller
 
         $tahuns = Tahun::get();
         $gelombang = $gelombangQuery->get();
-        $jurusan = Jurusan::get();
+        $jurusan = $jurusanQuery->get();
 
         return view('admin.dashboard', compact('mahasiswa', 'keluar', 'bayar', 'berkas', 'diterima', 'jurusan', 'cbt', 'interview', 'gelombang', 'tahunId', 'tahuns'));
     }
