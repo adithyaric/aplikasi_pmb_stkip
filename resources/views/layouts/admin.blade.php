@@ -183,23 +183,22 @@
                             <li class="{{ setActive('admin/gelombang') }}">
                                 <a href="{{ route('admin.gelombang.index') }}">
                                     <i class="fa fa-users"></i> <span>Gelombang</span>
-
                                 </a>
-
                             </li>
                             <li class="{{ setActive('admin/jurusan') }}">
                                 <a href="{{ route('admin.jurusan.index') }}">
                                     <i class="fa fa-users"></i> <span>Jurusan</span>
-
                                 </a>
-
+                            </li>
+                            <li class="{{ setActive('admin/persyaratan') }}">
+                                <a href="{{ route('admin.persyaratan.index') }}">
+                                    <i class="fa fa-circle"></i> <span>Persyaratan</span>
+                                </a>
                             </li>
                             <li class="{{ setActive('admin/penerimaan') }}">
                                 <a href="{{ route('admin.penerimaan.index') }}">
                                     <i class="fa fa-users"></i> <span>Jalur Penerimaan</span>
-
                                 </a>
-
                             </li>
                             <li class="{{ setActive('admin/tahun') }}">
                                 <a href="{{ route('admin.tahun.index') }}">

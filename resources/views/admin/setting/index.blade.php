@@ -29,7 +29,7 @@
                                 @error('tahun_id')<span class="help-block">{{ $message }}</span>@enderror
                             </div>
 
-                            <label for="at"><b>Pendaftaran</b></label>
+                            {{-- <label for="at"><b>Tanggal Pendaftaran</b></label> --}}
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group @error('start_at') has-error @enderror">

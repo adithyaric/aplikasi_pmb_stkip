@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\GelombangController;
+use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\TahunController;
 use App\Http\Controllers\WebSettingController;
 use App\Models\Gelombang;
@@ -44,6 +45,7 @@ Route::prefix('admin')
         Route::resource('setting', WebSettingController::class, ['as' => 'admin']);
         Route::resource('mahasiswa', MahasiswaController::class, ['as' => 'admin']);
         Route::resource('jurusan', JurusanController::class, ['as' => 'admin']);
+        Route::resource('persyaratan', PersyaratanController::class, ['as' => 'admin']);
         Route::resource('penerimaan', PenerimnaanController::class, ['as' => 'admin']);
         Route::resource('video', VideoController::class, ['as' => 'admin']);
         Route::resource('transaction', TransactionController::class, ['as' => 'admin']);
