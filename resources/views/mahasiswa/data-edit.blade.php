@@ -1,6 +1,15 @@
 @extends('layouts.mahasiswa')
 @section('content')
     <section class="content">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row">
             <div class="col-xs-12">
                 <div class="box container">
@@ -80,7 +89,16 @@
                                             @if ($syarat->input_type === 'file' && $attachmentValue)
                                                 <div>
                                                     <a href="{{ asset('storage/' . $attachmentValue) }}" target="_blank">
-                                                        <img src="{{ asset('storage/' . $attachmentValue) }}" alt="{{ $syarat->slug }}" class="img-thumbnail" style="max-width: 150px;">
+@php
+    $extension = pathinfo($attachmentValue, PATHINFO_EXTENSION);
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+@endphp
+
+@if (in_array(strtolower($extension), $allowedExtensions))
+    <img src="{{ asset('storage/' . $attachmentValue) }}" alt="{{ $syarat->slug }}" class="img-thumbnail" style="max-width: 150px;">
+@else
+    <p>Preview</p>
+@endif
                                                     </a>
                                                 </div>
                                             @endif

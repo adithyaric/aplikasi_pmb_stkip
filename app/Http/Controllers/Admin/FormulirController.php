@@ -76,7 +76,7 @@ class FormulirController extends Controller
             }
         }
 
-        $validatedData = $request->validate($rules);
+        $request->validate($rules);
 
         $mahasiswa->update([
             'jalur' => $request->jalur,
@@ -200,11 +200,34 @@ class FormulirController extends Controller
     {
         $user = User::with('mahasiswa', 'transaksi')->findOrFail(Auth::user()->id);
         $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
+        $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($mahasiswa) {
+            $query->where('penerimaan_id', $mahasiswa->penerimaan_id);
+        })->get();
+
+        $attachment = Attachments::with(['penerimaan'])
+            ->where('user_id', Auth::user()->id)
+            ->first();
+
+        $missingColumns = [];
+
+        foreach ($persyaratan as $syarat) {
+            $attachmentField = $syarat->slug; // Dynamic field name from persyaratan
+
+            // Check if the field exists in the attachment and is not null or empty
+            if (empty($attachment->$attachmentField)) {
+                $missingColumns[] = strtoupper(str_replace('_', ' ', $syarat->name)); // Add readable field name for error
+            }
+        }
+
+        if (! empty($missingColumns)) {
+            return back()->withErrors([
+                'message' => 'Dokumen belum lengkap : '.implode(', ', $missingColumns),
+            ]);
+        }
+
         $filename = Auth::user()->nisn.'_'.Auth::user()->name.'.pdf';
-        $mahasiswa->update([
-            'status' => 'BERKAS LENGKAP',
-        ]);
-        // return $user;
+        $mahasiswa->update(['status' => 'BERKAS LENGKAP']);
+
         $pdf = PDF::loadview('pdf.cetakKartuPdf', compact('user'));
 
         return $pdf->download($filename);
