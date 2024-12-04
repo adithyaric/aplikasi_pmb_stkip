@@ -21,7 +21,7 @@
                         <!--</a>-->
                         <form action="">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <select name="jurusan_id" id="" class="mb-3 form-control">
                                         <option value="" readonly>-- Pilih Jurusan --</option>
                                         @foreach ($jurusans as $jurusan)
@@ -31,7 +31,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <select name="gelombang_id" id="" class="mb-3 form-control">
                                         <option value="" readonly>-- Pilih Gelombang --</option>
                                         @foreach ($gelombangs as $gelombang)
@@ -41,7 +41,11 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <input type="text" name="search" class="form-control mb-3" placeholder="Cari Nama, Phone, Asal Sekolah"
+                                        value="{{ request('search') }}">
+                                </div>
+                                <div class="col-md-3">
                                     <button type="submit" class="btn btn-default">Cari</button>
                                     <a href="{{ route('admin.excel.cetak', ['gelombang_id' => request('gelombang_id')]) }}" class="btn btn-success">
                                         Export Data
@@ -49,7 +53,6 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">

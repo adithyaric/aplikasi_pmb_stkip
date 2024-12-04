@@ -64,6 +64,7 @@ class MahasiswaController extends Controller
     {
         $jurusanId = $request->input('jurusan_id');
         $gelombangId = $request->input('gelombang_id');
+        $search = $request->input('search');
 
         $mahasiswa = User::with([
             'transaksi:id,user_id,briva',
@@ -78,6 +79,17 @@ class MahasiswaController extends Controller
             ->when($jurusanId, function ($query) use ($jurusanId) {
                 return $query->whereHas('mahasiswa', function ($q) use ($jurusanId) {
                     return $q->where('jurusan_id', $jurusanId);
+                });
+            })
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%$search%")
+                        ->orWhereHas('mahasiswa', function ($q) use ($search) {
+                            $q->where('phone', 'like', "%$search%");
+                        })
+                        ->orWhereHas('lulusan', function ($q) use ($search) {
+                            $q->where('asal_sekolah', 'like', "%$search%");
+                        });
                 });
             })
             ->where('roles', 'MAHASISWA')
