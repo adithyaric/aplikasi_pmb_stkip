@@ -54,11 +54,11 @@ Route::prefix('admin')
         Route::get('profile', [DashboardController::class, 'profile'])->name('profile');
         Route::put('profile/{id}', [DashboardController::class, 'profileUpdate'])->name('profile.update');
         //
-        Route::get('/report/jalur', [ReportController::class, 'jalur'])->name('admin.report.jalur');
+        // Route::get('/report/jalur', [ReportController::class, 'jalur'])->name('admin.report.jalur');
         Route::get('/report/prodi', [ReportController::class, 'prodi'])->name('admin.report.prodi');
         Route::get('/report/penerimaan', [ReportController::class, 'penerimaan'])->name('admin.report.penerimaan');
         //
-        Route::get('/report/jalur-pdf', [ReportController::class, 'jalur_pdf'])->name('admin.report.jalur_pdf');
+        // Route::get('/report/jalur-pdf', [ReportController::class, 'jalur_pdf'])->name('admin.report.jalur_pdf');
         Route::get('/report/prodi-pdf', [ReportController::class, 'prodi_pdf'])->name('admin.report.prodi_pdf');
         Route::get('/report/penerimaan-pdf', [ReportController::class, 'penerimaan_pdf'])->name('admin.report.penerimaan_pdf');
         //

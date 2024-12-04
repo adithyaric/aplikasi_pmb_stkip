@@ -178,7 +178,7 @@
                     <hr style="margin-bottom: 3px !important;">
                     <p style="font-size: 10px;">{{ str_replace('PENDIDIKAN ', '', $key->name) }}</p>
                 </div>
-                <a href="{{ route('admin.report.prodi', ['jurusan_id' => $key->id ]) }}" class="small-box-footer">
+                <a href="{{ route('admin.report.prodi', ['jurusan_id' => $key->id, 'tahun_id' => $tahunId ]) }}" class="small-box-footer">
                     Lihat Selengkapnya &nbsp;
                     <i class="fa fa-arrow-circle-right"></i>
                 </a>

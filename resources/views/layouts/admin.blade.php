@@ -233,11 +233,6 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <!--<li class="{{ setActive('admin/report/jalur') }}">
-                                <a href="{{ route('admin.report.jalur') }}">
-                                    <i class="fa fa-users"></i> <span>Per Kelas</span>
-                                </a>
-                            </li>-->
                             <li class="{{ setActive('admin/report/prodi') }}">
                                 <a href="{{ route('admin.report.prodi') }}">
                                     <i class="fa fa-users"></i> <span>Per Prodi</span>
