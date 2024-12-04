@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Gelombang;
 use App\Models\Jurusan;
 use App\Models\Kelas;
-use App\Models\Mahasiswa;
 use App\Models\Penerimaan;
 use App\Models\Tahun;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class GelombangController extends Controller
@@ -66,36 +64,39 @@ class GelombangController extends Controller
         return redirect()->route('admin.gelombang.index')->with('success', 'data berhasil disimpan');
     }
 
-    public function show(Gelombang $gelombang)
+    public function show(Gelombang $gelombang, Request $request)
     {
+        $query = User::where('roles', 'MAHASISWA')->whereHas('mahasiswa.jurusan')->where('gelombang_id', $gelombang->id);
+
+        if ($request->filled('jurusan_id')) {
+            $query->whereHas('mahasiswa', function ($q) use ($request) {
+                $q->where('jurusan_id', $request->jurusan_id);
+            });
+        }
+
         return view('admin.gelombang.show', [
-            'mahasiswa' => $gelombang->user,
+            'mahasiswa' => $query->with(['mahasiswa.jurusan'])->get(),
             'gelombang' => $gelombang,
-            'jurusan' => Jurusan::all(),
-            'pendaftar' => User::where('gelombang_id', $gelombang->id)->count(),
-            'bayar' => User::whereHas('transaksi', function ($q) {
+            'jurusans' => Jurusan::get(),
+            'pendaftar' => $query->count(),
+            'bayar' => $query->whereHas('transaksi', function ($q) {
                 $q->where('status', 'success');
-            })->where('gelombang_id', $gelombang->id)->count(),
-            'berkas' => User::whereHas('mahasiswa', function ($q) {
+            })->count(),
+            'berkas' => $query->whereHas('mahasiswa', function ($q) {
                 $q->where('status', 'BERKAS LENGKAP');
-            })->where('gelombang_id', $gelombang->id)->count(),
-            'cbt' => User::whereHas('mahasiswa', function ($q) {
+            })->count(),
+            'cbt' => $query->whereHas('mahasiswa', function ($q) {
                 $q->where('status', 'TES / CBT');
-            })->where('gelombang_id', $gelombang->id)->count(),
-            'interview' => User::whereHas('mahasiswa', function ($q) {
+            })->count(),
+            'interview' => $query->whereHas('mahasiswa', function ($q) {
                 $q->where('status', 'INTERVIEW');
-            })->where('gelombang_id', $gelombang->id)->count(),
-            'diterima' => User::whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'BERKAS DITERIIMA');
-            })->where('gelombang_id', $gelombang->id)->count(),
-            'keluar' => User::whereHas('mahasiswa', function ($q) {
+            })->count(),
+            'diterima' => $query->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'BERKAS DITERIMA');
+            })->count(),
+            'keluar' => $query->whereHas('mahasiswa', function ($q) {
                 $q->where('status', 'KELUAR');
-            })->where('gelombang_id', $gelombang->id)->count(),
-            // 'perjur' => DB::table('users')
-            //     ->join('mahasiswa', 'users.id', '=', 'mahasiswa.user_id')
-            //     ->join('jurusan', 'jurusan.id', '=', 'mahasiswa.jurusan_id')
-            //     ->join('gelombang', 'gelombang.id', '=', 'users.gelombang_id')
-            //     ->where('users'),
+            })->count(),
         ]);
     }
 

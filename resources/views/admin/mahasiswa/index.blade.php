@@ -19,9 +19,29 @@
                         <!--<a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">-->
                         <!--    <i class="fa fa-plus"></i> Mahasiswa-->
                         <!--</a>-->
-                        <a href="{{ route('admin.excel.cetak') }}" class="btn btn-success">
-                            Export Data
-                        </a>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select name="jurusan_id" id="" class="mb-3 form-control" required>
+                                        <option value="" readonly>-- Pilih Jurusan --</option>
+                                        @foreach ($jurusans as $jurusan)
+                                            <option value="{{ $jurusan->id }}"
+                                                {{ request('jurusan_id') == $jurusan->id ? 'selected' : '' }}>
+                                                {{ $jurusan->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-default">Cari</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="{{ route('admin.excel.cetak') }}" class="btn btn-success">
+                                        Export Data
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">

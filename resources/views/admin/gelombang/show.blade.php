@@ -125,9 +125,29 @@
                         <!--<a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">-->
                         <!--    <i class="fa fa-plus"></i> Mahasiswa-->
                         <!--</a>-->
-                        <a href="{{ route('admin.excel.cetak', ['gelombang_id' => $gelombang->id]) }}" class="btn btn-success">
-                            Export Data
-                        </a>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select name="jurusan_id" id="" class="mb-3 form-control" required>
+                                        <option value="" readonly>-- Pilih Jurusan --</option>
+                                        @foreach ($jurusans as $jurusan)
+                                            <option value="{{ $jurusan->id }}"
+                                                {{ request('jurusan_id') == $jurusan->id ? 'selected' : '' }}>
+                                                {{ $jurusan->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-default">Cari</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="{{ route('admin.excel.cetak', ['gelombang_id' => $gelombang->id]) }}"
+                                        class="btn btn-success">
+                                        Export Data
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
@@ -141,11 +161,13 @@
                                     <th>Waktu Buat Akun</th>
                                     <th>Phone</th>
                                     <th>Status</th>
+                                    <th>transaksi</th>
+                                    <th>jurusan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             @foreach ($mahasiswa as $siswa)
-                                @isset($siswa->transaksi)
+                                {{-- @isset($siswa->transaksi) --}}
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $siswa->lulusan->asal_sekolah ?? '-' }}</td>
@@ -154,6 +176,8 @@
                                         <td>{{ $siswa->created_at }}</td>
                                         <td>{{ $siswa->mahasiswa->phone }}</td>
                                         <td>{{ $siswa->mahasiswa->status }}</td>
+                                        <td>{{ $siswa->transaksi?->status }}</td>
+                                        <td>{{ $siswa->mahasiswa->jurusan?->name }}</td>
                                         <td>
                                             <a href="{{ route('admin.mahasiswa.edit', $siswa->id) }}"
                                                 class="edit btn btn-warning btn-sm">Edit</a>
@@ -168,7 +192,7 @@
                                                 target="_blank" class="btn btn-success btn-sm">Whatsapp</a>
                                         </td>
                                     </tr>
-                                @endisset
+                                {{-- @endisset --}}
                             @endforeach
                             <tbody>
 

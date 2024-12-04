@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Announcement;
+use App\Models\Gelombang;
+use App\Models\Jurusan;
 use App\Models\Mahasiswa;
 use App\Models\Transaction;
 use App\Models\User;
@@ -46,14 +48,16 @@ class MahasiswaController extends Controller
                     $whatsapp = '<a href="'.$whatsappLink.'" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
 
                     return $siswa->mahasiswa->status === 'DALAM PROSES'
-                    ? $edit.$detail.$delete.$pay.$whatsapp
+                        ? $edit.$detail.$delete.$pay.$whatsapp
                         : $edit.$detail.$delete.$whatsapp;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
 
-        return view('admin.mahasiswa.index');
+        return view('admin.mahasiswa.index', [
+            'jurusans' => Jurusan::get(),
+        ]);
     }
 
     public function create()
@@ -133,15 +137,30 @@ class MahasiswaController extends Controller
                 'status' => 'DALAM PROSES',
 
             ]);
-            $no_transaction = Transaction::latest()->first();
 
-            $transaction = Transaction::create([
+            $gelombang = Gelombang::find($request->gelombang_id);
+            $currentYear = now()->year;
+            $baseTransactionNumber = $currentYear * 1000000; // 2024 becomes 2024000000
+
+            $latestTransaction = Transaction::where('no_transaksi', 'LIKE', "{$currentYear}%")
+                ->orderBy('no_transaksi', 'desc')
+                ->first();
+
+            $no_transaksi = $latestTransaction ? $latestTransaction->no_transaksi + 1 : $baseTransactionNumber + 1;
+
+            $baseBrivaNumber = 999999000; // Base BRIVA starting number
+            $latestBriva = Transaction::latest()->first();
+
+            $briva = $latestBriva ? $latestBriva->briva + 1 : $baseBrivaNumber + 1;
+
+            Transaction::create([
                 'user_id' => $user->id,
-                'no_transaksi' => $no_transaction != null ? $no_transaction->no_transaksi + 1 : 2022001,
-                'briva' => $no_transaction != null ? $no_transaction->briva + 1 : 999999001,
-                'nominal' => 300000,
+                'no_transaksi' => $no_transaksi,
+                'briva' => $briva,
+                'nominal' => $gelombang->nominal,
                 'status' => 'pending',
             ]);
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
@@ -239,13 +258,29 @@ class MahasiswaController extends Controller
 
             ]);
 
-            $transaction = Transaction::create([
+            $gelombang = Gelombang::find($request->gelombang_id);
+            $currentYear = now()->year;
+            $baseTransactionNumber = $currentYear * 1000000; // 2024 becomes 2024000000
+
+            $latestTransaction = Transaction::where('no_transaksi', 'LIKE', "{$currentYear}%")
+                ->orderBy('no_transaksi', 'desc')
+                ->first();
+
+            $no_transaksi = $latestTransaction ? $latestTransaction->no_transaksi + 1 : $baseTransactionNumber + 1;
+
+            $baseBrivaNumber = 999999000; // Base BRIVA starting number
+            $latestBriva = Transaction::latest()->first();
+
+            $briva = $latestBriva ? $latestBriva->briva + 1 : $baseBrivaNumber + 1;
+
+            Transaction::create([
                 'user_id' => $user->id,
-                'no_transaksi' => $no_transaction != null ? $no_transaction->no_transaksi + 1 : 2022001,
-                'briva' => $no_transaction != null ? $no_transaction->briva + 1 : 999999001,
-                'nominal' => 300000,
+                'no_transaksi' => $no_transaksi,
+                'briva' => $briva,
+                'nominal' => $gelombang->nominal,
                 'status' => 'pending',
             ]);
+
             DB::commit();
 
             return view('pageSuccess', compact('transaction'));
