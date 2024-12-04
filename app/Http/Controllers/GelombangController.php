@@ -66,17 +66,24 @@ class GelombangController extends Controller
 
     public function show(Gelombang $gelombang, Request $request)
     {
-        $query = User::where('roles', 'MAHASISWA')->whereHas('mahasiswa.jurusan')->where('gelombang_id', $gelombang->id);
-
-        if ($request->filled('jurusan_id')) {
-            $query->whereHas('mahasiswa', function ($q) use ($request) {
-                $q->where('jurusan_id', $request->jurusan_id);
+        $query = User::where('roles', 'MAHASISWA')
+            ->whereHas('mahasiswa.jurusan')
+            ->where('gelombang_id', $gelombang->id)
+            ->when($request->filled('jurusan_id'), function ($q) use ($request) {
+                $q->whereHas('mahasiswa', function ($subQuery) use ($request) {
+                    $subQuery->where('jurusan_id', $request->jurusan_id);
+                });
+            })
+            ->when($request->filled('penerimaan_id'), function ($q) use ($request) {
+                $q->whereHas('mahasiswa', function ($subQuery) use ($request) {
+                    $subQuery->where('penerimaan_id', $request->penerimaan_id);
+                });
             });
-        }
 
         return view('admin.gelombang.show', [
             'mahasiswa' => $query->with(['mahasiswa.jurusan'])->get(),
             'gelombang' => $gelombang,
+            'penerimaans' => Penerimaan::get(),
             'jurusans' => Jurusan::get(),
             'pendaftar' => $query->count(),
             'bayar' => $query->whereHas('transaksi', function ($q) {

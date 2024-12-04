@@ -128,7 +128,7 @@
                         <form action="">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select name="jurusan_id" id="" class="mb-3 form-control" required>
+                                    <select name="jurusan_id" id="" class="mb-3 form-control">
                                         <option value="" readonly>-- Pilih Jurusan --</option>
                                         @foreach ($jurusans as $jurusan)
                                             <option value="{{ $jurusan->id }}"
@@ -137,10 +137,20 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-md-4">
+                                    <select name="penerimaan_id" id="" class="mb-3 form-control">
+                                        <option value="" readonly>-- Pilih Penerimaan --</option>
+                                        @foreach ($penerimaans as $penerimaan)
+                                            <option value="{{ $penerimaan->id }}"
+                                                {{ request('penerimaan_id') == $penerimaan->id ? 'selected' : '' }}>
+                                                {{ $penerimaan->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-default">Cari</button>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <a href="{{ route('admin.excel.cetak', ['gelombang_id' => $gelombang->id]) }}"
                                         class="btn btn-success">
                                         Export Data
@@ -163,6 +173,7 @@
                                     <th>Status</th>
                                     <th>transaksi</th>
                                     <th>jurusan</th>
+                                    <th>penerimaan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -178,6 +189,7 @@
                                         <td>{{ $siswa->mahasiswa->status }}</td>
                                         <td>{{ $siswa->transaksi?->status }}</td>
                                         <td>{{ $siswa->mahasiswa->jurusan?->name }}</td>
+                                        <td>{{ $siswa->mahasiswa->penerimaan?->name }}</td>
                                         <td>
                                             <a href="{{ route('admin.mahasiswa.edit', $siswa->id) }}"
                                                 class="edit btn btn-warning btn-sm">Edit</a>
