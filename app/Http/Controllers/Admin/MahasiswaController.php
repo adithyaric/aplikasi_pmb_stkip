@@ -19,57 +19,37 @@ class MahasiswaController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $mahasiswa = User::with('transaksi')->where('roles', 'MAHASISWA')->with('mahasiswa', 'biodata')->latest()->get();
+            $mahasiswa = User::with([
+                'transaksi:id,user_id,briva',
+                'mahasiswa:id,user_id,phone,status',
+                // 'biodata',
+                'gelombang:id,nama',
+                'lulusan:id,user_id,asal_sekolah',
+            ])->where('roles', 'MAHASISWA')
+                ->latest('created_at')
+                ->select(['id', 'name', 'nisn', 'password_sementara', 'created_at', 'gelombang_id'])
+                ->get();
 
             return DataTables::of($mahasiswa)
                 ->addIndexColumn()
+                ->addColumn('gelombang', fn ($siswa) => $siswa->gelombang->nama ?? '-')
+                ->addColumn('lulusan', fn ($siswa) => $siswa->lulusan->asal_sekolah ?? '-')
+                ->addColumn('briva', fn ($siswa) => $siswa->transaksi->briva ?? '-')
+                ->addColumn('created', fn ($siswa) => $siswa->created_at->format('d-m-Y'))
                 ->addColumn('action', function ($siswa) {
-                    $actionBtn = '<a href="'.route('admin.mahasiswa.edit', $siswa->id).'" class="edit btn btn-warning btn-sm"> Edit</a>';
-                    $actionBtn .= ' <a href="'.route('admin.mahasiswa.show', $siswa->id).'" class="btn btn-info btn-sm"> Detail</a>';
-                    $actionBtn .= '<a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$siswa->id.'" class="bayar btn btn-danger btn-sm"> Hapus</a> ';
+                    $edit = '<a href="'.route('admin.mahasiswa.edit', $siswa->id).'" class="edit btn btn-warning btn-sm">Edit</a>';
+                    $detail = '<a href="'.route('admin.mahasiswa.show', $siswa->id).'" class="btn btn-info btn-sm">Detail</a>';
+                    $delete = '<a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$siswa->id.'" class="bayar btn btn-danger btn-sm">Hapus</a>';
+                    $pay = $siswa->transaksi ? '<a href="javascript:void(0)" onClick="Bayar(this.id)" id="'.$siswa->transaksi->id.'" class="bayar btn btn-info btn-sm">Bayar</a>' : '';
 
-                    if ($siswa->transaksi != null) {
-                        $transaction = '<a href="javascript:void(0)" onClick="Bayar(this.id)" id="'.$siswa->transaksi->id.'" class="bayar btn btn-info btn-sm"> Bayar</a> ';
-                    } else {
-                        $transaction = '';
-                    }
+                    $whatsappLink = "https://wa.me/{$siswa->mahasiswa->phone}?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20{$siswa->nisn}%0A-%20Password%20:%20{$siswa->password_sementara}%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih";
+                    $whatsapp = '<a href="'.$whatsappLink.'" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
 
-                    $whatsapp = '<a href="https://wa.me/'.$siswa->mahasiswa->phone.'?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20'.$siswa->nisn.'%0A-%20Password%20:%20'.$siswa->password_sementara.'%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
-
-                    // $whatsapp = ' <a href="https://wa.me/' . $siswa->mahasiswa->phone . '?text=*SELAMAT%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA*%20selanjutnya%20silahkan%20anda%20melakukan%20pengisian%20data%20dan%20upload%20berkas%20dengan%20login%20pada%20alamat%20https://entripmb.stkippacitan.ac.id/login%20dengan%20Username%20:%20' . $siswa->nisn . '%20dan%20password%20:%20' . $siswa->password_sementara . '" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
-
-                    return $siswa->mahasiswa->status == 'DALAM PROSES' ? $actionBtn.$transaction.$whatsapp : $actionBtn.$whatsapp;
-                    // return $actionBtn  . $transaction . $whatsapp;
+                    return $siswa->mahasiswa->status === 'DALAM PROSES'
+                    ? $edit.$detail.$delete.$pay.$whatsapp
+                        : $edit.$detail.$delete.$whatsapp;
                 })
-                ->addColumn('briva', function ($transaksi) {
-                    if ($transaksi->transaksi != null) {
-                        return $transaksi->transaksi->briva;
-                    } else {
-                        return '';
-                    }
-                })
-                ->addColumn('gelombang', function ($gelombang) {
-                    if ($gelombang->gelombang_id != null) {
-                        return $gelombang->gelombang->nama;
-                    } else {
-                        return '';
-                    }
-                })
-                ->addColumn('lulusan', function ($lulusan) {
-                    if ($lulusan->lulusan != null) {
-                        return $lulusan->lulusan->asal_sekolah;
-                    } else {
-                        return '';
-                    }
-                })
-                ->addColumn('created', function ($created) {
-                    if ($created != null) {
-                        return $created->created_at;
-                    } else {
-                        return '';
-                    }
-                })
-                ->rawColumns(['action', 'briva', 'gelombang', 'lulusan', 'created'])
+                ->rawColumns(['action'])
                 ->make(true);
         }
 
