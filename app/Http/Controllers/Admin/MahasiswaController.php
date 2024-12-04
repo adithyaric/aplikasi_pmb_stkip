@@ -18,45 +18,77 @@ use Yajra\DataTables\DataTables;
 
 class MahasiswaController extends Controller
 {
-    public function index()
+    // public function index()
+    // {
+    //     if (request()->ajax()) {
+    //         $mahasiswa = User::with([
+    //             'transaksi:id,user_id,briva',
+    //             'mahasiswa:id,user_id,phone,status',
+    //             // 'biodata',
+    //             'gelombang:id,nama',
+    //             'lulusan:id,user_id,asal_sekolah',
+    //         ])->where('roles', 'MAHASISWA')
+    //             ->latest('created_at')
+    //             ->select(['id', 'name', 'nisn', 'password_sementara', 'created_at', 'gelombang_id'])
+    //             ->get();
+
+    //         return DataTables::of($mahasiswa)
+    //             ->addIndexColumn()
+    //             ->addColumn('gelombang', fn ($siswa) => $siswa->gelombang->nama ?? '-')
+    //             ->addColumn('lulusan', fn ($siswa) => $siswa->lulusan->asal_sekolah ?? '-')
+    //             ->addColumn('briva', fn ($siswa) => $siswa->transaksi->briva ?? '-')
+    //             ->addColumn('created', fn ($siswa) => $siswa->created_at->format('d-m-Y'))
+    // ->addColumn('action', function ($siswa) {
+    //     $edit = '<a href="'.route('admin.mahasiswa.edit', $siswa->id).'" class="edit btn btn-warning btn-sm">Edit</a>';
+    //     $detail = '<a href="'.route('admin.mahasiswa.show', $siswa->id).'" class="btn btn-info btn-sm">Detail</a>';
+    //     $delete = '<a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$siswa->id.'" class="bayar btn btn-danger btn-sm">Hapus</a>';
+    //     $pay = $siswa->transaksi ? '<a href="javascript:void(0)" onClick="Bayar(this.id)" id="'.$siswa->transaksi->id.'" class="bayar btn btn-info btn-sm">Bayar</a>' : '';
+
+    //     $whatsappLink = "https://wa.me/{$siswa->mahasiswa->phone}?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20{$siswa->nisn}%0A-%20Password%20:%20{$siswa->password_sementara}%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih";
+    //     $whatsapp = '<a href="'.$whatsappLink.'" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
+
+    //     return $siswa->mahasiswa->status === 'DALAM PROSES'
+    //         ? $edit.$detail.$delete.$pay.$whatsapp
+    //         : $edit.$detail.$delete.$whatsapp;
+    // })
+    // ->rawColumns(['action'])
+    // //             ->make(true);
+    //     }
+
+    //     return view('admin.mahasiswa.index', [
+    //         'jurusans' => Jurusan::get(),
+    //     ]);
+    // }
+
+    public function index(Request $request)
     {
-        if (request()->ajax()) {
-            $mahasiswa = User::with([
-                'transaksi:id,user_id,briva',
-                'mahasiswa:id,user_id,phone,status',
-                // 'biodata',
-                'gelombang:id,nama',
-                'lulusan:id,user_id,asal_sekolah',
-            ])->where('roles', 'MAHASISWA')
-                ->latest('created_at')
-                ->select(['id', 'name', 'nisn', 'password_sementara', 'created_at', 'gelombang_id'])
-                ->get();
+        $jurusanId = $request->input('jurusan_id');
+        $gelombangId = $request->input('gelombang_id');
 
-            return DataTables::of($mahasiswa)
-                ->addIndexColumn()
-                ->addColumn('gelombang', fn ($siswa) => $siswa->gelombang->nama ?? '-')
-                ->addColumn('lulusan', fn ($siswa) => $siswa->lulusan->asal_sekolah ?? '-')
-                ->addColumn('briva', fn ($siswa) => $siswa->transaksi->briva ?? '-')
-                ->addColumn('created', fn ($siswa) => $siswa->created_at->format('d-m-Y'))
-                ->addColumn('action', function ($siswa) {
-                    $edit = '<a href="'.route('admin.mahasiswa.edit', $siswa->id).'" class="edit btn btn-warning btn-sm">Edit</a>';
-                    $detail = '<a href="'.route('admin.mahasiswa.show', $siswa->id).'" class="btn btn-info btn-sm">Detail</a>';
-                    $delete = '<a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$siswa->id.'" class="bayar btn btn-danger btn-sm">Hapus</a>';
-                    $pay = $siswa->transaksi ? '<a href="javascript:void(0)" onClick="Bayar(this.id)" id="'.$siswa->transaksi->id.'" class="bayar btn btn-info btn-sm">Bayar</a>' : '';
+        $mahasiswa = User::with([
+            'transaksi:id,user_id,briva',
+            'mahasiswa:id,user_id,jurusan_id,phone,status',
+            // 'biodata',
+            'gelombang:id,nama',
+            'lulusan:id,user_id,asal_sekolah',
+        ])
+            ->when($gelombangId, function ($query) use ($gelombangId) {
+                return $query->where('gelombang_id', $gelombangId);
+            })
+            ->when($jurusanId, function ($query) use ($jurusanId) {
+                return $query->whereHas('mahasiswa', function ($q) use ($jurusanId) {
+                    return $q->where('jurusan_id', $jurusanId);
+                });
+            })
+            ->where('roles', 'MAHASISWA')
+            ->latest('created_at')
+            ->select(['id', 'name', 'nisn', 'password_sementara', 'created_at', 'gelombang_id'])
+            ->paginate(15);
 
-                    $whatsappLink = "https://wa.me/{$siswa->mahasiswa->phone}?text=SELAMAT%20PEMBAYARAN%20PENDAFTARAN%20ANDA%20TELAH%20KAMI%20TERIMA.%0ATahap%20selanjutnya%20adalah%20LOGIN%20melalui%20alamat%20https://regpmb.stkippacitan.ac.id/login%20.%0A-%20Username%20:%20{$siswa->nisn}%0A-%20Password%20:%20{$siswa->password_sementara}%0ASilahkan%20unggah%20data%20dan%20berkas%20pendaftaranmu%20segera%20untuk%20bisa%20mengikuti%20tahapan%20seleksi%20selanjutnya.%20Terima%20kasih";
-                    $whatsapp = '<a href="'.$whatsappLink.'" target="_blank" class="btn btn-success btn-sm">Whatsapp</a>';
-
-                    return $siswa->mahasiswa->status === 'DALAM PROSES'
-                        ? $edit.$detail.$delete.$pay.$whatsapp
-                        : $edit.$detail.$delete.$whatsapp;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-
-        return view('admin.mahasiswa.index', [
+        return view('admin.mahasiswa.index_new', [
             'jurusans' => Jurusan::get(),
+            'gelombangs' => Gelombang::get(),
+            'mahasiswa' => $mahasiswa,
         ]);
     }
 

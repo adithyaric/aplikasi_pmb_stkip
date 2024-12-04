@@ -13,7 +13,7 @@ class ExportController extends Controller
     {
         $gelombangId = $request->gelombang_id;
         $gelombang = Gelombang::find($request->gelombang_id);
-        $name = 'Rekapan '.$gelombang->nama.'.csv';
+        $name = 'Rekapan '.$gelombang?->nama.'.csv';
 
         return Excel::download(new MahasiswaExport($gelombangId), $name);
     }

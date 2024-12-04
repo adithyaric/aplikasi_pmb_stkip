@@ -64,7 +64,7 @@ class GelombangController extends Controller
         return redirect()->route('admin.gelombang.index')->with('success', 'data berhasil disimpan');
     }
 
-    public function show(Gelombang $gelombang, Request $request)
+    public function show(Request $request, Gelombang $gelombang)
     {
         $query = User::where('roles', 'MAHASISWA')
             ->whereHas('mahasiswa.jurusan')
