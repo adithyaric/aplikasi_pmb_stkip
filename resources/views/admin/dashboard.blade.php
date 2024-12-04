@@ -172,7 +172,9 @@
             <!-- small box -->
             <div class="small-box bg-blue-gradient">
                 <div class="text-center">
-                    <h3 style="margin-top: 3px !important;">{{ $key->mahasiswa->count() }}</h3>
+                    <h3 style="margin-top: 3px !important;">
+                        {{ $key->mahasiswa->count() }}
+                    </h3>
                     <hr style="margin-bottom: 3px !important;">
                     <p style="font-size: 10px;">{{ str_replace('PENDIDIKAN ', '', $key->name) }}</p>
                 </div>

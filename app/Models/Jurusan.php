@@ -18,10 +18,10 @@ class Jurusan extends Model
         return $this->hasMany(Mahasiswa::class);
     }
 
-    public function user()
-    {
-        return $this->hasMany(Mahasiswa::class);
-    }
+    // public function user()
+    // {
+    //     return $this->hasMany(Mahasiswa::class);
+    // }
 
     public function gelombang()
     {
