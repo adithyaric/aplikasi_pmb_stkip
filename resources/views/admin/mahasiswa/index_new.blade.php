@@ -22,22 +22,22 @@
                         <form action="">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <select name="jurusan_id" id="" class="mb-3 form-control">
-                                        <option value="" readonly>-- Pilih Jurusan --</option>
-                                        @foreach ($jurusans as $jurusan)
-                                            <option value="{{ $jurusan->id }}"
-                                                {{ request('jurusan_id') == $jurusan->id ? 'selected' : '' }}>
-                                                {{ $jurusan->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
                                     <select name="gelombang_id" id="" class="mb-3 form-control">
                                         <option value="" readonly>-- Pilih Gelombang --</option>
                                         @foreach ($gelombangs as $gelombang)
                                             <option value="{{ $gelombang->id }}"
                                                 {{ request('gelombang_id') == $gelombang->id ? 'selected' : '' }}>
                                                 {{ $gelombang->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="jurusan_id" id="" class="mb-3 form-control">
+                                        <option value="" readonly>-- Pilih Jurusan --</option>
+                                        @foreach ($jurusans as $jurusan)
+                                            <option value="{{ $jurusan->id }}"
+                                                {{ request('jurusan_id') == $jurusan->id ? 'selected' : '' }}>
+                                                {{ $jurusan->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -106,7 +106,7 @@
                                     </tr>
                                 @endforeach
                                 <tr>
-<td colspan="8">
+<td colspan="10">
 <ul class="pagination justify-content-center">
     {{-- First Page Link --}}
     <li class="page-item {{ $mahasiswa->onFirstPage() ? 'disabled' : '' }}">

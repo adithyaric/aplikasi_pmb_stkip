@@ -172,7 +172,7 @@
 
 
                     <li
-                        class="{{ setActive('admin/jurusan') }} {{ setActive('admin/penerimaan') }} {{ setActive('admin/transaction') }} {{ setActive('admin/video') }} {{ setActive('admin/gelombang') }}  treeview">
+                        class="{{ setActive('admin/jurusan') }} {{ setActive('admin/penerimaan') }} {{ setActive('admin/transaction') }} {{ setActive('admin/video') }} {{ setActive('admin/gelombang') }} {{ setActive('admin/tahun') }} {{ setActive('admin/persyaratan') }} {{ setActive('admin/pengumuman') }} {{ setActive('admin/setting') }} treeview">
                         <a href="#">
                             <i class="fa fa-th"></i> <span>Setting</span>
                             <span class="pull-right-container">
