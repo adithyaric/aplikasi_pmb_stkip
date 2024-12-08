@@ -22,8 +22,11 @@ class GelombangController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
                     $editRoute = route('admin.gelombang.edit', $data->id);
+                    $showRoute = route('admin.gelombang.show', $data->id);
 
-                    return '<a href="'.$editRoute.'" class="edit btn btn-success btn-sm">Edit</a>
+                    return '
+                        <a href="'.$editRoute.'" class="edit btn btn-success btn-sm">Edit</a>
+                        <a href="'.$showRoute.'" class="edit btn btn-info btn-sm">Detail</a>
                         <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
                 })
                 ->addColumn('nominal', function ($data) {
@@ -66,9 +69,21 @@ class GelombangController extends Controller
 
     public function show(Request $request, Gelombang $gelombang)
     {
+        $search = $request->input('search');
         $query = User::where('roles', 'MAHASISWA')
             ->whereHas('mahasiswa.jurusan')
             ->where('gelombang_id', $gelombang->id)
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%$search%")
+                        ->orWhereHas('mahasiswa', function ($q) use ($search) {
+                            $q->where('phone', 'like', "%$search%");
+                        })
+                        ->orWhereHas('lulusan', function ($q) use ($search) {
+                            $q->where('asal_sekolah', 'like', "%$search%");
+                        });
+                });
+            })
             ->when($request->filled('jurusan_id'), function ($q) use ($request) {
                 $q->whereHas('mahasiswa', function ($subQuery) use ($request) {
                     $subQuery->where('jurusan_id', $request->jurusan_id);
