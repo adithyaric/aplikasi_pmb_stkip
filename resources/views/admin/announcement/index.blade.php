@@ -260,8 +260,8 @@
 
     // Initialize Date Range Picker
     $('input[name="date_start"], input[name="date_end"]').daterangepicker({
+        autoApply: true,
         singleDatePicker: true,
-        autoUpdateInput: false,
         locale: {
             format: 'YYYY-MM-DD'
         }

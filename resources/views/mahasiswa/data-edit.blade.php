@@ -22,10 +22,11 @@
                                 <label for="jalur">Kelas</label>
                                 <select required name="jalur" class="form-control" id="jalur">
                                     <option value="" readonly>Pilih Kelas</option>
-                                    @foreach($kelas as $k)
-                                    <option value="{{ $k->name }}" {{ $mahasiswa->jalur == $k->name ? 'selected' : '' }}>
-                                        {{ strtoupper($k->name) }}
-                                    </option>
+                                    @foreach ($kelas as $k)
+                                        <option value="{{ $k->name }}"
+                                            {{ $mahasiswa->jalur == $k->name ? 'selected' : '' }}>
+                                            {{ strtoupper($k->name) }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('jalur')
@@ -68,7 +69,9 @@
                                 <select required name="penerimaan_id" class="form-control" id="penerimaan">
                                     <option value="">Pilih Jalur Penerimaan</option>
                                     @foreach ($penerimaan as $item)
-                                        <option value="{{ $item->id }}" {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}"
+                                            {{ $mahasiswa->penerimaan_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('penerimaan_id')
@@ -82,36 +85,40 @@
                                         $attachmentValue = $attachment->$attachmentField; // Get the corresponding value from the attachment
                                     @endphp
 
-                                    <div class="col-lg-12 persyaratan-item" data-penerimaan="{{ $syarat->penerimaan->pluck('id')->join(',') }}">
+                                    <div class="col-lg-12 persyaratan-item"
+                                        data-penerimaan="{{ $syarat->penerimaan->pluck('id')->join(',') }}">
                                         <div class="form-group">
                                             <label>{{ strtoupper(str_replace('_', ' ', $syarat->name)) }}</label>
 
                                             @if ($syarat->input_type === 'file' && $attachmentValue)
                                                 <div>
                                                     <a href="{{ asset('storage/' . $attachmentValue) }}" target="_blank">
-@php
-    $extension = pathinfo($attachmentValue, PATHINFO_EXTENSION);
-    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-@endphp
+                                                        @php
+                                                            $extension = pathinfo($attachmentValue, PATHINFO_EXTENSION);
+                                                            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+                                                        @endphp
 
-@if (in_array(strtolower($extension), $allowedExtensions))
-    <img src="{{ asset('storage/' . $attachmentValue) }}" alt="{{ $syarat->slug }}" class="img-thumbnail" style="max-width: 150px;">
-@else
-    <p>Preview</p>
-@endif
+                                                        @if (in_array(strtolower($extension), $allowedExtensions))
+                                                            <img src="{{ asset('storage/' . $attachmentValue) }}"
+                                                                alt="{{ $syarat->slug }}" class="img-thumbnail"
+                                                                style="max-width: 150px;">
+                                                        @else
+                                                            <p>Preview</p>
+                                                        @endif
                                                     </a>
                                                 </div>
                                             @endif
 
-                                            <input type="{{ $syarat->input_type }}"
-                                                name="{{ $syarat->slug }}"
+                                            <input type="{{ $syarat->input_type }}" name="{{ $syarat->slug }}"
                                                 class="form-control"
-                                                {{ $syarat->input_type === 'file' ? '' : 'value=' . old($syarat->slug, $attachmentValue) }}>
+                                                {{ $syarat->input_type === 'file' ? '' : 'value=' . old($syarat->slug, $attachmentValue) }}
+                                                {{ $syarat->is_required ? 'required' : '' }}>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
-                            <p><strong>Note : <strong><i>File upload harus berformat <strong>"PDF/PNG/JPG/JPEG"</strong> dengan ukuran <strong>maksimal 3 MB (Total Semua Berkas)</strong></i></p>
+                            <p><strong>Note : <strong><i>File upload harus berformat <strong>"PDF/PNG/JPG/JPEG"</strong>
+                                            dengan ukuran <strong>maksimal 3 MB (Total Semua Berkas)</strong></i></p>
                             <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
                     </div>
 
@@ -163,8 +170,11 @@
                             $('#Biodata').append(`
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label>${item.name}</label>
-                                        <input type="${item.input_type}" name="${item.name}" class="form-control">
+                                        ${item.is_required ? '<span style="color: red;"> *wajib diisi</span>' : ''}
+                                        <label style="text-transform: uppercase;">
+                                            ${item.name}
+                                        </label>
+                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.is_required ? 'required' : ''}>
                                     </div>
                                 </div>
                             `);

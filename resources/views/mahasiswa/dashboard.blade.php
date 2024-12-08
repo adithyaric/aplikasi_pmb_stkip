@@ -6,23 +6,20 @@
             <small>Mahasiswa</small>
         </h1>
     </section>
-
-    <section class="content">
-        <div class="row">
-            @foreach ($announcements as $announcement)
-                <div class="col-md-12">
-                    <div class="alert alert-success alert-dismissible">
-                        <h5>{{ $announcement->title }}</h5>
-                        <p>{!! $announcement->content !!}</p>
-                    </div>
-                </div>
-                <!-- ./col -->
-            @endforeach
-        </div>
-    </section>
     @if ($mahasiswa->status == 'TES / CBT' || $mahasiswa == 'INTERVIEW')
         <!-- Main content -->
         <section class="content">
+            <div class="row">
+                @foreach ($announcements as $announcement)
+                    <div class="col-md-12">
+                        <div class="alert alert-warning alert-dismissible">
+                            <h5>{{ $announcement->title }}</h5>
+                            <p>{!! $announcement->content !!}</p>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endforeach
+            </div>
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-md-12">
@@ -126,6 +123,17 @@
         </div>
     @else
         <section class="content">
+            <div class="row">
+                @foreach ($announcements as $announcement)
+                    <div class="col-md-12">
+                        <div class="alert alert-warning alert-dismissible">
+                            <h5>{{ $announcement->title }}</h5>
+                            <p>{!! $announcement->content !!}</p>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endforeach
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-success alert-dismissible">

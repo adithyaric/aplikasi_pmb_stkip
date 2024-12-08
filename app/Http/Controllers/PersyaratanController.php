@@ -34,10 +34,11 @@ class PersyaratanController extends Controller
             'id' => $request->id,
         ], [
             'name' => $request->name,
+            'is_required' => $request->is_required == '1' ? true : false,
             'slug' => $request->slug ?: Str::slug($request->name),
         ]);
 
-        return redirect()->route('admin.persyaratan.index')->with('success', 'data berhasil disimpan');
+        return redirect()->route('admin.persyaratan.index')->with('success', 'Data berhasil disimpan');
     }
 
     public function edit($id)

@@ -9,7 +9,7 @@ class Persyaratan extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'slug', 'input_type'];
+    protected $fillable = ['name', 'slug', 'input_type', 'is_required'];
 
     public function penerimaan()
     {

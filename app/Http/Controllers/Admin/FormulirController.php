@@ -67,7 +67,8 @@ class FormulirController extends Controller
         // dd($penerimaan->persyaratan->toArray(), $request->all());
         foreach ($penerimaan->persyaratan as $persyaratan) {
             $fieldName = $persyaratan->slug;
-            $rules[$fieldName] = 'mimes:pdf,png,jpg,jpeg|max:3072|required';
+            $req = $persyaratan->is_required ? 'required' : 'nullable';
+            $rules[$fieldName] = 'mimes:pdf,png,jpg,jpeg|max:3072|'.$req;
 
             // dd($fieldName, $rules[$fieldName]);
             if ($request->hasFile($fieldName)) {

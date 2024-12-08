@@ -176,7 +176,7 @@
                                                         name="{{ $syarat->slug }}"
                                                         class="form-control"
                                                         {{ $syarat->input_type === 'file' ? '' : 'value=' . old($syarat->slug, $attachmentValue) }}
-                                                        {{ $syarat->input_type === 'file' ? 'required' : '' }}>
+                                                        {{ $syarat->is_required ? 'required' : '' }}>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -234,7 +234,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>${item.name}</label>
-                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.input_type === 'file' ? 'required' : ''}>
+                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.is_required ? 'required' : ''}>
                                     </div>
                                 </div>
                             `);

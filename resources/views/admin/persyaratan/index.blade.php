@@ -54,7 +54,7 @@
                 <div class="modal-body">
                     <form action="{{ route('admin.persyaratan.store') }}" method="post">
                         @csrf
-                        <div class="form-group @error('nisn') has-error @enderror">
+                        <div class="form-group @error('name') has-error @enderror">
                             <label for="name">Persyaratan</label>
                             <input type="text" class="form-control" required name="name"
                                 placeholder="Masukan Persyaratan">
@@ -62,17 +62,20 @@
                             <input type="text" class="form-control" name="slug" placeholder="Masukan Persyaratan">
                         </div>
 
+                        <div class="form-group">
+                            <label>Is Required</label><br>
+                            <label><input type="radio" name="is_required" value="1" checked> Yes</label>
+                            <label><input type="radio" name="is_required" value="0"> No</label>
+                        </div>
+
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary pull-left"> Kirim</button>
+                            <button type="submit" class="btn btn-primary pull-left">Kirim</button>
                             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
-
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog">
@@ -85,26 +88,30 @@
                 <div class="modal-body">
                     <form action="{{ route('admin.persyaratan.store') }}" method="post">
                         @csrf
-                        <div class="form-group @error('nisn') has-error @enderror">
+                        <div class="form-group @error('name') has-error @enderror">
                             <label for="name">Persyaratan</label>
                             <input type="text" class="form-control" required name="name" id="name"
                                 placeholder="Masukan Persyaratan">
                             <label for="slug"><i>kolom</i></label>
                             <input type="text" class="form-control" name="slug" id="slug"
                                 placeholder="Masukan Persyaratan">
-                            <input type="hidden" class="form-control" required name="id" id="id"
-                                placeholder="Masukan Persyaratan">
+                            <input type="hidden" name="id" id="id">
                         </div>
+
+                        <div class="form-group">
+                            <label>Is Required</label><br>
+                            <label><input type="radio" name="is_required" value="1" id="is_required_yes"> Yes</label>
+                            <label><input type="radio" name="is_required" value="0" id="is_required_no"> No</label>
+                        </div>
+
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary pull-left"> Kirim</button>
+                            <button type="submit" class="btn btn-primary pull-left">Kirim</button>
                             <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
 @endsection
 
@@ -148,12 +155,19 @@
                 dataType: 'json',
                 type: 'get',
                 success: function(hasil) {
-                    $('#name').val(hasil.data.name)
-                    $('#slug').val(hasil.data.slug)
-                    $('#id').val(hasil.data.id)
-                    $('#modal-edit').modal('show')
+                    $('#name').val(hasil.data.name);
+                    $('#slug').val(hasil.data.slug);
+                    $('#id').val(hasil.data.id);
+
+                    if (hasil.data.is_required) {
+                        $('#is_required_yes').prop('checked', true);
+                    } else {
+                        $('#is_required_no').prop('checked', true);
+                    }
+
+                    $('#modal-edit').modal('show');
                 }
-            })
+            });
         }
         //aksi delete
         function Delete(id) {
