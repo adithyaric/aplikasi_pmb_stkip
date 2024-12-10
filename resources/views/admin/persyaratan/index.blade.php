@@ -29,6 +29,7 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>slug/kolom</th>
+                                    <th>Wajib Diisi</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -63,9 +64,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Is Required</label><br>
-                            <label><input type="radio" name="is_required" value="1" checked> Yes</label>
-                            <label><input type="radio" name="is_required" value="0"> No</label>
+                            <label>Wajib Diisi</label><br>
+                            <label><input type="radio" name="is_required" value="1" checked> Wajib</label>
+                            <label><input type="radio" name="is_required" value="0"> Tidak Wajib</label>
                         </div>
 
                         <div class="modal-footer">
@@ -99,9 +100,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Is Required</label><br>
-                            <label><input type="radio" name="is_required" value="1" id="is_required_yes"> Yes</label>
-                            <label><input type="radio" name="is_required" value="0" id="is_required_no"> No</label>
+                            <label>Wajib Diisi</label><br>
+                            <label><input type="radio" name="is_required" value="1" id="is_required_yes"> Wajib</label>
+                            <label><input type="radio" name="is_required" value="0" id="is_required_no"> Tidak Wajib</label>
                         </div>
 
                         <div class="modal-footer">
@@ -125,7 +126,8 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{!! url()->current() !!}",
-                columns: [{
+                columns: [
+                    {
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
                     },
@@ -136,6 +138,13 @@
                     {
                         data: 'slug',
                         name: 'slug'
+                    },
+                    {
+                        data: 'is_required',
+                        name: 'is_required',
+                        render: function(data) {
+                            return data == 1 ? 'Wajib' : 'Tidak Wajib';
+                        }
                     },
                     {
                         data: 'action',
@@ -155,11 +164,12 @@
                 dataType: 'json',
                 type: 'get',
                 success: function(hasil) {
+                    console.log(hasil.data.is_required); // Check what value is being returned
                     $('#name').val(hasil.data.name);
                     $('#slug').val(hasil.data.slug);
                     $('#id').val(hasil.data.id);
 
-                    if (hasil.data.is_required) {
+                    if (hasil.data.is_required == 1 || hasil.data.is_required === true) {
                         $('#is_required_yes').prop('checked', true);
                     } else {
                         $('#is_required_no').prop('checked', true);
