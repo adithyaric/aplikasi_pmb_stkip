@@ -242,7 +242,7 @@ class MahasiswaController extends Controller
         $announcements = Announcement::where('date_start', '<=', $currentTime)
             ->where('date_end', '>=', $currentTime)
             ->whereHas('gelombangs', function ($query) use ($gelombangIds) {
-                $query->whereIn('gelombang_id', $gelombangIds);
+                $query->where('gelombang_id', $gelombangIds);
             })
             ->latest()
             ->get();
