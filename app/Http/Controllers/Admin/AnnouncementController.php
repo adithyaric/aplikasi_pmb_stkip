@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Announcement;
+use App\Models\Gelombang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
@@ -18,7 +19,8 @@ class AnnouncementController extends Controller
             return DataTables::of($announcement)
                 ->addIndexColumn()
                 ->addColumn('action', function ($data) {
-                    $actionBtn = '<a href="javascript:void(0)" onClick="Edit(this.id)" id="'.$data->id.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $editRoute = route('admin.pengumuman.edit', $data->id);
+                    $actionBtn = '<a href="'.$editRoute.'" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" onClick="Delete(this.id)" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</a>';
 
                     return $actionBtn;
                 })
@@ -31,7 +33,7 @@ class AnnouncementController extends Controller
 
     public function store(Request $request)
     {
-        Announcement::updateOrCreate(
+        $announcement = Announcement::updateOrCreate(
             [
                 'id' => $request->id,
             ],
@@ -44,6 +46,8 @@ class AnnouncementController extends Controller
             ]
         );
 
+        $announcement->gelombangs()->sync($request->gelombangs);
+
         return redirect()->route('admin.pengumuman.index')->with('success', 'Data berhasil disimpan');
     }
 
@@ -51,10 +55,15 @@ class AnnouncementController extends Controller
     {
         $announcement = Announcement::findOrFail($id);
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $announcement,
+        return view('admin.pengumuman.edit', [
+            'pengumuman' => $announcement,
+            'gelombangs' => Gelombang::get(),
         ]);
+
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $announcement,
+        // ]);
     }
 
     public function destroy($id)

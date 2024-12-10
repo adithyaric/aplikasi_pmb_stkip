@@ -16,4 +16,9 @@ class Announcement extends Model
         'date_start',
         'date_end',
     ];
+
+    public function gelombangs()
+    {
+        return $this->belongsToMany(Gelombang::class, 'gelombang_announcement');
+    }
 }

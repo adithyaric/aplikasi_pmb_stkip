@@ -236,10 +236,14 @@ class MahasiswaController extends Controller
     public function dashboard()
     {
         $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
+        $gelombangIds = Auth::user()->gelombang_id;
         $currentTime = Carbon::now();
 
         $announcements = Announcement::where('date_start', '<=', $currentTime)
             ->where('date_end', '>=', $currentTime)
+            ->whereHas('gelombangs', function ($query) use ($gelombangIds) {
+                $query->whereIn('gelombang_id', $gelombangIds);
+            })
             ->latest()
             ->get();
 

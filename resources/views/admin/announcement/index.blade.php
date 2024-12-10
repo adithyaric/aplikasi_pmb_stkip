@@ -161,26 +161,26 @@
     });
 
     //aksi show modal edit
-    function Edit(id) {
-        $.ajax({
-            url: 'pengumuman/' + id + '/edit',
-            dataType: 'json',
-            type: 'get',
-            success: function(hasil) {
-                // Populate fields
-                $('#edit-title').val(hasil.data.title);
-                $('#edit-date_start').val(hasil.data.date_start);
-                $('#edit-date_end').val(hasil.data.date_end);
-                $('#id').val(hasil.data.id);
+    // function Edit(id) {
+    //     $.ajax({
+    //         url: 'pengumuman/' + id + '/edit',
+    //         dataType: 'json',
+    //         type: 'get',
+    //         success: function(hasil) {
+    //             // Populate fields
+    //             $('#edit-title').val(hasil.data.title);
+    //             $('#edit-date_start').val(hasil.data.date_start);
+    //             $('#edit-date_end').val(hasil.data.date_end);
+    //             $('#id').val(hasil.data.id);
 
-                // Populate Quill editor
-                quillEdit.root.innerHTML = hasil.data.content;
+    //             // Populate Quill editor
+    //             quillEdit.root.innerHTML = hasil.data.content;
 
-                // Open the modal after all fields are populated
-                $('#modal-edit').modal('show');
-            }
-        });
-    }
+    //             // Open the modal after all fields are populated
+    //             $('#modal-edit').modal('show');
+    //         }
+    //     });
+    // }
 
         // On form submit, set Quill content to the hidden input
         $('#modal-edit form').on('submit', function(e) {
