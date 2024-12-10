@@ -190,6 +190,11 @@
                                     <i class="fa fa-users"></i> <span>Jurusan</span>
                                 </a>
                             </li>
+                            <li class="{{ setActive('admin/kelas') }}">
+                                <a href="{{ route('admin.kelas.index') }}">
+                                    <i class="fa fa-circle"></i> <span>Kelas</span>
+                                </a>
+                            </li>
                             <li class="{{ setActive('admin/persyaratan') }}">
                                 <a href="{{ route('admin.persyaratan.index') }}">
                                     <i class="fa fa-circle"></i> <span>Persyaratan</span>
