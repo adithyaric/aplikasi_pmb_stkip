@@ -11,6 +11,18 @@
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
     <title>Cetak Kartu Pendaftaran!</title>
+    <style>
+        .gelombang-box {
+            display: inline-block;
+            border: 2px solid black;
+            padding: 5px 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: #ffffff;
+            white-space: nowrap; /* Prevents text from wrapping */
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,27 +40,13 @@
         </tr>
     </table>
     <hr style="border-color: black; border: 2px; margin-top: -30px;">
-    <style>
-    .gelombang-box {
-        width: 150px;
-        height: 50px;
-        border: 2px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        text-transform: uppercase;
-        background-color: #f0f0f0;
-        margin: 10px 0;
-}
-    </style>
     @if (auth()->user()->gelombang && auth()->user()->gelombang->nama)
     <div class="gelombang-box">
         {{ strtoupper(auth()->user()->gelombang->nama) }}
     </div>
     @endif
     <br>
-    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px;">KARTU PENDAFTARAN MAHASISWA
+    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">KARTU PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
         AKADEMIK {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}</p>
     <div class="text-right">
@@ -141,7 +139,7 @@
     </table>
 
     <ul style="font-family: 'Times New Roman'; font-size: 11px;">
-        <li>Formulir ini adalah bukti saudara/ saudari terdaftar sebagai calon mahasiswa baru Tahun Akademik 2023/2024.
+        <li>Formulir ini adalah bukti saudara/ saudari terdaftar sebagai calon mahasiswa baru Tahun Akademik {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}.
         </li>
         <li>Cetak kartu pendaftaran menggunakan kertas berukuran A4 (jika dibutuhkan).</li>
         <li>Kartu pendaftaran diberikan kepada pendaftar sebagai tanda bukti bahwa saudara / saudari melakukan tahap
@@ -173,35 +171,15 @@
         </tr>
     </table>
     <hr style="border-color: black; border: 2px; margin-top: -30px;">
-    @if (Auth::user()->gelombang_id == 4)
-    <img src="{{ public_path('assets/img/gelombang-1.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 5)
-    <img src="{{ public_path('assets/img/gelombang-2.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 6)
-    <img src="{{ public_path('assets/img/gelombang-3.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 7)
-    <img src="{{ public_path('assets/img/gelombang-4.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 8)
-    <img src="{{ public_path('assets/img/gelombang-5.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 9)
-    <img src="{{ public_path('assets/img/gelombang-k.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 10)
-    <img src="{{ public_path('assets/img/gelombang-1.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 11)
-    <img src="{{ public_path('assets/img/gelombang-2.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 12)
-    <img src="{{ public_path('assets/img/gelombang-3.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 13)
-    <img src="{{ public_path('assets/img/gelombang-4.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 14)
-    <img src="{{ public_path('assets/img/gelombang-5.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 15)
-    <img src="{{ public_path('assets/img/gelombang-k.png') }}" style="width: 150px !important;">
+    @if (auth()->user()->gelombang && auth()->user()->gelombang->nama)
+    <div class="gelombang-box">
+        {{ strtoupper(auth()->user()->gelombang->nama) }}
+    </div>
     @endif
     <br>
-    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px;">FORMULIR PENDAFTARAN MAHASISWA
+    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
-        AKADEMIK 2023/2024</p>
+        AKADEMIK {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}</p></p>
     <div class="text-right">
         <img src="{{ public_path('storage/'.Auth::user()->photo) }}" style="width:125px !important;border-raidus:10px;"
             alt="">
@@ -326,35 +304,15 @@
         </tr>
     </table>
     <hr style="border-color: black; border: 2px; margin-top: -30px;">
-    @if (Auth::user()->gelombang_id == 4)
-    <img src="{{ public_path('assets/img/gelombang-1.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 5)
-    <img src="{{ public_path('assets/img/gelombang-2.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 6)
-    <img src="{{ public_path('assets/img/gelombang-3.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 7)
-    <img src="{{ public_path('assets/img/gelombang-4.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 8)
-    <img src="{{ public_path('assets/img/gelombang-5.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 9)
-    <img src="{{ public_path('assets/img/gelombang-k.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 10)
-    <img src="{{ public_path('assets/img/gelombang-1.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 11)
-    <img src="{{ public_path('assets/img/gelombang-2.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 12)
-    <img src="{{ public_path('assets/img/gelombang-3.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 13)
-    <img src="{{ public_path('assets/img/gelombang-4.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 14)
-    <img src="{{ public_path('assets/img/gelombang-5.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 15)
-    <img src="{{ public_path('assets/img/gelombang-k.png') }}" style="width: 150px !important;">
+    @if (auth()->user()->gelombang && auth()->user()->gelombang->nama)
+    <div class="gelombang-box">
+        {{ strtoupper(auth()->user()->gelombang->nama) }}
+    </div>
     @endif
     <br>
-    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px;">FORMULIR PENDAFTARAN MAHASISWA
+    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
-        AKADEMIK 2023/2024</p>
+        AKADEMIK {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}</p></p>
 
     <table class="table table-borderless" style="margin-top: -150px; font-family: Times New Roman; font-size: 10px;">
         <tr>
@@ -474,35 +432,15 @@
         </tr>
     </table>
     <hr style="border-color: black; border: 2px; margin-top: -30px;">
-    @if (Auth::user()->gelombang_id == 4)
-    <img src="{{ public_path('assets/img/gelombang-1.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 5)
-    <img src="{{ public_path('assets/img/gelombang-2.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 6)
-    <img src="{{ public_path('assets/img/gelombang-3.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 7)
-    <img src="{{ public_path('assets/img/gelombang-4.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 8)
-    <img src="{{ public_path('assets/img/gelombang-5.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 9)
-    <img src="{{ public_path('assets/img/gelombang-k.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 10)
-    <img src="{{ public_path('assets/img/gelombang-1.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 11)
-    <img src="{{ public_path('assets/img/gelombang-2.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 12)
-    <img src="{{ public_path('assets/img/gelombang-3.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 13)
-    <img src="{{ public_path('assets/img/gelombang-4.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 14)
-    <img src="{{ public_path('assets/img/gelombang-5.png') }}" style="width: 150px !important;">
-    @elseif (Auth::user()->gelombang_id == 15)
-    <img src="{{ public_path('assets/img/gelombang-k.png') }}" style="width: 150px !important;">
+    @if (auth()->user()->gelombang && auth()->user()->gelombang->nama)
+    <div class="gelombang-box">
+        {{ strtoupper(auth()->user()->gelombang->nama) }}
+    </div>
     @endif
     <br>
-    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px;">FORMULIR PENDAFTARAN MAHASISWA
+    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
-        AKADEMIK 2023/2024</p>
+        AKADEMIK {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}</p></p>
 
     <table class="table table-borderless" style="margin-top: -150px; font-family: Times New Roman; font-size: 10px;">
         <tr>
