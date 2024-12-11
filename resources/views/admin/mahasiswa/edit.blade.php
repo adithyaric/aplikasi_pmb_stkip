@@ -44,7 +44,7 @@
                                     <label for="exampleInputPassword1">Tanggal Lahir</label>
                                     <input type="date" class="form-control " name="tanggal_lahir"
                                         value="{{ old('tempat_lahir', $mahasiswa->mahasiswa->tanggal_lahir) }}"
-                                        placeholder="Masukan Tempat lahir">
+                                        placeholder="Masukan Tanggal lahir">
                                     @error('tanggal_lahir')<span class="help-block">{{ $message }}</span>@enderror
 
                                 </div>
@@ -52,9 +52,16 @@
                                     <label for="exampleInputPassword1">No Hp</label>
                                     <input type="number" class="form-control " name="phone"
                                         value="{{ old('tempat_lahir', $mahasiswa->mahasiswa->phone) }}"
-                                        placeholder="Masukan Tempat lahir">
+                                        placeholder="Masukan No Hp">
                                     @error('phone')<span class="help-block">{{ $message }}</span>@enderror
                                 </div>
+                                {{-- <div class="form-group @error('phone_ortu') has-error @enderror "> --}}
+                                    {{-- <label for="exampleInputPassword1">No Hp Ortu</label> --}}
+                                    {{-- <input type="number" class="form-control " name="phone_ortu" --}}
+                                        {{-- value="{{ old('tempat_lahir', $mahasiswa->mahasiswa->phone_ortu) }}" --}}
+                                        {{-- placeholder="Masukan No Hp Ortu"> --}}
+                                    {{-- @error('phone_ortu')<span class="help-block">{{ $message }}</span>@enderror --}}
+                                {{-- </div> --}}
                                 <div class="form-group @error('status') has-error @enderror ">
                                     <label for="exampleInputPassword1">Status</label>
                                     <select name="status" class="form-control" id="">

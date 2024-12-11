@@ -197,7 +197,15 @@
                                                     placeholder="Masukan Nomor Handphone">
                                                 @error('phone')
                                                 <span class="help-block">{{ $message }}</span>
-
+                                                @enderror
+                                            </div>
+                                            <div class="form-group @error('phone_ortu') has-error @enderror">
+                                                <label for="phone_ortu">Nomor HP Orang Tua </label>
+                                                <input type="text" class="form-control " name="phone_ortu"
+                                                    value="{{ old('phone_ortu')?? $biodata == null ? '' : $biodata->phone_ortu }}"
+                                                    placeholder="Nomor HP Orang Tua">
+                                                @error('phone_ortu')
+                                                <span class="help-block">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="form-group @error('email') has-error @enderror ">
@@ -231,7 +239,7 @@
                                                     @error('RT')
                                                     <span class="help-block">{{ $message }}</span>
                                                     @enderror
-                                                </div> 
+                                                </div>
                                                  <div class="form-group @error('RW') has-error @enderror">
                                                     <label for="exampleInputEmail1">RW </label>
                                                     <input type="text" required class="form-control" name="RW"
@@ -240,7 +248,7 @@
                                                     @error('RW')
                                                     <span class="help-block">{{ $message }}</span>
                                                     @enderror
-                                                </div> 
+                                                </div>
                                                  <div class="form-group @error('dusun') has-error @enderror">
                                                     <label for="exampleInputPassword1">DUSUN </label>
                                                     <input type="text" required class="form-control " name="dusun"
@@ -250,7 +258,7 @@
                                                     <span class="help-block">{{ $message }}</span>
                                                     @enderror
 
-                                                </div> 
+                                                </div>
                                                  <div class="form-group @error('desa') has-error @enderror">
                                                     <label for="exampleInputPassword1">DESA </label>
                                                     <input type="text" required class="form-control " name="desa"
@@ -260,7 +268,7 @@
                                                     <span class="help-block">{{ $message }}</span>
                                                     @enderror
 
-                                                </div> 
+                                                </div>
                                                  <div class="form-group @error('kecamatan') has-error @enderror ">
                                                     <label for="exampleInputPassword1">KECAMATAN</label>
                                                     <input type="text" required class="form-control " name="kecamatan"
@@ -270,7 +278,7 @@
                                                     <span class="help-block">{{ $message }}</span>
 
                                                     @enderror
-                                                </div> 
+                                                </div>
                                                 <div class="form-group @error('kabupaten') has-error @enderror ">
                                                     <label for="exampleInputPassword1">KABUPATEN</label>
                                                     <input type="text" required class="form-control " name="kabupaten"
@@ -432,7 +440,7 @@
                                                 @enderror
 
                                             </div>
-                                            
+
 
                                             <hr><strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong><hr>
                                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -491,7 +499,15 @@
                                                 <span class="help-block">{{ $message }}</span>
                                                 @enderror
                                             </div>
-
+                                            {{-- <div class="form-group @error('phone_ortu') has-error @enderror"> --}}
+                                                {{-- <label for="phone_ortu">Nomor HP Orang Tua </label> --}}
+                                                {{-- <input type="text" class="form-control " name="phone_ortu" --}}
+                                                    {{-- value="{{ old('phone_ortu')?? $biodata == null ? '' : $biodata->phone_ortu }}" --}}
+                                                    {{-- placeholder="Nomor HP Orang Tua"> --}}
+                                                {{-- @error('phone_ortu') --}}
+                                                {{-- <span class="help-block">{{ $message }}</span> --}}
+                                                {{-- @enderror --}}
+                                            {{-- </div> --}}
                                             <hr><i><strong>Bagian Dibawah Ini Hanya Diisi Oleh Pendaftar Jalur KIP-Kuliah</strong></i><hr>
                                             <div class="form-group @error('kip') has-error @enderror">
                                                 <label for="exampleInputPassword1">Nomor KIP (Jika ada) </label>
@@ -575,7 +591,7 @@
                                                         KARYAWAN</option>
                                                     <option value="ALUMNI"
                                                         {{  $biodata->pemberi_rekomendasi  == "ALUMNI" ? "selected" : "" }}>
-                                                        ALUMNI</option>    
+                                                        ALUMNI</option>
                                                 </select>
                                                 @else
                                                 <select name="pemberi_rekomendasi" class="form-control">
@@ -611,7 +627,7 @@
 
                                                 @enderror
                                             </div>
-                                            
+
                                             <div class="form-group @error('prodi_perekom') has-error @enderror ">
                                                 <label for="exampleInputPassword1">Prodi Perekom (Jika Perekom Adalah Mahasiswa)</label>
                                                 @if($biodata)

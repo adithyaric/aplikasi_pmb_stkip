@@ -305,6 +305,13 @@
                                         </p>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-md-4">Nomor Hp Orang Tua</label>
+                                        <div class="col-md-1">
+                                            :
+                                        </div>
+                                        <p class="text-muted col-md-4">{{ @$mahasiswa->biodata->phone_ortu }}</p>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-md-4">Nomor KIP </label>
                                         <div class="col-md-1">
                                             :

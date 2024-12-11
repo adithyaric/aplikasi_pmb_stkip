@@ -119,6 +119,14 @@ class FormulirController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
+        if ($request->phone_ortu != null) {
+            Biodata::updateOrCreate(
+                [
+                    'user_id' => $data['user_id'],
+                ],
+                $data
+            );
+        }
         if ($request->nik != null) {
             $data['nik'] = $request->input('nik');
             Biodata::updateOrCreate(
