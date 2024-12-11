@@ -11,6 +11,7 @@
         <td>Tanggal Lahir</td>
         <td>Agama</td>
         <td>Nomor HP</td>
+        <td>Nomor HP Orang Tua</td>
         <td>Email</td>
         <td>Kewarganegaraan</td>
         <td>Jumlah Saudara</td>
@@ -83,6 +84,7 @@
         <td>{{ @$dt->biodata?->tanggal_lahir }}</td>
         <td>{{ @$dt->biodata?->agama }}</td>
         <td>{{ @$dt->mahasiswa?->phone }}</td>
+        <td>{{ @$dt->biodata?->phone_ortu }}</td>
         <td>{{ @$dt->email }}</td>
         <td>{{ @$dt->biodata?->status_sipil }}</td>
         <td>{{ @$dt->biodata?->jumlah_saudara }}</td>
