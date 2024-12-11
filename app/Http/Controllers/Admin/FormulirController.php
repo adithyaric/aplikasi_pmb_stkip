@@ -220,11 +220,13 @@ class FormulirController extends Controller
         $missingColumns = [];
 
         foreach ($persyaratan as $syarat) {
-            $attachmentField = $syarat->slug; // Dynamic field name from persyaratan
+            if ($syarat->is_required) {
+                $attachmentField = $syarat->slug; // Dynamic field name from persyaratan
 
-            // Check if the field exists in the attachment and is not null or empty
-            if (empty($attachment->$attachmentField)) {
-                $missingColumns[] = strtoupper(str_replace('_', ' ', $syarat->name)); // Add readable field name for error
+                // Check if the field exists in the attachment and is not null or empty
+                if (empty($attachment->$attachmentField)) {
+                    $missingColumns[] = strtoupper(str_replace('_', ' ', $syarat->name)); // Add readable field name for error
+                }
             }
         }
 

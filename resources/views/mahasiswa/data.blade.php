@@ -152,6 +152,9 @@
 
                                             <div class="col-lg-12 persyaratan-item" data-penerimaan="{{ $syarat->penerimaan->pluck('id')->join(',') }}">
                                                 <div class="form-group">
+                                            @if ($syarat->is_required)
+                                                <span style="color: red;"> *wajib diisi</span>
+                                            @endif
                                                     <label>{{ strtoupper(str_replace('_', ' ', $syarat->name)) }}</label>
 
                                                     @if ($syarat->input_type === 'file' && $attachmentValue)
