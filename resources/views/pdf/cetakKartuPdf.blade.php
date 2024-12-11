@@ -95,6 +95,12 @@
             <td></td>
         </tr>
         <tr>
+            <td width="35%">Nomor Telepon Orang Tua</td>
+            <td width="5%">:</td>
+            <td>{{ Auth::user()->biodata->phone_ortu ?? "-" }}</td>
+            <td></td>
+        </tr>
+        <tr>
             <td width="35%">Jalur Daftar</td>
             <td width="5%">:</td>
             <td>{{ Auth::user()->mahasiswa->penerimaan->name ?? "-" }}</td>
@@ -310,7 +316,7 @@
             </td>
         </tr>
     </table>
-    
+
      <!-- Formulir Pendaftaran Page 2 -->
     <table class="table table-borderless">
         <tr>
@@ -355,7 +361,7 @@
     <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
         AKADEMIK 2023/2024</p>
-        
+
     <table class="table table-borderless" style="margin-top: -150px; font-family: Times New Roman; font-size: 10px;">
         <tr>
             <td colspan="4">
@@ -458,7 +464,7 @@
             <td>{{ Auth::user()->pemilikkartu->np_kip ?? "-" }}</td>
         </tr>
     </table>
-    
+
     <!-- Formulir Pendaftaran Page 3 -->
     <table class="table table-borderless">
         <tr>
@@ -503,7 +509,7 @@
     <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
         AKADEMIK 2023/2024</p>
-        
+
     <table class="table table-borderless" style="margin-top: -150px; font-family: Times New Roman; font-size: 10px;">
         <tr>
             <td width="35%">Kode Akses KIP</td>
@@ -541,7 +547,7 @@
             <td>{{ Auth::user()->biodata->wa_rekomendasi ?? "-" }}</td>
         </tr>
 
-        
+
     </table>
 
     <table class="table table-borderless" style="font-family: Times New Roman; font-size: 14px;">
