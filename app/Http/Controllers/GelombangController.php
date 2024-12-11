@@ -114,10 +114,13 @@ class GelombangController extends Controller
                 $q->where('status', 'INTERVIEW');
             })->count(),
             'diterima' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'BERKAS DITERIMA');
+                $q->where('status', 'MAHASISWA DITERIMA');
             })->count(),
             'keluar' => $query->whereHas('mahasiswa', function ($q) {
                 $q->where('status', 'KELUAR');
+            })->count(),
+            'ulang' => $query->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'DAFTAR ULANG');
             })->count(),
         ]);
     }

@@ -210,11 +210,11 @@
                                     <i class="fa fa-calendar"></i> <span>Tahun</span>
                                 </a>
                             </li>
-                            <li class="{{ setActive('admin/video') }}">
-                                <a href="{{ route('admin.video.index') }}">
-                                    <i class="fa fa-youtube"></i> <span>Youtube</span>
-                                </a>
-                            </li>
+                            {{-- <li class="{{ setActive('admin/video') }}"> --}}
+                                {{-- <a href="{{ route('admin.video.index') }}"> --}}
+                                    {{-- <i class="fa fa-youtube"></i> <span>Youtube</span> --}}
+                                {{-- </a> --}}
+                            {{-- </li> --}}
                             <li class="{{ setActive('admin/pengumuman') }}">
                                 <a href="{{ route('admin.pengumuman.index') }}">
                                     <i class="fa fa-newspaper-o"></i> <span>Pengumuman</span>

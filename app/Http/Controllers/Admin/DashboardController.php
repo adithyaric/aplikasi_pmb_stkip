@@ -56,17 +56,20 @@ class DashboardController extends Controller
             $q->where('status', 'INTERVIEW');
         })->count();
         $diterima = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'BERKAS DITERIMA');
+            $q->where('status', 'MAHASISWA DITERIMA');
         })->count();
         $keluar = $userQuery->whereHas('mahasiswa', function ($q) {
             $q->where('status', 'KELUAR');
+        })->count();
+        $ulang = $userQuery->whereHas('mahasiswa', function ($q) {
+            $q->where('status', 'DAFTAR ULANG');
         })->count();
 
         $tahuns = Tahun::get();
         $gelombang = $gelombangQuery->get();
         $jurusan = $jurusanQuery->get();
 
-        return view('admin.dashboard', compact('mahasiswa', 'keluar', 'bayar', 'berkas', 'diterima', 'jurusan', 'cbt', 'interview', 'gelombang', 'tahunId', 'tahuns'));
+        return view('admin.dashboard', compact('mahasiswa', 'keluar', 'ulang', 'bayar', 'berkas', 'diterima', 'jurusan', 'cbt', 'interview', 'gelombang', 'tahunId', 'tahuns'));
     }
 
     public function profile()
