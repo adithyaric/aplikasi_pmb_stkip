@@ -319,7 +319,7 @@
         function Delete(id) {
             var id = id;
             var token = $("meta[name='csrf-token']").attr("content");
-            var destroyUrl = "{{ route('admin.transaction.destroy', ':id') }}".replace(':id', id);
+            var destroyUrl = "{{ route('admin.mahasiswa.destroy', ':id') }}".replace(':id', id);
             swal({
                 title: "APAKAH KAMU YAKIN ?",
                 text: "INGIN MENGHAPUS DATA INI!",
