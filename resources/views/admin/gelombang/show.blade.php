@@ -211,7 +211,7 @@
                                             <a href="{{ route('admin.mahasiswa.show', $siswa->id) }}"
                                                 class="btn btn-info btn-sm">Detail</a>
                                             <a href="javascript:void(0)" onClick="Delete(this.id)"
-                                                id="{{ $siswa->transaksi?->id }}" class="delete btn btn-danger btn-sm">
+                                                id="{{ $siswa->id }}" class="delete btn btn-danger btn-sm">
                                                 Hapus</a>
                                             <a href="javascript:void(0)" onClick="Bayar(this.id)"
                                                 id="{{ $siswa->transaksi?->id }}" class="bayar btn btn-info btn-sm">Bayar</a>
