@@ -67,13 +67,9 @@ class FormulirController extends Controller
         // dd($penerimaan->persyaratan->toArray(), $request->all());
         foreach ($penerimaan->persyaratan as $persyaratan) {
             $fieldName = $persyaratan->slug;
+            $req = $persyaratan->is_required ? 'required' : 'nullable';
+            $rules[$fieldName] = 'mimes:pdf,png,jpg,jpeg|max:3072|'.$req;
 
-            // Set the rules conditionally
-            $rules[$fieldName] = [
-                $persyaratan->is_required ? 'required' : 'nullable',
-                'mimes:pdf,png,jpg,jpeg',
-                'max:3072',
-            ];
             // dd($fieldName, $rules[$fieldName]);
             if ($request->hasFile($fieldName)) {
                 // dd($request->hasFile($fieldName), $request->file($fieldName));
@@ -81,7 +77,6 @@ class FormulirController extends Controller
             }
         }
 
-        // Validate the request with the dynamically generated rules
         $request->validate($rules);
 
         $mahasiswa->update([
