@@ -10,6 +10,7 @@ use App\Models\Mahasiswa;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -262,14 +263,22 @@ class MahasiswaController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'nisn' => 'required|numeric',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|unique:mahasiswa',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->whereNull('deleted_at'),
+            ],
+            'phone' => [
+                'required',
+                Rule::unique('mahasiswa')->whereNull('deleted_at'),
+            ],
             'gelombang_id' => 'required',
         ], $messages);
 
         if (\DB::table('users')
             ->where('nisn', $request->nisn)
             ->where('gelombang_id', $request->gelombang_id)
+            ->whereNull('deleted_at') // Ignore soft-deleted users
             ->exists()
         ) {
             return back()->withErrors(['nisn_gelombang' => 'Kombinasi NISN dan Gelombang sudah terdaftar!']);
