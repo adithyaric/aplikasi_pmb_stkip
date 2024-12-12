@@ -47,22 +47,22 @@ class DashboardController extends Controller
             $q->where('status', 'success');
         })->count();
         $berkas = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'BERKAS LENGKAP');
+            $q->where('status', 'like', '%', 'BERKAS LENGKAP', '%');
         })->count();
         $cbt = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'TES / CBT');
+            $q->where('status', 'like', '%', 'TES / CBT', '%');
         })->count();
         $interview = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'INTERVIEW');
+            $q->where('status', 'like', '%', 'INTERVIEW', '%');
         })->count();
         $diterima = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'MAHASISWA DITERIMA');
+            $q->where('status', 'like', '%', 'MAHASISWA DITERIMA', '%');
         })->count();
         $keluar = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'KELUAR');
+            $q->where('status', 'like', '%', 'KELUAR', '%');
         })->count();
         $ulang = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'DAFTAR ULANG');
+            $q->where('status', 'like', '%', 'DAFTAR ULANG', '%');
         })->count();
 
         $tahuns = Tahun::get();
