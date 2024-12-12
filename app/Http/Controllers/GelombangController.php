@@ -71,7 +71,7 @@ class GelombangController extends Controller
     {
         $search = $request->input('search');
         $query = User::where('roles', 'MAHASISWA')
-            ->whereHas('mahasiswa.jurusan')
+            // ->whereHas('mahasiswa.jurusan')
             ->where('gelombang_id', $gelombang->id)
             ->when($search, function ($query) use ($search) {
                 $query->where(function ($q) use ($search) {
@@ -101,7 +101,9 @@ class GelombangController extends Controller
             'penerimaans' => Penerimaan::get(),
             'jurusans' => Jurusan::get(),
             'pendaftar' => $query->count(),
-            'mahasiswa' => (clone $query)->with(['mahasiswa.jurusan'])->get(),
+            'mahasiswa' => (clone $query)
+            // ->with(['mahasiswa.jurusan'])
+                ->get(),
 
             'bayar' => (clone $query)->whereHas('transaksi', function ($q) {
                 $q->where('status', 'success');

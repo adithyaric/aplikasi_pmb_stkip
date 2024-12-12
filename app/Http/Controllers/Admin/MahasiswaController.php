@@ -321,7 +321,7 @@ class MahasiswaController extends Controller
 
             $briva = $latestBriva ? $latestBriva->briva + 1 : $baseBrivaNumber + 1;
 
-            Transaction::create([
+            $transaction = Transaction::create([
                 'user_id' => $user->id,
                 'no_transaksi' => $no_transaksi,
                 'briva' => $briva,

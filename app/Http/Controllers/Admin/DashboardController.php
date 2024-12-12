@@ -21,19 +21,22 @@ class DashboardController extends Controller
         $jurusanQuery = Jurusan::query();
 
         if ($tahunId) {
-            $gelombangQuery->with(['user' => function ($query) {
-                $query->whereHas('mahasiswa', function ($q) {
-                    $q->whereNotNull('jurusan_id');
-                });
-            }])->whereHas('user.mahasiswa', function ($query) {
-                $query->whereNotNull('jurusan_id');
-            })->where('tahun_id', $tahunId);
+            $gelombangQuery
+                // ->with(['user' => function ($query) {
+                //     $query->whereHas('mahasiswa', function ($q) {
+                //         $q->whereNotNull('jurusan_id');
+                //     });
+                // }])
+                // ->whereHas('user.mahasiswa', function ($query) {
+                //     $query->whereNotNull('jurusan_id');
+                // })
+                ->where('tahun_id', $tahunId);
 
             // $userQuery->whereHas('mahasiswa.jurusan')->whereHas('gelombang', function ($query) use ($tahunId) {
             //     $query->where('tahun_id', $tahunId);
             // });
             $userQuery->where('roles', 'MAHASISWA')
-                ->whereHas('mahasiswa.jurusan')
+                // ->whereHas('mahasiswa.jurusan')
                 ->whereHas('gelombang', function ($query) use ($tahunId) {
                     $query->where('tahun_id', $tahunId);
                 });
