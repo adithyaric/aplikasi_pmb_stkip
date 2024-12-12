@@ -233,12 +233,13 @@
                     success: function(response) {
                         $('#Biodata').empty();
                         response.persyaratan.forEach(function(item) {
+                            var isRequired = item.is_required === true || item.is_required === "true"; // Ensure boolean check
                             $('#Biodata').append(`
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        ${item.is_required ? '<span style="color: red;"> *wajib diisi</span>' : ''}
+                                        ${isRequired ? '<span style="color: red;"> *wajib diisi</span>' : ''}
                                         <label>${item.name}</label>
-                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.is_required ? "required" : ""}>
+                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${isRequired ? "required" : ""}>
                                     </div>
                                 </div>
                             `);
