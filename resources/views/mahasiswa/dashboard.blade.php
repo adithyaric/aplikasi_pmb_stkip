@@ -73,12 +73,12 @@
                                         <tr>
                                             <td>Tempat Lahir</td>
                                             <td>:</td>
-                                            <td>{{ Auth::user()->biodata->tempat_lahir }}</td>
+                                            <td>{{ Auth::user()->biodata?->tempat_lahir }}</td>
                                         </tr>
                                         <tr>
                                             <td>Tanggal Lahir</td>
                                             <td>:</td>
-                                            <td>{{ Auth::user()->biodata->tanggal_lahir }}</td>
+                                            <td>{{ Auth::user()->biodata?->tanggal_lahir }}</td>
                                         </tr>
                                         <tr>
                                             <td>NISN</td>
@@ -212,12 +212,12 @@
                                         <tr>
                                             <td>Tempat Lahir</td>
                                             <td>:</td>
-                                            <td>{{ Auth::user()->biodata->tempat_lahir }}</td>
+                                            <td>{{ Auth::user()->biodata?->tempat_lahir }}</td>
                                         </tr>
                                         <tr>
                                             <td>Tanggal Lahir</td>
                                             <td>:</td>
-                                            <td>{{ Auth::user()->biodata->tanggal_lahir }}</td>
+                                            <td>{{ Auth::user()->biodata?->tanggal_lahir }}</td>
                                         </tr>
                                         <tr>
                                             <td>NISN</td>
