@@ -23,6 +23,34 @@
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        /* Darken the dropdown options text */
+        .select2-results__option {
+            color: #000 !important;
+        }
+
+        /* Darken the selected items text */
+        .select2-selection__choice {
+            color: #000 !important;
+        }
+
+        /* Darken the placeholder text */
+        .select2-selection__placeholder {
+            color: #333 !important;
+        }
+
+        /* Darken the input field text */
+        .select2-selection__rendered {
+            color: #000 !important;
+        }
+
+        /* Ensure the dropdown is visible and styles are applied correctly */
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #f8f9fa !important;
+            /* Light background for contrast */
+            border: 1px solid #ccc !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
