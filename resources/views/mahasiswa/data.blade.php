@@ -233,7 +233,7 @@
                     success: function(response) {
                         $('#Biodata').empty();
                         response.persyaratan.forEach(function(item) {
-                            var isRequired = item.is_required === true || item.is_required === 1; // Ensure boolean check
+                            var isRequired = item.is_required == 1 ? true : false; // Ensure boolean check
                             console.log(item.is_required);
                             console.log(isRequired);
                             $('#Biodata').append(`
