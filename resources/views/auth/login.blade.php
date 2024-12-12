@@ -231,7 +231,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="icon" href="https://entripmb.stkippacitan.ac.id/assets/img/stkip.png" type="image/png">
+    <link rel="icon" href="https://pmb.demoo.net/assets/img/stkip.png" type="image/png">
     <link rel="stylesheet" href="{{ asset('zenTheme/css/login.cs') }}s">
     <link rel="stylesheet" href="{{ asset('zenTheme/css/materialdesignicons.css') }}">
     <link rel="stylesheet" href="{{ asset('zenTheme/css/bootsrtap.css') }}">
