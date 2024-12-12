@@ -105,22 +105,22 @@ class GelombangController extends Controller
                 $q->where('status', 'success');
             })->count(),
             'berkas' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%', 'BERKAS LENGKAP', '%');
+                $q->where('status', 'like', '%'.'BERKAS LENGKAP'.'%');
             })->count(),
             'cbt' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%', 'TES / CBT', '%');
+                $q->where('status', 'like', '%'.'TES / CBT'.'%');
             })->count(),
             'interview' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%', 'INTERVIEW', '%');
+                $q->where('status', 'like', '%'.'INTERVIEW'.'%');
             })->count(),
             'diterima' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%', 'MAHASISWA DITERIMA', '%');
+                $q->where('status', 'like', '%'.'MAHASISWA DITERIMA'.'%');
             })->count(),
             'keluar' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%', 'KELUAR', '%');
+                $q->where('status', 'like', '%'.'KELUAR'.'%');
             })->count(),
             'ulang' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%', 'DAFTAR ULANG', '%');
+                $q->where('status', 'like', '%'.'DAFTAR ULANG'.'%');
             })->count(),
         ]);
     }
