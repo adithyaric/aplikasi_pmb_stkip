@@ -194,11 +194,15 @@ class MahasiswaController extends Controller
             $no_transaksi = $latestTransaction ? $latestTransaction->no_transaksi + 1 : $baseTransactionNumber + 1;
 
             $baseBrivaNumber = 999999000; // Base BRIVA starting number
-            $latestBriva = Transaction::latest()->first();
+            $latestBriva = Transaction::orderBy('briva', 'desc')->first();
 
-            $briva = $latestBriva ? $latestBriva->briva + 1 : $baseBrivaNumber + 1;
+            $briva = ($latestBriva && $latestBriva->briva > 0) ? $latestBriva->briva + 1 : $baseBrivaNumber + 1;
 
-            Transaction::create([
+            if ($briva < 0) {
+                throw new \Exception('Invalid BRIVA number generated');
+            }
+
+            $transaction = Transaction::create([
                 'user_id' => $user->id,
                 'no_transaksi' => $no_transaksi,
                 'briva' => $briva,
@@ -207,6 +211,8 @@ class MahasiswaController extends Controller
             ]);
 
             DB::commit();
+
+            return view('pageSuccess', compact('transaction'));
         } catch (\Exception $e) {
             DB::rollBack();
 
