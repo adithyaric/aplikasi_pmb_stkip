@@ -236,8 +236,9 @@
                             $('#Biodata').append(`
                                 <div class="col-lg-12">
                                     <div class="form-group">
+                                        ${item.is_required ? '<span style="color: red;"> *wajib diisi</span>' : ''}
                                         <label>${item.name}</label>
-                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.is_required ? 'required' : ''}>
+                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.is_required ? "required" : ""}>
                                     </div>
                                 </div>
                             `);

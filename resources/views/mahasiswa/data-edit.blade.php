@@ -177,7 +177,7 @@
                                         <label style="text-transform: uppercase;">
                                             ${item.name}
                                         </label>
-                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.is_required ? 'required' : ''}>
+                                        <input type="${item.input_type}" name="${item.name}" class="form-control" ${item.is_required ? "required" : ""}>
                                     </div>
                                 </div>
                             `);
