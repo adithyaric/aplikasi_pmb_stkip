@@ -170,8 +170,9 @@
                     success: function(response) {
                         $('#Biodata').empty();
                         response.persyaratan.forEach(function(item) {
-                            // console.log(item.is_required);
                             var isRequired = item.is_required === true || item.is_required === 1; // Ensure boolean check
+                            console.log(item.is_required);
+                            console.log(isRequired);
                             $('#Biodata').append(`
                                 <div class="col-lg-12">
                                     <div class="form-group">
