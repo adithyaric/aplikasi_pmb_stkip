@@ -178,7 +178,7 @@
                                     <div class="form-group">
                                         ${isRequired ? '<span style="color: red;"> *wajib diisi</span>' : ''}
                                         <label>${item.name}</label>
-                                        <input type="file" name="${item.name}" class="form-control" ${isRequired ? "required" : ""}>
+                                        <input type="file" name="${item.slug}" class="form-control" ${isRequired ? "required" : ""}>
                                     </div>
                                 </div>
                             `);
