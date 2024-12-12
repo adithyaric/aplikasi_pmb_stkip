@@ -29,9 +29,14 @@ class DashboardController extends Controller
                 $query->whereNotNull('jurusan_id');
             })->where('tahun_id', $tahunId);
 
-            $userQuery->whereHas('mahasiswa.jurusan')->whereHas('gelombang', function ($query) use ($tahunId) {
-                $query->where('tahun_id', $tahunId);
-            });
+            // $userQuery->whereHas('mahasiswa.jurusan')->whereHas('gelombang', function ($query) use ($tahunId) {
+            //     $query->where('tahun_id', $tahunId);
+            // });
+            $userQuery->where('roles', 'MAHASISWA')
+                ->whereHas('mahasiswa.jurusan')
+                ->whereHas('gelombang', function ($query) use ($tahunId) {
+                    $query->where('tahun_id', $tahunId);
+                });
 
             $jurusanQuery->with(['mahasiswa' => function ($query) use ($tahunId) {
                 $query->whereHas('user.gelombang', function ($q) use ($tahunId) {
@@ -42,28 +47,59 @@ class DashboardController extends Controller
             // dd($gelombangQuery->get()->toArray(), $userQuery->get()->toArray(), $jurusanQuery->get()->toArray());
         }
 
-        $mahasiswa = $userQuery->where('roles', 'MAHASISWA')->count();
-        $bayar = $userQuery->whereHas('transaksi', function ($q) {
+        // Count each category
+        $mahasiswa = (clone $userQuery)->count();
+
+        $bayar = (clone $userQuery)->whereHas('transaksi', function ($q) {
             $q->where('status', 'success');
         })->count();
-        $berkas = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'like', '%'.'BERKAS LENGKAP'.'%');
+
+        $berkas = (clone $userQuery)->whereHas('mahasiswa', function ($q) {
+            $q->where('status', 'like', '%BERKAS%');
         })->count();
-        $cbt = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'like', '%'.'TES / CBT'.'%');
+
+        $cbt = (clone $userQuery)->whereHas('mahasiswa', function ($q) {
+            $q->where('status', 'like', '%TES%');
         })->count();
-        $interview = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'like', '%'.'INTERVIEW'.'%');
+
+        $interview = (clone $userQuery)->whereHas('mahasiswa', function ($q) {
+            $q->where('status', 'like', '%INTERVIEW%');
         })->count();
-        $diterima = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'like', '%'.'MAHASISWA DITERIMA'.'%');
+
+        $diterima = (clone $userQuery)->whereHas('mahasiswa', function ($q) {
+            $q->where('status', 'like', '%DITERIMA%');
         })->count();
-        $keluar = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'like', '%'.'KELUAR'.'%');
+
+        $keluar = (clone $userQuery)->whereHas('mahasiswa', function ($q) {
+            $q->where('status', 'like', '%KELUAR%');
         })->count();
-        $ulang = $userQuery->whereHas('mahasiswa', function ($q) {
-            $q->where('status', 'like', '%'.'DAFTAR ULANG'.'%');
+
+        $ulang = (clone $userQuery)->whereHas('mahasiswa', function ($q) {
+            $q->where('status', 'like', '%ULANG%');
         })->count();
+
+        // $mahasiswa = $userQuery->where('roles', 'MAHASISWA')->count();
+        // $bayar = $userQuery->whereHas('transaksi', function ($q) {
+        //     $q->where('status', 'success');
+        // })->count();
+        // $berkas = $userQuery->whereHas('mahasiswa', function ($q) {
+        //     $q->where('status', 'like', '%'.'BERKAS LENGKAP'.'%');
+        // })->count();
+        // $cbt = $userQuery->whereHas('mahasiswa', function ($q) {
+        //     $q->where('status', 'like', '%'.'TES / CBT'.'%');
+        // })->count();
+        // $interview = $userQuery->whereHas('mahasiswa', function ($q) {
+        //     $q->where('status', 'like', '%'.'INTERVIEW'.'%');
+        // })->count();
+        // $diterima = $userQuery->whereHas('mahasiswa', function ($q) {
+        //     $q->where('status', 'like', '%'.'MAHASISWA DITERIMA'.'%');
+        // })->count();
+        // $keluar = $userQuery->whereHas('mahasiswa', function ($q) {
+        //     $q->where('status', 'like', '%'.'KELUAR'.'%');
+        // })->count();
+        // $ulang = $userQuery->whereHas('mahasiswa', function ($q) {
+        //     $q->where('status', 'like', '%'.'DAFTAR ULANG'.'%');
+        // })->count();
 
         $tahuns = Tahun::get();
         $gelombang = $gelombangQuery->get();

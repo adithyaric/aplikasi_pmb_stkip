@@ -96,32 +96,61 @@ class GelombangController extends Controller
             });
 
         return view('admin.gelombang.show', [
-            'mahasiswa' => $query->with(['mahasiswa.jurusan'])->get(),
+            // 'mahasiswa' => $query->with(['mahasiswa.jurusan'])->get(),
             'gelombang' => $gelombang,
             'penerimaans' => Penerimaan::get(),
             'jurusans' => Jurusan::get(),
             'pendaftar' => $query->count(),
-            'bayar' => $query->whereHas('transaksi', function ($q) {
+            'mahasiswa' => (clone $query)->with(['mahasiswa.jurusan'])->get(),
+
+            'bayar' => (clone $query)->whereHas('transaksi', function ($q) {
                 $q->where('status', 'success');
             })->count(),
-            'berkas' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%'.'BERKAS LENGKAP'.'%');
+
+            'berkas' => (clone $query)->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'like', '%BERKAS%');
             })->count(),
-            'cbt' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%'.'TES / CBT'.'%');
+
+            'cbt' => (clone $query)->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'like', '%TES%');
             })->count(),
-            'interview' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%'.'INTERVIEW'.'%');
+
+            'interview' => (clone $query)->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'like', '%INTERVIEW%');
             })->count(),
-            'diterima' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%'.'MAHASISWA DITERIMA'.'%');
+
+            'diterima' => (clone $query)->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'like', '%DITERIMA%');
             })->count(),
-            'keluar' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%'.'KELUAR'.'%');
+
+            'keluar' => (clone $query)->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'like', '%KELUAR%');
             })->count(),
-            'ulang' => $query->whereHas('mahasiswa', function ($q) {
-                $q->where('status', 'like', '%'.'DAFTAR ULANG'.'%');
+
+            'ulang' => (clone $query)->whereHas('mahasiswa', function ($q) {
+                $q->where('status', 'like', '%ULANG%');
             })->count(),
+            // 'bayar' => $query->whereHas('transaksi', function ($q) {
+            //     $q->where('status', 'success');
+            // })->count(),
+            // 'berkas' => $query->whereHas('mahasiswa', function ($q) {
+            //     $q->where('status', 'like', '%'.'BERKAS LENGKAP'.'%');
+            // })->count(),
+            // 'cbt' => $query->whereHas('mahasiswa', function ($q) {
+            //     $q->where('status', 'like', '%'.'TES / CBT'.'%');
+            // })->count(),
+            // 'interview' => $query->whereHas('mahasiswa', function ($q) {
+            //     $q->where('status', 'like', '%'.'INTERVIEW'.'%');
+            // })->count(),
+            // 'diterima' => $query->whereHas('mahasiswa', function ($q) {
+            //     $q->where('status', 'like', '%'.'MAHASISWA DITERIMA'.'%');
+            // })->count(),
+            // 'keluar' => $query->whereHas('mahasiswa', function ($q) {
+            //     $q->where('status', 'like', '%'.'KELUAR'.'%');
+            // })->count(),
+            // 'ulang' => $query->whereHas('mahasiswa', function ($q) {
+            //     $q->where('status', 'like', '%'.'DAFTAR ULANG'.'%');
+            // })->count(),
         ]);
     }
 
