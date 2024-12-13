@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTables;
 
@@ -210,6 +211,8 @@ class MahasiswaController extends Controller
                 'status' => 'pending',
             ]);
 
+            Log::info('BRIVA value being saved: '.$briva);
+
             DB::commit();
 
             return view('pageSuccess', compact('transaction'));
@@ -248,8 +251,11 @@ class MahasiswaController extends Controller
 
         $announcements = Announcement::where('date_start', '<=', $currentTime)
             ->where('date_end', '>=', $currentTime)
-            ->whereHas('gelombangs', function ($query) use ($gelombangIds) {
-                $query->where('gelombang_id', $gelombangIds);
+            ->where(function ($query) use ($gelombangIds, $mahasiswa) {
+                $query->whereHas('gelombangs', function ($subQuery) use ($gelombangIds) {
+                    $subQuery->where('gelombang_id', $gelombangIds);
+                })
+                    ->whereJsonContains('statuses', $mahasiswa->status);
             })
             ->latest()
             ->get();

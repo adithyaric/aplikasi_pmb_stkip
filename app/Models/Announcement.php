@@ -15,6 +15,11 @@ class Announcement extends Model
         'content',
         'date_start',
         'date_end',
+        'statuses',
+    ];
+
+    protected $casts = [
+        'statuses' => 'array',
     ];
 
     public function gelombangs()

@@ -11,7 +11,7 @@
         <label for="gelombangs">Gelombang</label>
         <form action="{{ route('admin.pengumuman.store') }}" method="post">
             @csrf
-
+            <div class="form-group">
             <select name="gelombangs[]" id="gelombangs" class="form-control select2" multiple required>
                 @foreach ($gelombangs as $gelombang)
                     <option value="{{ $gelombang->id }}" {{ in_array($gelombang->id, $pengumuman->gelombangs->pluck('id')->toArray()) ? 'selected' : '' }}>
@@ -19,6 +19,17 @@
                     </option>
                 @endforeach
             </select>
+            </div>
+            <div class="form-group">
+                <label for="statuses">Status Mahasiswa</label>
+                <select name="statuses[]" id="statuses" class="form-control select2" multiple required>
+                    @foreach ($statuses as $status)
+                    <option value="{{ $status }}" {{ in_array($status, $pengumuman->statuses ?? []) ? 'selected' : '' }}>
+                        {{ $status }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="form-group @error('title') has-error @enderror">
                 <label for="title">Pengumuman</label>

@@ -43,6 +43,7 @@ class AnnouncementController extends Controller
                 'content' => $request->content,
                 'date_start' => $request->date_start,
                 'date_end' => $request->date_end,
+                'statuses' => $request->statuses,
             ]
         );
 
@@ -58,6 +59,16 @@ class AnnouncementController extends Controller
         return view('admin.pengumuman.edit', [
             'pengumuman' => $announcement,
             'gelombangs' => Gelombang::get(),
+            'statuses' => [
+                'DALAM PROSES',
+                'BAYAR OK',
+                'BERKAS LENGKAP',
+                'TES / CBT',
+                'INTERVIEW',
+                'MAHASISWA DITERIMA',
+                'DAFTAR ULANG',
+                'KELUAR',
+            ],
         ]);
 
         // return response()->json([
