@@ -236,7 +236,7 @@ class FormulirController extends Controller
             'biodata' => [
                 'nik',
                 'name',
-                'pas_photo',
+                // 'pas_photo',
                 'jenis_kelamin',
                 'tanggal_lahir',
                 'tempat_lahir',
