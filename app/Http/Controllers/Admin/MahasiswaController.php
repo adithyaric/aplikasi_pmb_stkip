@@ -329,7 +329,7 @@ class MahasiswaController extends Controller
 
             $gelombang = Gelombang::find($request->gelombang_id);
             $currentYear = now()->year;
-            $baseTransactionNumber = $currentYear * 1000000; // 2024 becomes 2024000000
+            $baseTransactionNumber = $currentYear * 1000; // 2024 becomes 2024000000
 
             $latestTransaction = Transaction::where('no_transaksi', 'LIKE', "{$currentYear}%")
                 ->orderBy('no_transaksi', 'desc')
@@ -340,7 +340,8 @@ class MahasiswaController extends Controller
             $baseBrivaNumber = 999999000; // Base BRIVA starting number
             $latestBriva = Transaction::latest()->first();
 
-            $briva = $latestBriva ? $latestBriva->briva + 1 : $baseBrivaNumber + 1;
+            // $briva = $latestBriva ? $latestBriva->briva + 1 : $baseBrivaNumber + 1;
+            $briva = $latestBriva ? bcadd($latestBriva->briva, '1') : (string) $baseBrivaNumber;
 
             $transaction = Transaction::create([
                 'user_id' => $user->id,

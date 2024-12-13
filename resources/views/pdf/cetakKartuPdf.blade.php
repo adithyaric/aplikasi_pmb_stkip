@@ -21,6 +21,7 @@
             background-color: #ffffff;
             white-space: nowrap; /* Prevents text from wrapping */
             text-align: center;
+            font-size: 13px;
         }
     </style>
 </head>
@@ -45,6 +46,8 @@
         {{ strtoupper(auth()->user()->gelombang->nama) }}
     </div>
     @endif
+    <br>
+    <br>
     <br>
     <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">KARTU PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
@@ -177,6 +180,8 @@
     </div>
     @endif
     <br>
+    <br>
+    <br>
     <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
         AKADEMIK {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}</p></p>
@@ -235,6 +240,12 @@
             <td width="35%">Nomor HP</td>
             <td width="5%">:</td>
             <td>{{ Auth::user()->mahasiswa->phone ?? "-" }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td width="35%">Nomor Telepon Orang Tua</td>
+            <td width="5%">:</td>
+            <td>{{ Auth::user()->biodata->phone_ortu ?? "-" }}</td>
             <td></td>
         </tr>
         <tr>
@@ -309,6 +320,8 @@
         {{ strtoupper(auth()->user()->gelombang->nama) }}
     </div>
     @endif
+    <br>
+    <br>
     <br>
     <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
@@ -437,6 +450,8 @@
         {{ strtoupper(auth()->user()->gelombang->nama) }}
     </div>
     @endif
+    <br>
+    <br>
     <br>
     <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">FORMULIR PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
