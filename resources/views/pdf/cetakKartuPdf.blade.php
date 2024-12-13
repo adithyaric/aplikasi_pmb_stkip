@@ -23,6 +23,9 @@
             text-align: center;
             font-size: 13px;
         }
+        .page-break {
+            page-break-before: always;
+        }
     </style>
 </head>
 
@@ -160,7 +163,7 @@
     <br>
 
     <!-- Formulir Pendaftaran -->
-    <table class="table table-borderless">
+    <table class="table table-borderless page-break">
         <tr>
             <td width="20%"><img style="margin-left: 20px; margin-top: 15px;"
                     src="{{ public_path('assets/img/stkip.png') }}" width="100%"></td>
@@ -301,7 +304,7 @@
     </table>
 
      <!-- Formulir Pendaftaran Page 2 -->
-    <table class="table table-borderless">
+    <table class="table table-borderless page-break">
         <tr>
             <td width="20%"><img style="margin-left: 20px; margin-top: 15px;"
                     src="{{ public_path('assets/img/stkip.png') }}" width="100%"></td>
@@ -431,7 +434,7 @@
     </table>
 
     <!-- Formulir Pendaftaran Page 3 -->
-    <table class="table table-borderless">
+    <table class="table table-borderless page-break">
         <tr>
             <td width="20%"><img style="margin-left: 20px; margin-top: 15px;"
                     src="{{ public_path('assets/img/stkip.png') }}" width="100%"></td>

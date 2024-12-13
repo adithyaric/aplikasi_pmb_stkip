@@ -207,7 +207,8 @@ class FormulirController extends Controller
 
     public function PrintPdf()
     {
-        $user = User::with('mahasiswa', 'transaksi')->findOrFail(Auth::user()->id);
+        $user = User::with('mahasiswa', 'transaksi', 'biodata', 'alamat', 'pemilikkartu', 'lulusan')->findOrFail(Auth::user()->id);
+
         $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
         $persyaratan = Persyaratan::whereHas('penerimaan', function ($query) use ($mahasiswa) {
             $query->where('penerimaan_id', $mahasiswa->penerimaan_id);
@@ -230,16 +231,82 @@ class FormulirController extends Controller
             }
         }
 
+        // Validate related models: biodata, alamat, pemilikkartu, lulusan
+        $relations = [
+            'biodata' => [
+                'nik',
+                'name',
+                'pas_photo',
+                'jenis_kelamin',
+                'tanggal_lahir',
+                'tempat_lahir',
+                'agama',
+                'anak',
+                'jumlah_saudara',
+                'status_sipil',
+                'phone',
+                'phone_ortu',
+                'email',
+                'pemberi_rekomendasi',
+                'nama_rekomendasi',
+                'wa_rekomendasi',
+                'prodi_perekom',
+                'nim_perekom',
+            ], // Add required columns for biodata
+            'alamat' => [
+                'RW',
+                'dusun',
+                'desa',
+                'kecamatan',
+                'kabupaten',
+                'provinsi',
+                'jalan',
+            ],   // Add required columns for alamat
+            'pemilikkartu' => [
+                'noKK',
+                'nama_kk',
+                'nama_ibu',
+                'kip',
+                'np_kip',
+                'ka_kip',
+                'kks',
+                'pkh',
+                'pekerjaan_ayah',
+                'pekerjaan_ibu',
+            ],      // Add required columns for pemilikkartu
+            'lulusan' => [
+                'nisn',
+                'tahun_lulus',
+                'asal_sekolah',
+                'npsn',
+                'alamat_sekolah',
+                'kab_sekolah',
+                'prov_sekolah',
+            ],  // Add required columns for lulusan
+        ];
+
+        foreach ($relations as $relation => $fields) {
+            if (! $user->$relation) {
+                $missingColumns[] = strtoupper(str_replace('_', ' ', $relation));
+            } else {
+                foreach ($fields as $field) {
+                    if (empty($user->$relation->$field)) {
+                        $missingColumns[] = strtoupper(str_replace('_', ' ', $relation)).' - '.strtoupper(str_replace('_', ' ', $field));
+                    }
+                }
+            }
+        }
+
         if (! empty($missingColumns)) {
             return back()->withErrors([
-                'message' => 'Dokumen belum lengkap : '.implode(', ', $missingColumns),
+                'message' => 'Dokumen belum lengkap: '.implode(', ', $missingColumns),
             ]);
         }
 
         $filename = Auth::user()->nisn.'_'.Auth::user()->name.'.pdf';
         $mahasiswa->update(['status' => 'BERKAS LENGKAP']);
 
-        $pdf = PDF::loadview('pdf.cetakKartuPdf', compact('user'));
+        $pdf = PDF::loadview('pdf.cetakKartuPdf', compact('user'))->setPaper('a4');
 
         return $pdf->download($filename);
     }
