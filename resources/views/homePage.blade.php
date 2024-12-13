@@ -109,7 +109,7 @@
                                     <label for="exampleFormControlInput1" class="form-label">NO WhatsApp (Contoh
                                         6281234567890) </label>
                                     <input type="number" class="form-control @error('phone') is-invalid @enderror"
-                                        value="62{{ old('phone') }}" name="phone" placeholder="Masukan No WhatsApp">
+                                        value="{{ old('phone') }}" name="phone" placeholder="Masukan No WhatsApp">
                                     @error('phone')<span class="help-block text-danger">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="mb-2">

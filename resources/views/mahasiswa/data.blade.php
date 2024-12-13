@@ -71,7 +71,7 @@
                                         <a href="{{ route('edit-attachment', ['id' => $attachment->id]) }}" class="btn btn-primary">
                                             Upload Berkas
                                         </a>
-                                        <a href="{{ url('mahasiswa/biodata') }}" class="btn btn-success">
+                                        <a href="{{ route('biodata.index', ['active_tab' => 'tab_1']) }}" class="btn btn-success">
                                             Langkah Selanjutnya Isi Biodata (Klik Disini)
                                         </a>
                                     </div>

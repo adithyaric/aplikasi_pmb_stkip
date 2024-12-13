@@ -127,7 +127,7 @@
 
                     <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
                     <button type="submit" class="btn btn-primary" id="simpan">Simpan</button>
-                    <a href="{{ url('mahasiswa/biodata') }}" class="btn btn-success">
+                    <a href="{{ route('biodata.index', ['active_tab' => 'tab_1']) }}" class="btn btn-success">
                         Langkah Selanjutnya Isi Biodata (Klik Disini)
                     </a>
                     </form>

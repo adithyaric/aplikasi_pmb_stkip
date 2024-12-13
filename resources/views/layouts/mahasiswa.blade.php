@@ -27,7 +27,7 @@
             .blink {
               animation: blink 3s infinite;
         }
-        
+
         @keyframes blink {
           0% {
             opacity: 1;
@@ -161,7 +161,7 @@
 
                     </li>
                     <li class="{{ setActive('mahasiswa/biodata') }}">
-                        <a href="{{ url('mahasiswa/biodata') }}">
+                        <a href="{{ route('biodata.index', ['active_tab' => 'tab_1']) }}">
                             <i class="fa fa-dashboard"></i> <span>Isi Biodata </span>
 
                         </a>

@@ -159,7 +159,7 @@
                 <div class="col-md-4">
                     <div class="alert alert-warning text-center">
                         <h5>ISI BIODATA</h5>
-                        <a href="{{ url('mahasiswa/biodata') }}" class="btn btn-danger">Klik Disini</a>
+                        <a href="{{ route('biodata.index', ['active_tab' => 'tab_1']) }}" class="btn btn-danger">Klik Disini</a>
                     </div>
                 </div>
                 <!-- ./col -->

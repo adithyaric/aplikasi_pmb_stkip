@@ -101,8 +101,9 @@ class FormulirController extends Controller
         return back()->with('success', 'berhasil disimpan');
     }
 
-    public function biodata()
+    public function biodata(Request $request)
     {
+        $active_tab = $request->active_tab;
         $biodata = Biodata::where('user_id', Auth::user()->id)->first();
         $mahasiswa = Mahasiswa::where('user_id', Auth::user()->id)->first();
         $alamat = Alamat::where('user_id', Auth::user()->id)->first();
@@ -110,82 +111,114 @@ class FormulirController extends Controller
         $rencana = Rencana::where('user_id', Auth::user()->id)->first();
         $pemilikkartu = PemilikKartu::where('user_id', Auth::user()->id)->first();
 
-        return view('mahasiswa.biodata', compact('biodata', 'alamat', 'lulusan', 'rencana', 'pemilikkartu', 'mahasiswa'));
+        return view('mahasiswa.biodata', compact('biodata', 'alamat', 'lulusan', 'rencana', 'pemilikkartu', 'mahasiswa', 'active_tab'));
     }
 
     public function biostore(Request $request)
     {
         $data = $request->all();
-
         $data['user_id'] = Auth::user()->id;
 
-        if ($request->phone_ortu != null) {
-            Biodata::updateOrCreate(
-                [
-                    'user_id' => $data['user_id'],
-                ],
-                $data
-            );
-        }
-        if ($request->nik != null) {
-            $data['nik'] = $request->input('nik');
-            Biodata::updateOrCreate(
-                [
-                    'user_id' => $data['user_id'],
-                ],
-                $data
-            );
-        } elseif ($request->kabupaten != null) {
-            Alamat::updateOrCreate(
-                [
-                    'user_id' => $data['user_id'],
-                ],
-                $data
-            );
-        } elseif ($request->nisn != null) {
-            Lulusan::updateOrCreate(
-                [
-                    'user_id' => $data['user_id'],
-                ],
-                $data
-            );
-        } elseif ($request->rencana_tinggal != null) {
-            Rencana::updateOrCreate(
-                [
-                    'user_id' => $data['user_id'],
-                ],
-                $data
-            );
-        } elseif ($request->noKK != null) {
-            $data['noKK'] = $request->input('noKK');
-            $data['nama_kk'] = $request->input('nama_kk');
-            if ($request->kip != null) {
-                $data['kip'] = $request->input('kip');
-            }
-            if ($request->kks != null) {
-                $data['kks'] = $request->input('kks');
-            }
-            if ($request->pkh != null) {
-                $data['pkh'] = $request->input('pkh');
-            }
-            PemilikKartu::updateOrCreate(
-                [
-                    'user_id' => $data['user_id'],
-                ],
-                $data
-            );
-        } elseif ($request->pemberi_rekomendasi != null) {
-            Biodata::updateOrCreate(
-                [
-                    'user_id' => $data['user_id'],
-                ],
-                $data
-            );
-        } else {
-            return false;
+        switch ($request->input('active_tab')) {
+            case 'tab_1': // BIODATA
+                if ($request->phone_ortu != null) {
+                    Biodata::updateOrCreate(
+                        [
+                            'user_id' => $data['user_id'],
+                        ],
+                        $data
+                    );
+                }
+                if ($request->nik != null) {
+                    $data['nik'] = $request->input('nik');
+                    Biodata::updateOrCreate(
+                        [
+                            'user_id' => $data['user_id'],
+                        ],
+                        $data
+                    );
+                }
+                break;
+
+            case 'tab_2': // ALAMAT
+                if ($request->kabupaten != null) {
+                    Alamat::updateOrCreate(
+                        [
+                            'user_id' => $data['user_id'],
+                        ],
+                        $data
+                    );
+                }
+                break;
+
+            case 'tab_3': // SEKOLAH / LULUSAN
+                if ($request->nisn != null) {
+                    Lulusan::updateOrCreate(
+                        [
+                            'user_id' => $data['user_id'],
+                        ],
+                        $data
+                    );
+                }
+                break;
+
+            case 'tab_4': // RENCANA
+                if ($request->rencana_tinggal != null) {
+                    Rencana::updateOrCreate(
+                        [
+                            'user_id' => $data['user_id'],
+                        ],
+                        $data
+                    );
+                }
+                break;
+
+            case 'tab_5': // DATA KELUARGA & KARTU
+                if ($request->noKK != null) {
+                    $data['noKK'] = $request->input('noKK');
+                    $data['nama_kk'] = $request->input('nama_kk');
+                    if ($request->kip != null) {
+                        $data['kip'] = $request->input('kip');
+                    }
+                    if ($request->kks != null) {
+                        $data['kks'] = $request->input('kks');
+                    }
+                    if ($request->pkh != null) {
+                        $data['pkh'] = $request->input('pkh');
+                    }
+                    PemilikKartu::updateOrCreate(
+                        [
+                            'user_id' => $data['user_id'],
+                        ],
+                        $data
+                    );
+                }
+                break;
+
+            case 'tab_6': // PEMBERI REKOMENDASI
+                if ($request->pemberi_rekomendasi != null) {
+                    Biodata::updateOrCreate(
+                        [
+                            'user_id' => $data['user_id'],
+                        ],
+                        $data
+                    );
+                }
+                break;
+
+            default:
+                return redirect()->back()->withErrors(['error' => 'Invalid tab selection.']);
         }
 
-        return redirect()->route('biodata.index')->with('success', 'data berhasil disimpan');
+        if ($request->input('active_tab')) {
+            $currentTab = $request->input('active_tab');
+            $tabs = ['tab_1', 'tab_2', 'tab_3', 'tab_4', 'tab_5', 'tab_6'];
+
+            $currentIndex = array_search($currentTab, $tabs);
+            $nextTab = $tabs[($currentIndex + 1) % count($tabs)];
+
+            return redirect()->route('biodata.index', ['active_tab' => $nextTab])->with('success', 'Data berhasil disimpan');
+        }
     }
 
     public function uploads()

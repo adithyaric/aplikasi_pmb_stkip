@@ -30,6 +30,7 @@
 </head>
 
 <body>
+    <!--FIRST PAGE START-->
     <table class="table table-borderless">
         <tr>
             <td width="20%"><img style="margin-left: 20px; margin-top: 15px;"
@@ -52,14 +53,14 @@
     <br>
     <br>
     <br>
-    <p style="font-size: 14px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">KARTU PENDAFTARAN MAHASISWA
+    <p style="font-size: 12px; font-weight: bold; text-align: center; margin-top: -40px; margin-right: -40px;">KARTU PENDAFTARAN MAHASISWA
         BARU<br>TAHUN
         AKADEMIK {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}</p>
     <div class="text-right">
         <img src="{{ public_path('storage/'.Auth::user()->photo) }}" style="width:125px !important;border-raidus:10px;"
             alt="">
     </div>
-    <table class="table table-borderless" style="margin-top: -150px; font-family: Times New Roman; font-size: 12px;">
+    <table class="table table-borderless" style="margin-top: -150px; font-family: Times New Roman; font-size: 11px;">
         <tr>
             <td width="35%">Nomor Pendaftaran</td>
             <td width="5%">:</td>
@@ -120,7 +121,7 @@
         </tr>
     </table>
 
-    <table class="table table-borderless" style="font-family: Times New Roman; font-size: 14px;">
+    <table class="table table-borderless" style="font-family: Times New Roman; font-size: 12px;">
         <thead>
             <tr>
                 <td width="35%"></td>
@@ -144,7 +145,7 @@
 
     </table>
 
-    <ul style="font-family: 'Times New Roman'; font-size: 11px;">
+    <ul style="font-family: 'Times New Roman'; font-size: 9px;">
         <li>Formulir ini adalah bukti saudara/ saudari terdaftar sebagai calon mahasiswa baru Tahun Akademik {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}.
         </li>
         <li>Cetak kartu pendaftaran menggunakan kertas berukuran A4 (jika dibutuhkan).</li>
@@ -161,6 +162,7 @@
         <img src="{{ public_path('assets/img/pmb1.jpg') }}" width="70px">
     </div>
     <br>
+    <!--FIRST PAGE END-->
 
     <!-- Formulir Pendaftaran -->
     <table class="table table-borderless page-break">
@@ -286,25 +288,10 @@
                 <strong style="font-size: 12px;"></strong>
             </td>
         </tr>
-        <tr>
-            <td colspan="4">
-                <strong style="font-size: 12px;"></strong>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <strong style="font-size: 12px;"></strong>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <strong style="font-size: 12px;"></strong>
-            </td>
-        </tr>
     </table>
 
      <!-- Formulir Pendaftaran Page 2 -->
-    <table class="table table-borderless page-break">
+    <table class="table table-borderless">
         <tr>
             <td width="20%"><img style="margin-left: 20px; margin-top: 15px;"
                     src="{{ public_path('assets/img/stkip.png') }}" width="100%"></td>
@@ -416,21 +403,6 @@
             <td width="5%">:</td>
             <td>{{ Auth::user()->pemilikkartu->nama_ibu ?? "-" }}</td>
         </tr>
-        <tr>
-            <td width="35%">Pekerjaan Ibu</td>
-            <td width="5%">:</td>
-            <td>{{ Auth::user()->pemilikkartu->pekerjaan_ibu ?? "-" }}</td>
-        </tr>
-        <tr>
-            <td width="35%">No KIP</td>
-            <td width="5%">:</td>
-            <td>{{ Auth::user()->pemilikkartu->kip ?? "-" }}</td>
-        </tr>
-        <tr>
-            <td width="35%">No Pend. KIP</td>
-            <td width="5%">:</td>
-            <td>{{ Auth::user()->pemilikkartu->np_kip ?? "-" }}</td>
-        </tr>
     </table>
 
     <!-- Formulir Pendaftaran Page 3 -->
@@ -461,6 +433,21 @@
         AKADEMIK {{ strtoupper(Auth::user()->gelombang?->tahun?->nama) }}</p></p>
 
     <table class="table table-borderless" style="margin-top: -150px; font-family: Times New Roman; font-size: 10px;">
+        <tr>
+            <td width="35%">Pekerjaan Ibu</td>
+            <td width="5%">:</td>
+            <td>{{ Auth::user()->pemilikkartu->pekerjaan_ibu ?? "-" }}</td>
+        </tr>
+        <tr>
+            <td width="35%">No KIP</td>
+            <td width="5%">:</td>
+            <td>{{ Auth::user()->pemilikkartu->kip ?? "-" }}</td>
+        </tr>
+        <tr>
+            <td width="35%">No Pend. KIP</td>
+            <td width="5%">:</td>
+            <td>{{ Auth::user()->pemilikkartu->np_kip ?? "-" }}</td>
+        </tr>
         <tr>
             <td width="35%">Kode Akses KIP</td>
             <td width="5%">:</td>
