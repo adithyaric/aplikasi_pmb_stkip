@@ -249,7 +249,7 @@
                                                                 <label for="exampleInputEmail1">RT</label>
                                                                 <input type="number" class="form-control "
                                                                     value="{{ old('RT') ?? $alamat == null ? '' : $alamat->RT }}"
-                                                                    name="RT" placeholder="Masukan RT">
+                                                                    name="RT" placeholder="Masukan RT" required>
                                                                 @error('RT')
                                                                     <span class="help-block">{{ $message }}</span>
                                                                 @enderror
@@ -576,8 +576,8 @@
                                                         {{-- <span class="help-block">{{ $message }}</span> --}}
                                                         {{-- @enderror --}}
                                                         {{-- </div> --}}
-                                                        <hr><i><strong>Bagian Dibawah Ini Hanya Diisi Oleh Pendaftar Jalur
-                                                                KIP-Kuliah</strong></i>
+                                                        @if(Auth::user()->mahasiswa->penerimaan_id == 1)
+                                                        <hr><i><strong>Bagian Dibawah Ini Hanya Muncul Oleh Pendaftar Jalur KIP-Kuliah</strong></i>
                                                         <hr>
                                                         <div class="form-group @error('kip') has-error @enderror">
                                                             <label for="exampleInputPassword1">Nomor KIP (Jika ada)
@@ -636,6 +636,7 @@
                                                             @enderror
 
                                                         </div>
+                                                        @endif
 
                                                         <hr>
                                                         <strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>

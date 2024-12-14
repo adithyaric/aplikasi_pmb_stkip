@@ -35,7 +35,7 @@
                                         <hr>
                                         <i>
                                             <strong>
-                                                Silahkan Upload Berkas Anda Dengan Lengkap dan Lakukan TahapSelanjutnya !
+                                                Silahkan Upload Berkas Anda Dengan Lengkap dan Lakukan Tahap Selanjutnya !
                                             </strong>
                                         </i>
                                     </div>

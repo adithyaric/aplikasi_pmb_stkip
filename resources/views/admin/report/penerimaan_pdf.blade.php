@@ -13,7 +13,7 @@
     <table class="table table-borderless">
         <tr>
             <td width="20%"><img style="margin-left: 20px; margin-top: 15px;"
-                    src="https://pmb.demoo.net/assets/img/stkip.png" width="100%"></td>
+                    src="{{ asset('assets/img/stkip.png') }}" width="100%"></td>
             <td width="80%">
                 <p style="font-size: 16px; text-align: center; margin-left: -20px;"><br> PERKUMPULAN PENYELENGGARA
                     LEMBAGA PENDIDIKAN <br> PERGURUAN TINGGI PGRI PACITAN <br><b>STKIP PGRI PACITAN</b></p>
