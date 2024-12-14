@@ -226,10 +226,9 @@
                                                                 @enderror
                                                             </div>
                                                             <hr>
-                                                            <strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>
-                                                            <hr>
+                                                            <!--<strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>-->
                                                             <button type="submit" class="btn btn-primary">Simpan</button>
-                                                            <a href="{{ route('biodata.index', ['active_tab' => 'tab_2']) }}" class="btn btn-success">Selanjutnya</a>
+                                                            <!--<a href="{{ route('biodata.index', ['active_tab' => 'tab_2']) }}" class="btn btn-success">Selanjutnya</a>-->
                                                         </form>
                                                     </div>
                                                 </div>
@@ -330,10 +329,9 @@
                                                                 @enderror
                                                             </div>
                                                             <hr>
-                                                            <strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>
-                                                            <hr>
+                                                            <!--<strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>-->
                                                             <button type="submit" class="btn btn-primary">Simpan</button>
-                                                            <a href="{{ route('biodata.index', ['active_tab' => 'tab_3']) }}" class="btn btn-success">Selanjutnya</a>
+                                                            <!--<a href="{{ route('biodata.index', ['active_tab' => 'tab_3']) }}" class="btn btn-success">Selanjutnya</a>-->
                                                         </form>
                                                     </div>
                                                 </div>
@@ -431,10 +429,9 @@
                                                         </div>
 
                                                         <hr>
-                                                        <strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>
-                                                        <hr>
+                                                        <!--<strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>-->
                                                         <button type="submit" class="btn btn-primary">Simpan</button>
-                                                        <a href="{{ route('biodata.index', ['active_tab' => 'tab_4']) }}" class="btn btn-success">Selanjutnya</a>
+                                                        <!--<a href="{{ route('biodata.index', ['active_tab' => 'tab_4']) }}" class="btn btn-success">Selanjutnya</a>-->
                                                     </form>
                                                 </div>
                                                 <div class="tab-pane {{ request('active_tab') == 'tab_4' ? 'active' : 'hide' }}" id="tab_4">
@@ -495,10 +492,9 @@
 
 
                                                         <hr>
-                                                        <strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>
-                                                        <hr>
+                                                        <!--<strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>-->
                                                         <button type="submit" class="btn btn-primary">Simpan</button>
-                                                        <a href="{{ route('biodata.index', ['active_tab' => 'tab_5']) }}" class="btn btn-success">Selanjutnya</a>
+                                                        <!--<a href="{{ route('biodata.index', ['active_tab' => 'tab_5']) }}" class="btn btn-success">Selanjutnya</a>-->
                                                     </form>
                                                 </div>
                                                 <div class="tab-pane {{ request('active_tab') == 'tab_5' ? 'active' : 'hide' }}" id="tab_5">
@@ -639,10 +635,9 @@
                                                         @endif
 
                                                         <hr>
-                                                        <strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>
-                                                        <hr>
+                                                        <!--<strong style="color: red !important;"><i>Klik Simpan Lalu Klik Selanjutnya</i></strong>-->
                                                         <button type="submit" class="btn btn-primary">Simpan</button>
-                                                        <a href="{{ route('biodata.index', ['active_tab' => 'tab_6']) }}" class="btn btn-success">Selanjutnya</a>
+                                                        <!--<a href="{{ route('biodata.index', ['active_tab' => 'tab_6']) }}" class="btn btn-success">Selanjutnya</a>-->
                                                     </form>
                                                 </div>
                                                 <div class="tab-pane {{ request('active_tab') == 'tab_6' ? 'active' : 'hide' }}" id="tab_6">
@@ -693,8 +688,7 @@
                                                         <div
                                                             class="form-group @error('nama_rekomendasi') has-error @enderror ">
                                                             <label for="exampleInputPassword1">Nama Perekom (Isi "-" Jika
-                                                                Tidak
-                                                                Ada)</label>
+                                                                Tidak Ada)</label>
                                                             <input class="form-control" required name="nama_rekomendasi"
                                                                 value="{{ old('email') ?? $biodata == null ? '' : $biodata->nama_rekomendasi }}"
                                                                 type="text">
@@ -704,12 +698,12 @@
                                                         </div>
                                                         <div
                                                             class="form-group @error('wa_rekomendasi') has-error @enderror ">
-                                                            <label for="exampleInputPassword1">Nomor Hp Perekom (Biarkan
-                                                                Kosong Jika Tidak Ada Perekom) </label>
-                                                            <input type="number" class="form-control "
+                                                            <label for="exampleInputPassword1">Nomor Hp Perekom (Isi "-" Jika
+                                                                Tidak Ada) </label>
+                                                            <input type="text" class="form-control "
                                                                 name="wa_rekomendasi"
                                                                 value="{{ old('wa_rekomendasi') ?? $biodata == null ? '' : $biodata->wa_rekomendasi }}"
-                                                                placeholder="Masukan Nomor Handphone Perekom">
+                                                                placeholder="Masukan Nomor Handphone Perekom" required>
                                                             @error('wa_rekomendasi')
                                                                 <span class="help-block">{{ $message }}</span>
                                                             @enderror
@@ -791,18 +785,17 @@
                                                         </div>
                                                         <div
                                                             class="form-group @error('nim_perekom') has-error @enderror ">
-                                                            <label for="exampleInputPassword1">NIM Perekom (Biarkan Kosong
-                                                                Jika Perekom Bukan Mahasiswa) </label>
-                                                            <input type="number" class="form-control "
+                                                            <label for="exampleInputPassword1">NIM Perekom (Isi "-" Jika
+                                                                Tidak Jika Perekom Bukan Mahasiswa) </label>
+                                                            <input type="text" class="form-control "
                                                                 name="nim_perekom"
                                                                 value="{{ old('nim_perekom') ?? $biodata == null ? '' : $biodata->nim_perekom }}"
-                                                                placeholder="Masukan NIM Perekom">
+                                                                placeholder="Masukan NIM Perekom" required>
                                                             @error('nim_perekom')
                                                                 <span class="help-block">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                         <button type="submit" class="btn btn-primary">Simpan</button>
-                                                        <a href="{{ url('mahasiswa/cetak') }}" class="btn btn-success">Verifikasi & Cetak (Klik Disini)</a>
                                                     </form>
                                                 </div>
                                             </div>
